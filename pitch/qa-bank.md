@@ -41,7 +41,7 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
 9. **How does the mesh heal itself?** (Lead) The gateway floods a beacon every minute; each node
    picks the neighbour with the fewest hops to the gateway as its parent. If the parent does not
    forward its frame, it retries through the next-best neighbour, and parents that fail twice are
-   dropped until they work again. We measure delivery with 30% of nodes down: `[KPI: packet
+   dropped until they work again. In simulation, with 30% of nodes dead, the mesh delivered 100% of readings versus 98.85% for single-hop radio `[docs/kpis.md:
    delivery]`.
 10. **What is the radio signal between neighbours for?** (AI) If two posts move apart or one
     tilts, the signal between them changes. It costs nothing extra and the risk engine can use it as
@@ -50,7 +50,7 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
     power, which suits a 50-byte reading per minute. We use 865–867 MHz, India's licence-exempt
     band, at 17 dBm, well below the 1 W limit.
 12. **What happens when the internet goes down?** (Lead) The gateway keeps every reading in a local
-    buffer and replays it later with zero loss `[KPI: data loss]`. It runs the safety rules itself
+    buffer and replays it later: 4,225 of 4,225 readings arrived after a 2-hour (field-time) broker outage. It runs the safety rules itself
     and switches sirens through the mesh beacon, so the village is warned with no cloud at all.
 13. **What does the AI actually do?** (AI) Four layers: rules on rates of change, an Isolation
     Forest that learns what normal ground looks like, a check that at least two neighbouring nodes
