@@ -1,0 +1,21 @@
+{
+  "synthetic": true,
+  "file": "normal.jsonl.gz",
+  "site": "jharia-demo",
+  "scenario": "normal",
+  "seed": 42,
+  "start": "2026-10-01T00:00:00Z",
+  "hours": 48.0,
+  "period_s": 300.0,
+  "every": 1,
+  "onset_ts": null,
+  "failure_ts": null,
+  "hazard_nodes": null,
+  "faults": null,
+  "params": {},
+  "rows_by_event": {
+    "none": 14375,
+    "blast": 25
+  },
+  "regenerate": "python -m achal_sim.export --scenario normal --seed 42 --hours 48.0 --period-s 300 --every 1"
+}
