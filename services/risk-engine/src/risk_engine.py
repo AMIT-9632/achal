@@ -1,80 +1,111 @@
 # SPDX-License-Identifier: MIT
-"""AI risk engine.
+"""AI risk engine service.
 
-SCAFFOLD STUB (W0). Scores each reading with fixed thresholds and publishes a
-RiskAssessment per node, plus an Alert whenever the site level changes.
+Subscribes to node telemetry, feeds the layered engine in `achal_risk`, and every
+evaluation tick (sensor time) publishes per-node RiskAssessments, the IDW risk grid,
+an Alert when the site level changes, and siren commands at Warning and above.
 
-W3 replaces `score` with: rules -> Isolation Forest -> multi-node consensus ->
-fused score, inverse-velocity time-to-failure, kriged risk grid, LSTM later,
-and the KPI harness that scores runs against simulator ground truth.
+The Isolation Forest is trained at start-up on normal-scenario runs from the field
+simulator when it is importable (dev checkout, or the compose mount); otherwise the
+engine runs rules + consensus + trend only and says so in the log.
 """
 
 from __future__ import annotations
 
+import json
 import logging
+import os
 import uuid
 from datetime import UTC, datetime
 
-from achal_common import Alert, Level, RiskAssessment, Telemetry, load_site, topics
+from achal_common import Alert, Level, RiskAssessment, RiskGrid, Telemetry, load_site, topics
+from achal_common.models import LatLon
 from achal_common.mqtt import connect
+from achal_risk import EngineConfig, RiskEngine
+from achal_risk.engine import EvalResult
 
 log = logging.getLogger("risk-engine")
 
-# Placeholder thresholds; W3 calibrates them on simulated Jharia runs.
-THRESHOLDS = {"tilt_deg": 0.05, "crack_mm": 1.0, "vib_rms_g": 0.02}
+
+def build_engine(site) -> RiskEngine:
+    model = rules = None
+    if os.environ.get("RISK_TRAIN", "1") != "0":
+        try:
+            from achal_risk.kpi import train
+
+            seeds = tuple(int(s) for s in os.environ.get("RISK_TRAIN_SEEDS", "1001,1002").split(","))
+            model, rules = train("sim", site, seeds=seeds, hours=float(os.environ.get("RISK_TRAIN_HOURS", "48")),
+                                 log=log.info)
+            log.info("isolation forest trained on %d rows", model.train_rows)
+        except ImportError:
+            log.warning("field simulator not importable: running without the Isolation Forest layer")
+    cfg = EngineConfig(eval_period_s=float(os.environ.get("RISK_EVAL_PERIOD_S", "600")))
+    eng = RiskEngine.for_site(site, model=model, rules=rules, cfg=cfg)
+    # Install-day calibration: a day of quiet data from the same sensors gives the thermal
+    # coefficients. In the demo the simulator recreates that day for the running seed.
+    seed = os.environ.get("RISK_COMMISSION_SEED", os.environ.get("SIM_SEED"))
+    if seed is not None and model is not None:
+        from achal_risk.kpi import commission_window
+
+        eng.commission(commission_window("sim", site, int(seed)))
+        log.info("commissioned thermal coefficients from a quiet day (seed %s)", seed)
+    return eng
 
 
-def score(t: Telemetry) -> tuple[float, list[str]]:
-    reasons = []
-    tilt = max(abs(t.tilt_x_deg), abs(t.tilt_y_deg))
-    parts = [
-        tilt / THRESHOLDS["tilt_deg"],
-        abs(t.crack_mm) / THRESHOLDS["crack_mm"],
-        t.vib_rms_g / THRESHOLDS["vib_rms_g"],
-    ]
-    if parts[0] >= 1:
-        reasons.append("tilt_rate_high")
-    if parts[1] >= 1:
-        reasons.append("crack_opening")
-    if parts[2] >= 1:
-        reasons.append("vibration_burst")
-    return min(1.0, max(parts) / 2), reasons
+def to_messages(site, eng: RiskEngine, res: EvalResult, prev_level: Level) -> tuple[list, RiskGrid, Alert | None]:
+    ts = datetime.fromtimestamp(res.ts_s, UTC)
+    risks = [RiskAssessment(site=site.site_id, node=n.node, ts=ts, score=n.score, level=Level(n.level),
+                            ttf_hours=n.ttf_hours, components=n.components, reasons=n.reasons,
+                            agreeing_neighbours=n.agreeing_neighbours) for n in res.nodes]
+    grid = RiskGrid(site=site.site_id, ts=ts, **eng.grid(res.scores))
+    alert = None
+    if res.alert:
+        a = res.alert
+        centroid = None
+        if a["centroid_m"]:
+            from achal_common.config import Point
 
-
-def level_for(s: float) -> Level:
-    if s >= 0.85:
-        return Level.CRITICAL
-    if s >= 0.6:
-        return Level.WARNING
-    if s >= 0.35:
-        return Level.WATCH
-    return Level.NORMAL
+            lat, lon = site.to_latlon(Point(x=a["centroid_m"][0], y=a["centroid_m"][1]))
+            centroid = LatLon(lat=lat, lon=lon)
+        alert = Alert(id=str(uuid.uuid4()), site=site.site_id, ts=ts, level=Level(a["level"]),
+                      previous_level=prev_level, nodes=a["nodes"], centroid=centroid, ttf_hours=a["ttf_hours"],
+                      reasons=a["reasons"], siren=a["siren"])
+    return risks, grid, alert
 
 
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(message)s")
     site = load_site()
-    node_levels: dict[str, Level] = {}
-    state = {"site_level": Level.NORMAL}
+    eng = build_engine(site)
+    state = {"level": Level.NORMAL}
 
     def on_message(_topic: str, payload: bytes) -> None:
-        t = Telemetry.model_validate_json(payload)
-        s, reasons = score(t)
-        lvl = level_for(s)
-        node_levels[t.node] = lvl
-        ra = RiskAssessment(site=t.site, node=t.node, ts=t.ts, score=s, level=lvl, reasons=reasons,
-                            components={"rules": s})
-        client.publish(topics.risk(site.site_id, t.node), ra.model_dump_json(exclude_none=True), qos=1)
-
-        site_level = max(node_levels.values(), key=lambda lv: lv.rank)
-        if site_level != state["site_level"]:
-            hot = [n for n, lv in node_levels.items() if lv == site_level]
-            alert = Alert(id=str(uuid.uuid4()), site=site.site_id, ts=datetime.now(UTC), level=site_level,
-                          previous_level=state["site_level"], nodes=hot, reasons=reasons or ["level_change"],
-                          siren=site_level.rank >= Level.WARNING.rank)
+        try:
+            t = Telemetry.model_validate_json(payload)
+        except ValueError as exc:
+            log.warning("bad telemetry dropped: %s", exc)
+            return
+        reading = t.model_dump(exclude={"truth"})  # the engine never sees ground truth
+        ts_s = t.ts.timestamp()
+        eng.ingest(t.node, ts_s, reading)
+        res = eng.maybe_evaluate(ts_s)
+        if res is None:
+            return
+        risks, grid, alert = to_messages(site, eng, res, state["level"])
+        for ra in risks:
+            client.publish(topics.risk(site.site_id, ra.node), ra.model_dump_json(exclude_none=True), qos=1)
+        client.publish(topics.risk_grid(site.site_id), grid.model_dump_json(), qos=0, retain=True)
+        if alert:
             client.publish(topics.alert(site.site_id), alert.model_dump_json(exclude_none=True), qos=1)
-            log.info("site level %s -> %s (%s)", state["site_level"].value, site_level.value, ",".join(hot))
-            state["site_level"] = site_level
+            on = alert.level.rank >= Level.WARNING.rank
+            if on or state["level"].rank >= Level.WARNING.rank:
+                cmd = json.dumps({"on": on, "level": alert.level.value,
+                                  "ts": alert.ts.isoformat().replace("+00:00", "Z")})
+                for s in site.sirens:
+                    client.publish(topics.siren_cmd(site.site_id, s.id), cmd, qos=1)
+            log.info("site level %s -> %s nodes=%s reasons=%s ttf=%s", state["level"].value, alert.level.value,
+                     ",".join(alert.nodes), ",".join(alert.reasons), alert.ttf_hours)
+            state["level"] = alert.level
 
     client = connect("risk-engine", on_message, [topics.telemetry(site.site_id)])
     client.loop_forever()

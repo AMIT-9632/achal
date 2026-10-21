@@ -3,6 +3,6 @@
 
 from achal_common import topics
 from achal_common.config import SiteConfig, load_site
-from achal_common.models import Alert, Level, RiskAssessment, Telemetry
+from achal_common.models import Alert, Level, RiskAssessment, RiskGrid, Telemetry
 
-__all__ = ["Alert", "Level", "RiskAssessment", "SiteConfig", "Telemetry", "load_site", "topics"]
+__all__ = ["Alert", "Level", "RiskAssessment", "RiskGrid", "SiteConfig", "Telemetry", "load_site", "topics"]

@@ -72,7 +72,7 @@ def thermal_coefficients(t: np.ndarray, y: np.ndarray, temp: np.ndarray) -> np.n
     The quadratic term soaks up slow curvature (e.g. creep starting inside the window)
     so it is not mistaken for a thermal response."""
     k, n, c = y.shape
-    tm = np.nanmean(temp, axis=0) if np.isfinite(temp).any() else np.zeros(n)
+    tm = np.nan_to_num(nanmedian(temp), nan=0.0)
     tc = np.nan_to_num(temp - tm)
     w = (~np.isnan(y)) & np.isfinite(temp)[..., None]
     wf = w.astype(float)

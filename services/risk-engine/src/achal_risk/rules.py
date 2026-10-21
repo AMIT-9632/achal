@@ -60,12 +60,14 @@ class Rules:
                 scale = p / w
                 self.thresholds[key] = (w * scale, wa * scale, c * scale, grp, code)
 
-    def score(self, f: Features, faulty: np.ndarray) -> tuple[np.ndarray, dict[str, np.ndarray],
-                                                           dict[str, np.ndarray]]:
+    def score(self, f: Features, faulty: np.ndarray, rates: bool = True) -> tuple[
+            np.ndarray, dict[str, np.ndarray], dict[str, np.ndarray]]:
         """Return (rules score, per-group scores, per-reason scores), each (N,)."""
         groups: dict[str, np.ndarray] = {}
         reasons: dict[str, np.ndarray] = {}
         for key, (w, wa, c, grp, code) in self.thresholds.items():
+            if not rates and key in RATE_KEYS:
+                continue
             s = ramp(getattr(f, key), w, wa, c)
             if grp != "heat" and grp != "vib":
                 s = np.where(faulty, 0.0, s)  # a faulty sensor cannot raise deformation alarms

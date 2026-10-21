@@ -7,8 +7,8 @@ Every `eval_period_s` of sensor time it scores all nodes at once:
   Isolation Forest ───────┼─ evidence = max(rules, 0.8 x iforest, trend)
   inverse-velocity trend ─┘
         │
-  neighbour consensus: evidence x (0.45 + 0.55 x c), c = min(1, agreeing/2),
-        │              c >= 0.5 if two independent sensor groups agree on one node
+  neighbour consensus: evidence x (0.45 + 0.55 x c), c = min(1, (agreeing + s) / 2),
+        │              s = 0.5 if two independent sensor groups agree on the node itself
   fault handling: faulty channels muted, lone single-channel signals marked suspect
         │
   hysteresis: up after `confirm_up` ticks, down one level after `confirm_down` ticks
@@ -43,7 +43,7 @@ def level_for(score: float) -> int:
 class EngineConfig:
     eval_period_s: float = 600.0
     window_h: float = 24.0
-    baseline_rows: int = 60
+    baseline_h: float = 1.0
     warmup_h: float = 6.0
     iforest_weight: float = 0.8
     use_iforest: bool = True
@@ -58,6 +58,7 @@ class EngineConfig:
     silent_after: int = 5        # sample periods without data
     neighbour_radius: float = 1.5  # in grid spacings (8-neighbourhood)
     battery_low_v: float = 3.3
+    ttf_after_h: float = 6.0
 
 
 @dataclass
@@ -109,6 +110,8 @@ class RiskEngine:
         self.up_count = np.zeros(n, int)
         self.down_count = np.zeros(n, int)
         self.last_score = np.zeros(n)
+        self.moving_ticks = np.zeros(n, int)
+        self.tf_hist: list[tuple[float, np.ndarray]] = []  # (eval time, predicted failure time per node)
         self.site_level = 0
         self.next_eval: float | None = None
         self.last_features: feat.Features | None = None
@@ -157,9 +160,10 @@ class RiskEngine:
         if self.base is None:
             self.base = feat.Baseline(level=np.zeros((n, len(CHANNELS))), temp_ref=np.full(n, 25.0),
                                       vib=np.full(n, 5e-4), noise=np.full((n, 4), 1e-3), ready=np.zeros(n, bool))
-        todo = ~self.base.ready & (self.counts >= self.cfg.baseline_rows)
+        rows = max(6, int(round(self.cfg.baseline_h * 3600 / self.period_s)))
+        todo = ~self.base.ready & (self.counts >= rows)
         if todo.any():
-            b = feat.make_baseline(win, self.cfg.baseline_rows)
+            b = feat.make_baseline(win, rows)
             for name in ("level", "temp_ref", "vib", "noise"):
                 getattr(self.base, name)[todo] = getattr(b, name)[todo]
             self.base.ready[todo] = True
@@ -176,11 +180,12 @@ class RiskEngine:
 
         # Thermal coefficients are sensor properties: refresh them hourly, and only on
         # nodes that are quiet, so real ground movement cannot leak into them.
-        if self._g_age <= 0 and len(win) >= 0.8 * 86400 / self.period_s:
+        data_rows = self.store.latest - (self.first_idx or 0) + 1
+        if self._g_age <= 0 and data_rows >= 86400 / self.period_s:
             g_new = feat.thermal_coefficients(*self._thermal_inputs(win))
             quiet = self.last_score < SUPPORT
             if self._g is None:
-                self._g = np.where(quiet[:, None], g_new, 0.0)
+                self._g = g_new  # first day: every node (the quadratic trend term absorbs slow movement)
             else:
                 self._g[quiet] = g_new[quiet]
             self._g_age = int(3600 / cfg.eval_period_s)
@@ -196,6 +201,12 @@ class RiskEngine:
         faulty = (f.stuck | (f.spikes >= 3) | (f.batt_v < cfg.battery_low_v)) if cfg.use_faults else np.zeros(n, bool)
 
         rules, groups, reason_scores = self.rules.score(f, faulty)
+        if self._g is None:
+            # Until thermal coefficients are known (a day of data, or commissioning), daily
+            # temperature swings look like movement on every node at once, which consensus
+            # cannot reject. Rate-driven evidence is held below Warning until then.
+            level_only = self.rules.score(f, faulty, rates=False)[0]
+            rules = np.maximum(level_only, np.minimum(rules, BOUNDS[1] - 0.01))
         if self.model is not None and cfg.use_iforest:
             a = self.model.score(f.matrix())
             a = np.where(faulty, np.minimum(a, 0.3), a)
@@ -205,9 +216,13 @@ class RiskEngine:
         ttf = np.full(n, np.nan)
         if cfg.use_trend and age_h >= cfg.warmup_h:
             # Only nodes already showing movement get a time-to-failure.
-            moving = ~faulty & (rules >= SUPPORT)
+            # Only nodes whose movement is established (rules above SUPPORT for `ttf_after_h`)
+            # get a time-to-failure: Fukuzono's law holds in the creep phase, not at its onset.
+            self.moving_ticks = np.where(rules >= SUPPORT, self.moving_ticks + 1, 0)
+            moving = ~faulty & (self.moving_ticks * cfg.eval_period_s >= cfg.ttf_after_h * 3600)
             if moving.any():
                 ttf[moving] = self._ttf(f, moving)
+            ttf = self._neighbourhood_ttf(self._stable_ttf(ts_s, ttf))
         trend = trend_score(ttf)
 
         evidence = np.maximum.reduce([rules, cfg.iforest_weight * a, trend])
@@ -217,8 +232,9 @@ class RiskEngine:
         agreeing = (self.nbr & support[None, :]).sum(1)
         n_groups = sum((groups[g] >= SUPPORT).astype(int) for g in ("tilt", "strain", "heat")) + \
             ((groups["vib"] >= SUPPORT) & (np.maximum(groups["tilt"], groups["strain"]) >= SUPPORT)).astype(int)
-        c = np.minimum(1.0, agreeing / 2.0)
-        c = np.where(n_groups >= 2, np.maximum(c, 0.5), c)
+        # Two independent sensor groups on one node count as half a neighbour: enough to
+        # lift one agreeing neighbour to full support, never enough to warn on its own.
+        c = np.minimum(1.0, (agreeing + 0.5 * (n_groups >= 2)) / 2.0)
         if cfg.use_consensus:
             fused = evidence * (0.45 + 0.55 * c)
         else:
@@ -260,6 +276,39 @@ class RiskEngine:
         alert = self._site_alert(ts_s, nodes, ttf)
         return EvalResult(ts_s, fused, self.level.copy(), self.site_level, nodes, alert,
                           (time.perf_counter() - t0) * 1000, faulty)
+
+    def _neighbourhood_ttf(self, ttf: np.ndarray) -> np.ndarray:
+        """A failing pillar moves the ground over several nodes, so a time-to-failure must be
+        shared: use the median over the node and its neighbours, needing two estimates."""
+        out = np.full(len(ttf), np.nan)
+        fin = np.isfinite(ttf)
+        if fin.sum() < 2:
+            return out
+        for i in np.nonzero(fin | (self.nbr & fin[None, :]).any(1))[0]:
+            vals = ttf[(self.nbr[i] | (np.arange(len(ttf)) == i)) & fin]
+            if len(vals) >= 2:
+                out[i] = float(np.median(vals))
+        return out
+
+    def _stable_ttf(self, ts_s: float, ttf: np.ndarray) -> np.ndarray:
+        """Report a time-to-failure only if an estimate made 1-3 h earlier pointed to the same
+        failure time (within 30%, at least 30 min). Spurious fits that always say
+        "failure in a moment" slide forward with the clock and never agree with themselves."""
+        tf_abs = ts_s + ttf * 3600
+        self.tf_hist.append((ts_s, tf_abs))
+        self.tf_hist = [(t, v) for t, v in self.tf_hist if ts_s - t <= 3 * 3600]
+        tol = np.maximum(1800.0, 0.3 * ttf * 3600)
+        agree = np.zeros(len(ttf), bool)
+        for t, v in self.tf_hist:
+            if ts_s - t >= 3600:
+                agree |= np.abs(v - tf_abs) <= tol
+        return np.where(agree, ttf, np.nan)
+
+    def commission(self, quiet_window: np.ndarray) -> None:
+        """Learn thermal coefficients from a stretch of quiet data recorded at install
+        (rows, nodes, channels, newest last; ideally a day or more)."""
+        self._g = feat.thermal_coefficients(*self._thermal_inputs(quiet_window))
+        self._g_age = int(3600 / self.cfg.eval_period_s)
 
     def _thermal_inputs(self, win: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         k = len(win)
@@ -310,6 +359,7 @@ class RiskEngine:
         reasons = sorted({r for i in hot for r in nodes[i].reasons}) or ["level_change"]
         hot_ttf = ttf[hot] if hot else np.array([])
         finite = hot_ttf[~np.isnan(hot_ttf)] if len(hot_ttf) else hot_ttf
+        finite = np.array([np.median(finite)]) if len(finite) else finite
         return {
             "ts_s": ts_s, "level": LEVELS[new], "previous_level": LEVELS[prev],
             "nodes": [self.node_ids[i] for i in hot], "reasons": reasons,

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/achal/schemas/risk-grid.v1.json",
+  "title": "ACHAL risk grid v1",
+  "description": "Published by the risk engine on achal/{site}/risk/grid (retained) every evaluation tick. Interpolated fused risk over the site, for the dashboard heatmap.",
+  "type": "object",
+  "required": ["v", "site", "ts", "x0_m", "y0_m", "dx_m", "dy_m", "rows", "cols", "values", "method"],
+  "properties": {
+    "v": {"const": 1},
+    "site": {"type": "string"},
+    "ts": {"type": "string", "format": "date-time"},
+    "x0_m": {"type": "number", "description": "Local x (east, metres from the panel's south-west corner) of column 0"},
+    "y0_m": {"type": "number", "description": "Local y (north) of row 0, the southmost row"},
+    "dx_m": {"type": "number", "exclusiveMinimum": 0},
+    "dy_m": {"type": "number", "exclusiveMinimum": 0},
+    "rows": {"type": "integer", "minimum": 1},
+    "cols": {"type": "integer", "minimum": 1},
+    "values": {"type": "array", "items": {"type": "number", "minimum": 0, "maximum": 1}, "description": "Row-major, rows x cols, row 0 = southmost"},
+    "method": {"enum": ["idw", "kriging"]}
+  },
+  "additionalProperties": false
+}

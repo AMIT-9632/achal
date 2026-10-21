@@ -20,7 +20,7 @@ import math
 import numpy as np
 
 from achal_risk.data import Run
-from achal_risk.store import CHANNELS, BT, CR, EX, TP, TX, TY, VB
+from achal_risk.store import BT, CHANNELS, CR, EX, TP, TX, TY, VB
 
 SCENARIOS = ("normal", "trough", "pillar_collapse", "faults", "fire")
 DAYS = {"normal": 30, "trough": 21, "pillar_collapse": 8, "faults": 30, "fire": 14}
