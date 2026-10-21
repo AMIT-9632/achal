@@ -55,6 +55,11 @@ services:
     <<: *python
     build: {<<: *pybuild, args: {SERVICE: risk-engine}}
     command: python risk_engine.py
+    environment:
+      <<: *pyenv
+      SIM_SEED: ${SIM_SEED:-42}   # commissioning: thermal calibration from a quiet day of these sensors
+    volumes:   # the field simulator trains the Isolation Forest at start-up (demo only)
+      - ./services/field-sim/src:/app/services/field-sim/src:ro
 
   alerts:        # W4
     <<: *python

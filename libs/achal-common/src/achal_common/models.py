@@ -92,3 +92,21 @@ class Alert(BaseModel):
     ttf_hours: float | None = None
     reasons: list[str]
     siren: bool | None = None
+
+
+class RiskGrid(BaseModel):
+    """Risk raster on achal/{site}/risk/grid (schemas/risk-grid.v1.json)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    v: Literal[1] = 1
+    site: str
+    ts: datetime
+    x0_m: float
+    y0_m: float
+    dx_m: float = Field(gt=0)
+    dy_m: float = Field(gt=0)
+    rows: int = Field(ge=1)
+    cols: int = Field(ge=1)
+    values: list[float]
+    method: Literal["idw", "kriging"]
