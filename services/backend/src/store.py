@@ -314,8 +314,9 @@ class PgStore:
             if not data:
                 return []
             risks = await c.fetch(
-                "SELECT ts, score, level FROM risk WHERE site = $1 AND node = $2 AND ts <= $4 AND ts >= $3 - interval "
-                "'1 hour' ORDER BY ts", site, node, parse_ts(data[0]["ts"]), parse_ts(data[-1]["ts"]))
+                "SELECT ts, score, level FROM risk WHERE site = $1 AND node = $2 AND ts <= $4::timestamptz "
+                "AND ts >= $3::timestamptz - interval '1 hour' ORDER BY ts",
+                site, node, parse_ts(data[0]["ts"]), parse_ts(data[-1]["ts"]))
         return merge_risk(data, [{"ts": r["ts"], "score": r["score"], "level": r["level"]} for r in risks])
 
     async def risk_history(self, site: str, node: str, since: datetime | None, until: datetime | None,

@@ -21,7 +21,7 @@ services:
       - ./infra/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
       - mosquitto-data:/mosquitto/data
 
-  db:
+  db:            # TimescaleDB + PostGIS; schema in infra/db/init.sql
     image: timescale/timescaledb-ha:pg16
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-achal}
@@ -31,7 +31,12 @@ services:
     volumes:
       - ./infra/db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
       - db-data:/home/postgres/pgdata
-    profiles: [db]   # W2 makes this default once the backend writes to it
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
 
   field-sim:     # W1 + W2: virtual nodes and the simulated LoRa mesh
     <<: *python
@@ -43,12 +48,22 @@ services:
       SCENARIO: ${SCENARIO:-normal}
       SIM_SPEED: ${SIM_SPEED:-60}
       SIM_SEED: ${SIM_SEED:-42}
+      MESH_MODE: ${MESH_MODE:-mesh}
+      MESH_PROFILE: ${MESH_PROFILE:-baseline}
+      MESH_FAIL_FRACTION: ${MESH_FAIL_FRACTION:-0}
+      MESH_FAIL_AT_S: ${MESH_FAIL_AT_S:-3600}
+      MESH_FAIL_PATTERN: ${MESH_FAIL_PATTERN:-random}
     depends_on: [gateway]
 
   gateway:       # W2: Raspberry Pi role, offline buffer, local siren
     <<: *python
     build: {<<: *pybuild, args: {SERVICE: gateway}}
     command: python gateway.py
+    environment:
+      <<: *pyenv
+      SIM_SPEED: ${SIM_SPEED:-60}
+      GATEWAY_RULES: ${GATEWAY_RULES:-}
+    ports: ["9100:9100"]   # /status and /metrics
     volumes: [gateway-data:/data]
 
   risk-engine:   # W3
@@ -71,7 +86,14 @@ services:
     <<: *python
     build: {<<: *pybuild, args: {SERVICE: backend}}
     command: uvicorn app:app --host 0.0.0.0 --port 8000
+    environment:
+      <<: *pyenv
+      DATABASE_URL: postgresql://${POSTGRES_USER:-achal}:${POSTGRES_PASSWORD:-change-me}@db:5432/${POSTGRES_DB:-achal}
+      OPERATOR_TOKEN: ${OPERATOR_TOKEN:-}
     ports: ["8000:8000"]
+    depends_on:
+      mosquitto: {condition: service_started}
+      db: {condition: service_healthy}
 
   dashboard:     # W4
     build: services/dashboard

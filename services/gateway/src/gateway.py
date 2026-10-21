@@ -42,6 +42,8 @@ class Buffer:
 
     def __init__(self, path: str) -> None:
         self.db = sqlite3.connect(path, check_same_thread=False)
+        self.db.execute("PRAGMA journal_mode=WAL")  # durable on power loss, far fewer fsyncs on an SD card
+        self.db.execute("PRAGMA synchronous=NORMAL")
         self.db.execute("CREATE TABLE IF NOT EXISTS outbox (id INTEGER PRIMARY KEY, topic TEXT, payload TEXT)")
         cols = {r[1] for r in self.db.execute("PRAGMA table_info(outbox)")}
         if "priority" not in cols:  # buffers written by v0.1 have no priority column
@@ -112,6 +114,7 @@ class Gateway:
         self.metrics = Metrics()
         self.sirens: dict[str, dict] = {s.id: {"on": False} for s in site.sirens}
         self.inflight: dict[int, int] = {}  # MQTT message id -> outbox row id
+        self.early_acks: set[int] = set()
         self.lock = threading.Lock()
         self.was_online = False
 
@@ -177,14 +180,17 @@ class Gateway:
         """PUBACK from the broker: only now is the row safe to delete."""
         with self.lock:
             row = self.inflight.pop(mid, None)
-        if row is not None:
-            self.buf.drop([row])
-            self.metrics.inc("published")
+            if row is None:
+                self.early_acks.add(mid)  # acknowledged before flush_once recorded the mid
+                return
+        self.buf.drop([row])
+        self.metrics.inc("published")
 
     def on_disconnect(self) -> None:
         with self.lock:
             lost = len(self.inflight)
-            self.inflight.clear()  # unacknowledged rows stay in the outbox and are sent again
+            self.inflight.clear()
+            self.early_acks.clear()  # unacknowledged rows stay in the outbox and are sent again
         if lost:
             self.metrics.inc("uplink_drops", lost)
 
@@ -198,11 +204,18 @@ class Gateway:
             pending = set(self.inflight.values())
         sent = 0
         for row_id, topic, payload in self.buf.peek(batch, exclude=pending):
+            # Never hold self.lock across publish(): paho calls on_publish while holding its own locks.
+            info = self.client.publish(topic, payload, qos=1)
+            if info.rc != 0:
+                break
             with self.lock:
-                info = self.client.publish(topic, payload, qos=1)
-                if info.rc != 0:
-                    break
-                self.inflight[info.mid] = row_id
+                acked = info.mid in self.early_acks
+                self.early_acks.discard(info.mid)
+                if not acked:
+                    self.inflight[info.mid] = row_id
+            if acked:
+                self.buf.drop([row_id])
+                self.metrics.inc("published")
             sent += 1
             if '"buffered":true' in payload:
                 self.metrics.inc("replayed")

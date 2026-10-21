@@ -14,10 +14,12 @@ log = logging.getLogger(__name__)
 
 
 def connect(client_id: str, on_message: Callable[[str, bytes], None] | None = None,
-            subscriptions: list[str] | None = None) -> mqtt.Client:
+            subscriptions: list[str] | None = None, clean_session: bool = True) -> mqtt.Client:
+    """clean_session=False keeps a persistent broker session: QoS 1 messages published while this
+    client is disconnected (e.g. a gateway replaying its buffer) are queued for it, not dropped."""
     host = os.environ.get("MQTT_HOST", "localhost")
     port = int(os.environ.get("MQTT_PORT", "1883"))
-    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=client_id)
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=client_id, clean_session=clean_session)
 
     def _on_connect(c, _userdata, _flags, reason_code, _props):
         log.info("connected to mqtt %s:%s (%s)", host, port, reason_code)

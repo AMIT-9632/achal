@@ -212,7 +212,9 @@ class Hub:
         from achal_common.mqtt import connect
 
         def run() -> None:
-            client = connect("backend", lambda t, p: self.submit(t, p), SUBSCRIPTIONS)
+            # Persistent session: whatever the gateway replays while we reconnect is queued for us.
+            client = connect(os.environ.get("BACKEND_CLIENT_ID", "backend"), lambda t, p: self.submit(t, p),
+                             SUBSCRIPTIONS, clean_session=False)
             self.mqtt = client
             client.loop_start()
 

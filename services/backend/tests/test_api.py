@@ -1,11 +1,34 @@
 # SPDX-License-Identifier: MIT
 import json
+import os
 from datetime import UTC, datetime, timedelta
 
 import pytest
 from app import classify, create_app
 from fastapi.testclient import TestClient
-from store import MemoryStore
+from store import MemoryStore, PgStore
+
+# Set ACHAL_TEST_DATABASE_URL (e.g. postgresql://achal:change-me@localhost:5432/achal) to run every API
+# test against TimescaleDB + PostGIS as well as the in-memory store. CI does this in the db job.
+PG_URL = os.environ.get("ACHAL_TEST_DATABASE_URL")
+TABLES = "telemetry, risk, alerts, siren_events, gateway_status, alert_deliveries"
+
+
+def make_store(kind: str):
+    if kind == "memory":
+        return MemoryStore()
+    if not PG_URL:
+        pytest.skip("ACHAL_TEST_DATABASE_URL not set")
+    return PgStore(PG_URL)
+
+
+def truncate(client, store) -> None:
+    async def run():
+        async with store.pool.acquire() as c:
+            await c.execute(f"TRUNCATE {TABLES}")
+
+    if isinstance(store, PgStore):
+        client.portal.call(run)
 
 T0 = datetime(2026, 10, 21, tzinfo=UTC)
 
@@ -26,11 +49,13 @@ def alert(alert_id: str, site: str = "jharia-demo") -> dict:
             "previous_level": "watch", "nodes": ["n12", "n13"], "reasons": ["neighbour_consensus"], "siren": True}
 
 
-@pytest.fixture
-def api(monkeypatch):
+@pytest.fixture(params=["memory", "pg"])
+def api(request, monkeypatch):
     monkeypatch.delenv("OPERATOR_TOKEN", raising=False)
-    app = create_app(store=MemoryStore(), enable_mqtt=False)
+    store = make_store(request.param)
+    app = create_app(store=store, enable_mqtt=False)
     with TestClient(app) as client:
+        truncate(client, store)
         hub = app.state.hub
 
         def push(topic: str, msg: dict) -> None:
