@@ -41,8 +41,8 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
 9. **How does the mesh heal itself?** (Lead) The gateway floods a beacon every minute; each node
    picks the neighbour with the fewest hops to the gateway as its parent. If the parent does not
    forward its frame, it retries through the next-best neighbour, and parents that fail twice are
-   dropped until they work again. In simulation, with 30% of nodes dead, the mesh delivered 100% of readings versus 98.85% for single-hop radio `[docs/kpis.md:
-   delivery]`.
+   dropped until they work again. In simulation, with 30% of nodes dead, the mesh delivered 100%
+   of readings versus 98.85% for single-hop radio (`docs/mesh-study.md`).
 10. **What is the radio signal between neighbours for?** (AI) If two posts move apart or one
     tilts, the signal between them changes. It costs nothing extra and the risk engine can use it as
     a second, independent hint of movement.
