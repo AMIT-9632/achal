@@ -13,3 +13,5 @@ data/runs/
 .DS_Store
 .sandbox/
 .pio/
+config/recipients/*.local.yaml
+*.whl

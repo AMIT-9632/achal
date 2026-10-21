@@ -59,6 +59,7 @@ services:
     <<: *python
     build: {<<: *pybuild, args: {SERVICE: alerts}}
     command: python alerts.py
+    volumes: [alerts-data:/data]
 
   backend:       # W2
     <<: *python
@@ -74,4 +75,5 @@ services:
 volumes:
   mosquitto-data:
   gateway-data:
+  alerts-data:
   db-data:

@@ -1,3 +1,16 @@
 {
-  "_note": "Santali (Ol Chiki) translations pending review by a native speaker (W4). Keys fall back to English."
+  "_status": "draft-unreviewed",
+  "_note": "Santali (Ol Chiki) DRAFT by the ACHAL team, mostly loanwords. Must be reviewed by a native speaker before any field use. Missing keys fall back to Hindi, then English. Set _status to reviewed once checked.",
+  "level.normal": "ᱵᱷᱟᱜᱮ",
+  "level.watch": "ᱱᱤᱜᱽᱨᱟᱱᱤ",
+  "level.warning": "ᱦᱩᱥᱤᱭᱟᱨ",
+  "level.critical": "ᱵᱤᱯᱚᱫ",
+  "node": "ᱱᱳᱰ",
+  "nodes": "ᱱᱳᱰ",
+  "siren": "ᱥᱟᱭᱨᱮᱱ",
+  "sirens": "ᱥᱟᱭᱨᱮᱱ",
+  "battery": "ᱵᱮᱴᱟᱨᱤ",
+  "gateway": "ᱜᱮᱴᱣᱮ",
+  "map": "ᱱᱟᱠᱥᱟ",
+  "alerts": "ᱦᱩᱥᱤᱭᱟᱨ ᱠᱟᱛᱷᱟ"
 }

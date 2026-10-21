@@ -1,67 +1,99 @@
 {
   "en": {
     "body": "ACHAL {level}: ground movement at {site}, nodes {nodes}. Reason: {reasons}.",
+    "body_public": "ACHAL {level}: ground movement at {site}. {reasons}.",
+    "body_clear": "ACHAL {level}: ground at {site} is stable again.",
+    "ttf": " Possible collapse in about {n} {unit}.",
+    "units": {
+      "min": "min",
+      "h": "hours"
+    },
+    "siren": "Sirens are sounding.",
+    "action_critical": "Leave the marked area now and keep others out.",
     "levels": {
       "normal": "All clear",
       "watch": "Watch",
       "warning": "Warning",
-      "critical": "DANGER - move away now"
+      "critical": "DANGER"
     },
     "reasons": {
       "tilt_rate_high": "ground tilting",
       "crack_opening": "crack widening",
+      "ext_stretch": "ground stretching",
       "vibration_burst": "ground shaking",
+      "iforest_anomaly": "unusual pattern",
+      "neighbour_consensus": "several sensors agree",
+      "ttf_short": "collapse may be near",
+      "node_silent": "a sensor went silent",
+      "sensor_fault_suspected": "possible sensor fault",
+      "ground_heating": "ground heating (fire)",
       "level_change": "level changed"
-    },
-    "body_clear": "ACHAL {level}: ground at {site} is stable again."
+    }
   },
   "hi": {
     "body": "अचल {level}: {site} में ज़मीन खिसक रही है, नोड {nodes}. कारण: {reasons}.",
+    "body_public": "अचल {level}: {site} में ज़मीन खिसक रही है. {reasons}.",
+    "body_clear": "अचल {level}: {site} में ज़मीन फिर से स्थिर है.",
+    "ttf": " लगभग {n} {unit} में धंसाव संभव.",
+    "units": {
+      "min": "मिनट",
+      "h": "घंटे"
+    },
+    "siren": "सायरन बज रहे हैं.",
+    "action_critical": "निशान वाले इलाके से तुरंत दूर हटें, दूसरों को भी रोकें.",
     "levels": {
       "normal": "सब सामान्य",
       "watch": "निगरानी",
       "warning": "चेतावनी",
-      "critical": "खतरा - तुरंत दूर हटें"
+      "critical": "खतरा"
     },
     "reasons": {
       "tilt_rate_high": "ज़मीन झुक रही है",
       "crack_opening": "दरार चौड़ी हो रही है",
+      "ext_stretch": "ज़मीन खिंच रही है",
       "vibration_burst": "ज़मीन में कंपन",
+      "iforest_anomaly": "असामान्य पैटर्न",
+      "neighbour_consensus": "कई सेंसर सहमत",
+      "ttf_short": "धंसाव जल्द संभव",
+      "node_silent": "एक सेंसर बंद",
+      "sensor_fault_suspected": "सेंसर खराबी संभव",
+      "ground_heating": "ज़मीन गर्म (आग)",
       "level_change": "स्तर बदला"
-    },
-    "body_clear": "अचल {level}: {site} में ज़मीन फिर से स्थिर है."
+    }
   },
   "bn": {
-    "body": "অচল {level}: {site}-এ মাটি সরছে, নোড {nodes}. কারণ: {reasons}.",
+    "body": "অচল {level}: {site} — মাটি সরছে, নোড {nodes}. কারণ: {reasons}.",
+    "body_public": "অচল {level}: {site} — মাটি সরছে. {reasons}.",
+    "body_clear": "অচল {level}: {site} — মাটি আবার স্থির.",
+    "ttf": " আনুমানিক {n} {unit} পরে ধস হতে পারে.",
+    "units": {
+      "min": "মিনিট",
+      "h": "ঘণ্টা"
+    },
+    "siren": "সাইরেন বাজছে.",
+    "action_critical": "চিহ্নিত এলাকা থেকে এখনই সরে যান, অন্যদেরও আটকান.",
     "levels": {
       "normal": "সব স্বাভাবিক",
       "watch": "নজরদারি",
       "warning": "সতর্কতা",
-      "critical": "বিপদ - এখনই সরে যান"
+      "critical": "বিপদ"
     },
     "reasons": {
       "tilt_rate_high": "মাটি হেলে যাচ্ছে",
       "crack_opening": "ফাটল বাড়ছে",
+      "ext_stretch": "মাটি প্রসারিত হচ্ছে",
       "vibration_burst": "মাটি কাঁপছে",
+      "iforest_anomaly": "অস্বাভাবিক ধরন",
+      "neighbour_consensus": "একাধিক সেন্সর একমত",
+      "ttf_short": "শীঘ্রই ধস হতে পারে",
+      "node_silent": "একটি সেন্সর বন্ধ",
+      "sensor_fault_suspected": "সেন্সরে ত্রুটি সম্ভব",
+      "ground_heating": "মাটি গরম (আগুন)",
       "level_change": "স্তর বদলেছে"
-    },
-    "body_clear": "অচল {level}: {site}-এ মাটি আবার স্থির."
+    }
   },
   "sat": {
-    "_note": "Santali (Ol Chiki) strings are placeholders in English until a native speaker reviews them (W4).",
-    "body": "ACHAL {level}: ground movement at {site}, nodes {nodes}. Reason: {reasons}.",
-    "levels": {
-      "normal": "All clear",
-      "watch": "Watch",
-      "warning": "Warning",
-      "critical": "DANGER - move away now"
-    },
-    "reasons": {
-      "tilt_rate_high": "ground tilting",
-      "crack_opening": "crack widening",
-      "vibration_burst": "ground shaking",
-      "level_change": "level changed"
-    },
-    "body_clear": "ACHAL {level}: ground at {site} is stable again."
+    "_status": "draft-unreviewed",
+    "_note": "Santali (Ol Chiki) alert text is not written yet. Until a native speaker writes and reviews it, Santali recipients get Hindi (see messages.FALLBACK). Fill in the same keys as 'hi', then set _status to reviewed."
   }
 }
