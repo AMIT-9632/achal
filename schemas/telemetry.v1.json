@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/achal/schemas/telemetry.v1.json",
+  "title": "ACHAL node telemetry v1",
+  "description": "One reading from one surface node, as published by the gateway on achal/{site}/telemetry/{node}.",
+  "type": "object",
+  "required": ["v", "site", "node", "seq", "ts", "tilt_x_deg", "tilt_y_deg", "vib_rms_g", "crack_mm", "ext_mm", "batt_v"],
+  "properties": {
+    "v": {"const": 1},
+    "site": {"type": "string"},
+    "node": {"type": "string", "pattern": "^n[0-9]{2}$"},
+    "seq": {"type": "integer", "minimum": 0},
+    "ts": {"type": "string", "format": "date-time", "description": "Sample time at the node (UTC)"},
+    "rx_ts": {"type": "string", "format": "date-time", "description": "Time the gateway received it"},
+    "hops": {"type": "integer", "minimum": 0},
+    "path": {"type": "array", "items": {"type": "string"}, "description": "Relay nodes from source to gateway"},
+    "rssi_dbm": {"type": "number"},
+    "snr_db": {"type": "number"},
+    "neighbour_rssi": {"type": "object", "additionalProperties": {"type": "number"}, "description": "RSSI heard from each neighbour, used as a relative-distance signal"},
+    "tilt_x_deg": {"type": "number"},
+    "tilt_y_deg": {"type": "number"},
+    "vib_rms_g": {"type": "number", "minimum": 0},
+    "vib_peak_g": {"type": "number", "minimum": 0},
+    "crack_mm": {"type": "number", "description": "Crack-gauge opening relative to install"},
+    "ext_mm": {"type": "number", "description": "Wire extensometer change to the next node"},
+    "temp_c": {"type": "number"},
+    "batt_v": {"type": "number"},
+    "buffered": {"type": "boolean", "description": "True if this reading was held in the gateway buffer while offline"},
+    "truth": {"type": "object", "description": "Simulation only: ground-truth labels, stripped before the risk engine in eval mode", "properties": {
+      "subsidence_mm": {"type": "number"},
+      "event": {"type": "string"},
+      "fault": {"type": "string"}
+    }}
+  },
+  "additionalProperties": false
+}

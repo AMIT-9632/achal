@@ -1,0 +1,12 @@
+# Workspace-level tool config. Each service keeps its own requirements.txt.
+[tool.pytest.ini_options]
+testpaths = ["libs", "services"]
+pythonpath = ["services/field-sim/src", "services/gateway/src", "services/risk-engine/src",
+              "services/alerts/src", "services/backend/src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

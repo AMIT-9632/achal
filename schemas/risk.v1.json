@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/achal/schemas/risk.v1.json",
+  "title": "ACHAL risk assessment v1",
+  "description": "Published by the risk engine on achal/{site}/risk/{node}.",
+  "type": "object",
+  "required": ["v", "site", "node", "ts", "score", "level"],
+  "properties": {
+    "v": {"const": 1},
+    "site": {"type": "string"},
+    "node": {"type": "string"},
+    "ts": {"type": "string", "format": "date-time"},
+    "score": {"type": "number", "minimum": 0, "maximum": 1, "description": "Fused risk score"},
+    "level": {"enum": ["normal", "watch", "warning", "critical"]},
+    "ttf_hours": {"type": ["number", "null"], "description": "Inverse-velocity time-to-failure estimate"},
+    "components": {"type": "object", "additionalProperties": {"type": "number"}, "description": "Per-detector contribution, e.g. rules, iforest, consensus, trend"},
+    "reasons": {"type": "array", "items": {"type": "string"}, "description": "Reason codes behind the score, translated by the dashboard and alerts"},
+    "agreeing_neighbours": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": false
+}

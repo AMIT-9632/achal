@@ -1,0 +1,77 @@
+# ACHAL full stack on one machine: `docker compose up --build`, then open http://localhost:8080
+name: achal
+
+x-python: &python
+  build: &pybuild
+    context: .
+    dockerfile: infra/python.Dockerfile
+  env_file: [{path: .env, required: false}]
+  environment: &pyenv
+    SITE_ID: ${SITE_ID:-jharia-demo}
+    MQTT_HOST: mosquitto
+  depends_on: [mosquitto]
+  restart: unless-stopped
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    ports: ["1883:1883", "9001:9001"]
+    volumes:
+      - ./infra/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto-data:/mosquitto/data
+
+  db:
+    image: timescale/timescaledb-ha:pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-achal}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-achal}
+    ports: ["5432:5432"]
+    volumes:
+      - ./infra/db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+      - db-data:/home/postgres/pgdata
+    profiles: [db]   # W2 makes this default once the backend writes to it
+
+  field-sim:     # W1 + W2: virtual nodes and the simulated LoRa mesh
+    <<: *python
+    build: {<<: *pybuild, args: {SERVICE: field-sim}}
+    command: python field_sim.py
+    environment:
+      <<: *pyenv
+      GATEWAY_HOST: gateway
+      SCENARIO: ${SCENARIO:-normal}
+      SIM_SPEED: ${SIM_SPEED:-60}
+      SIM_SEED: ${SIM_SEED:-42}
+    depends_on: [gateway]
+
+  gateway:       # W2: Raspberry Pi role, offline buffer, local siren
+    <<: *python
+    build: {<<: *pybuild, args: {SERVICE: gateway}}
+    command: python gateway.py
+    volumes: [gateway-data:/data]
+
+  risk-engine:   # W3
+    <<: *python
+    build: {<<: *pybuild, args: {SERVICE: risk-engine}}
+    command: python risk_engine.py
+
+  alerts:        # W4
+    <<: *python
+    build: {<<: *pybuild, args: {SERVICE: alerts}}
+    command: python alerts.py
+
+  backend:       # W2
+    <<: *python
+    build: {<<: *pybuild, args: {SERVICE: backend}}
+    command: uvicorn app:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+
+  dashboard:     # W4
+    build: services/dashboard
+    ports: ["8080:80"]
+    depends_on: [backend]
+
+volumes:
+  mosquitto-data:
+  gateway-data:
+  db-data:

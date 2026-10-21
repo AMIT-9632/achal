@@ -1,0 +1,39 @@
+# Synthetic Jharia-type study area. All values are starting assumptions for
+# simulation, to be calibrated against CMPDI / BCCL / DGMS data later.
+site_id: jharia-demo
+name: Jharia-type bord-and-pillar panel (synthetic)
+district: Dhanbad
+state: Jharkhand
+languages: [en, hi, sat, bn]       # alert languages, in priority order
+origin: {lat: 23.7480, lon: 86.4140} # south-west corner of the panel (illustrative)
+
+panel:
+  width_m: 100
+  length_m: 100
+  seam_depth_m: 60          # shallow, 30-100 m in Jharia
+  extraction_height_m: 2.5
+  method: bord_and_pillar
+  angle_of_draw_deg: 35
+
+mesh:
+  grid: {rows: 5, cols: 5}
+  spacing_m: 22.5
+  radio: lora_sx1276_865mhz  # IN865 band
+  sample_period_s: 60
+  max_hops: 4
+
+gateway:
+  id: gw-01
+  position_m: {x: -20, y: 50}
+
+sirens:
+  - {id: siren-01, position_m: {x: -30, y: 10}, label: "Village edge (north)"}
+  - {id: siren-02, position_m: {x: 130, y: 90}, label: "Road crossing (east)"}
+
+exposure:   # what the warning protects (for impact KPIs)
+  households: 180
+  people: 900
+  roads_m: 400
+  rail_m: 0
+
+alert_levels: [normal, watch, warning, critical]

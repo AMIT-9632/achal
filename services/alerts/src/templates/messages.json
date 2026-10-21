@@ -1,0 +1,67 @@
+{
+  "en": {
+    "body": "ACHAL {level}: ground movement at {site}, nodes {nodes}. Reason: {reasons}.",
+    "levels": {
+      "normal": "All clear",
+      "watch": "Watch",
+      "warning": "Warning",
+      "critical": "DANGER - move away now"
+    },
+    "reasons": {
+      "tilt_rate_high": "ground tilting",
+      "crack_opening": "crack widening",
+      "vibration_burst": "ground shaking",
+      "level_change": "level changed"
+    },
+    "body_clear": "ACHAL {level}: ground at {site} is stable again."
+  },
+  "hi": {
+    "body": "अचल {level}: {site} में ज़मीन खिसक रही है, नोड {nodes}. कारण: {reasons}.",
+    "levels": {
+      "normal": "सब सामान्य",
+      "watch": "निगरानी",
+      "warning": "चेतावनी",
+      "critical": "खतरा - तुरंत दूर हटें"
+    },
+    "reasons": {
+      "tilt_rate_high": "ज़मीन झुक रही है",
+      "crack_opening": "दरार चौड़ी हो रही है",
+      "vibration_burst": "ज़मीन में कंपन",
+      "level_change": "स्तर बदला"
+    },
+    "body_clear": "अचल {level}: {site} में ज़मीन फिर से स्थिर है."
+  },
+  "bn": {
+    "body": "অচল {level}: {site}-এ মাটি সরছে, নোড {nodes}. কারণ: {reasons}.",
+    "levels": {
+      "normal": "সব স্বাভাবিক",
+      "watch": "নজরদারি",
+      "warning": "সতর্কতা",
+      "critical": "বিপদ - এখনই সরে যান"
+    },
+    "reasons": {
+      "tilt_rate_high": "মাটি হেলে যাচ্ছে",
+      "crack_opening": "ফাটল বাড়ছে",
+      "vibration_burst": "মাটি কাঁপছে",
+      "level_change": "স্তর বদলেছে"
+    },
+    "body_clear": "অচল {level}: {site}-এ মাটি আবার স্থির."
+  },
+  "sat": {
+    "_note": "Santali (Ol Chiki) strings are placeholders in English until a native speaker reviews them (W4).",
+    "body": "ACHAL {level}: ground movement at {site}, nodes {nodes}. Reason: {reasons}.",
+    "levels": {
+      "normal": "All clear",
+      "watch": "Watch",
+      "warning": "Warning",
+      "critical": "DANGER - move away now"
+    },
+    "reasons": {
+      "tilt_rate_high": "ground tilting",
+      "crack_opening": "crack widening",
+      "vibration_burst": "ground shaking",
+      "level_change": "level changed"
+    },
+    "body_clear": "ACHAL {level}: ground at {site} is stable again."
+  }
+}

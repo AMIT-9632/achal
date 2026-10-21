@@ -1,0 +1,21 @@
+{
+  "title": "অচল ভূমিধস পূর্বসতর্কতা",
+  "site_level": "স্থানের স্তর",
+  "level.normal": "স্বাভাবিক",
+  "level.watch": "নজরদারি",
+  "level.warning": "সতর্কতা",
+  "level.critical": "বিপদ",
+  "alerts": "সতর্কবার্তা",
+  "no_alerts": "এখনও কোনো সতর্কবার্তা নেই",
+  "node": "নোড",
+  "tilt": "হেলন",
+  "crack": "ফাটল",
+  "vibration": "কম্পন",
+  "battery": "ব্যাটারি",
+  "siren": "সাইরেন",
+  "reason.tilt_rate_high": "মাটি হেলে যাচ্ছে",
+  "reason.crack_opening": "ফাটল বাড়ছে",
+  "reason.vibration_burst": "মাটি কাঁপছে",
+  "reason.level_change": "স্তর বদলেছে",
+  "synthetic": "অচল সিমুলেটরের কৃত্রিম ডেটা"
+}

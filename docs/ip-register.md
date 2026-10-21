@@ -1,0 +1,20 @@
+# IP and licence register
+
+Every third-party item used by ACHAL. Allowed: MIT, Apache-2.0, BSD, ISC, PSF, MPL-2.0, LGPL, ODbL, CC-BY, CC0.
+
+| Item | Use | Licence | Link |
+| --- | --- | --- | --- |
+| Python, pydantic, PyYAML, paho-mqtt | Services | PSF, MIT, MIT, EPL-2.0/EDL-1.0 | pypi.org |
+| FastAPI, Uvicorn | Backend | MIT, BSD-3 | fastapi.tiangolo.com |
+| scikit-learn, NumPy | Risk engine | BSD-3 | scikit-learn.org |
+| React, Vite, TypeScript | Dashboard | MIT, MIT, Apache-2.0 | npmjs.com |
+| Leaflet, react-leaflet | Map | BSD-2, Hippocratic-2.1 (react-leaflet) — review | leafletjs.com |
+| OpenStreetMap tiles and data | Basemap | ODbL, attribution shown | openstreetmap.org/copyright |
+| Eclipse Mosquitto | Broker | EPL-2.0 / EDL-1.0 | mosquitto.org |
+| TimescaleDB (community), PostGIS | Database | Timescale License (TSL) for some features, GPL-2.0 (PostGIS, run as a separate service) | timescale.com, postgis.net |
+| Noto fonts | UI text in Indic scripts | OFL-1.1 | fonts.google.com/noto |
+
+Open items for W5: confirm react-leaflet licence is acceptable or replace with plain Leaflet;
+confirm TimescaleDB features used are Apache-2.0 edition only.
+
+No code is copied from other hackathon repositories; see `related-work.md`.

@@ -1,0 +1,21 @@
+{
+  "title": "ACHAL subsidence early warning",
+  "site_level": "Site level",
+  "level.normal": "Normal",
+  "level.watch": "Watch",
+  "level.warning": "Warning",
+  "level.critical": "Critical",
+  "alerts": "Alerts",
+  "no_alerts": "No alerts yet",
+  "node": "Node",
+  "tilt": "Tilt",
+  "crack": "Crack",
+  "vibration": "Vibration",
+  "battery": "Battery",
+  "siren": "Siren",
+  "reason.tilt_rate_high": "Ground tilting",
+  "reason.crack_opening": "Crack widening",
+  "reason.vibration_burst": "Ground shaking",
+  "reason.level_change": "Level changed",
+  "synthetic": "Synthetic data from the ACHAL simulator"
+}

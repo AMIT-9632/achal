@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/achal/schemas/alert.v1.json",
+  "title": "ACHAL alert v1",
+  "description": "Published on achal/{site}/alert when a zone changes level. Text is rendered per language by the alerts service.",
+  "type": "object",
+  "required": ["v", "id", "site", "ts", "level", "nodes", "reasons"],
+  "properties": {
+    "v": {"const": 1},
+    "id": {"type": "string"},
+    "site": {"type": "string"},
+    "ts": {"type": "string", "format": "date-time"},
+    "level": {"enum": ["normal", "watch", "warning", "critical"]},
+    "previous_level": {"enum": ["normal", "watch", "warning", "critical"]},
+    "nodes": {"type": "array", "items": {"type": "string"}},
+    "centroid": {"type": "object", "properties": {"lat": {"type": "number"}, "lon": {"type": "number"}}},
+    "ttf_hours": {"type": ["number", "null"]},
+    "reasons": {"type": "array", "items": {"type": "string"}},
+    "siren": {"type": "boolean", "description": "True if on-site sirens were triggered"}
+  },
+  "additionalProperties": false
+}

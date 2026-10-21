@@ -1,0 +1,9 @@
+item,qty,unit_inr,source,notes
+ESP32-WROOM-32 dev board,1,,,price to verify (W5)
+SX1276 LoRa module 865 MHz,1,,,
+MPU6050 or ADXL355 tilt/accel,1,,,
+Wire extensometer / linear potentiometer,1,,,
+Crack gauge (potentiometric),1,,,
+18650 Li-ion cell + holder,1,,,
+Solar panel 1 W + TP4056 charger,1,,,
+IP65 enclosure + ground stake,1,,,

@@ -1,0 +1,21 @@
+{
+  "title": "अचल भू-धंसाव पूर्व चेतावनी",
+  "site_level": "स्थल स्तर",
+  "level.normal": "सामान्य",
+  "level.watch": "निगरानी",
+  "level.warning": "चेतावनी",
+  "level.critical": "खतरा",
+  "alerts": "अलर्ट",
+  "no_alerts": "अभी कोई अलर्ट नहीं",
+  "node": "नोड",
+  "tilt": "झुकाव",
+  "crack": "दरार",
+  "vibration": "कंपन",
+  "battery": "बैटरी",
+  "siren": "सायरन",
+  "reason.tilt_rate_high": "ज़मीन झुक रही है",
+  "reason.crack_opening": "दरार चौड़ी हो रही है",
+  "reason.vibration_burst": "ज़मीन में कंपन",
+  "reason.level_change": "स्तर बदला",
+  "synthetic": "अचल सिम्युलेटर का कृत्रिम डेटा"
+}
