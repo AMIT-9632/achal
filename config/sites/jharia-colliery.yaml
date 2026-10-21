@@ -1,0 +1,42 @@
+# Synthetic colliery-scale block in a Jharia-type setting, used to test the mesh at
+# scale and multi-site routing in the backend. 100 nodes (the v1 node-id limit) at
+# 35 m spacing over ~11 ha; the gateway sits 200 m away on safe ground by the village.
+# All values are simulation assumptions, not survey data.
+site_id: jharia-colliery
+name: Jharia-type colliery block, 100 nodes (synthetic)
+district: Dhanbad
+state: Jharkhand
+languages: [en, hi, sat, bn]
+origin: {lat: 23.7400, lon: 86.4200}
+
+panel:
+  width_m: 330
+  length_m: 330
+  seam_depth_m: 70
+  extraction_height_m: 2.5
+  method: bord_and_pillar
+  angle_of_draw_deg: 35
+
+mesh:
+  grid: {rows: 10, cols: 10}
+  spacing_m: 35
+  radio: lora_sx1276_865mhz
+  sample_period_s: 60
+  max_hops: 5
+
+gateway:
+  id: gw-02
+  position_m: {x: -200, y: 165}
+
+sirens:
+  - {id: siren-11, position_m: {x: -210, y: 140}, label: "Village square (west)"}
+  - {id: siren-12, position_m: {x: 165, y: 360}, label: "School (north)"}
+  - {id: siren-13, position_m: {x: 360, y: 60}, label: "Colliery road (east)"}
+
+exposure:
+  households: 650
+  people: 3200
+  roads_m: 1200
+  rail_m: 350
+
+alert_levels: [normal, watch, warning, critical]

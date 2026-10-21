@@ -24,12 +24,23 @@ from achal_sim import FieldSimulator
 log = logging.getLogger("field-sim")
 
 
+_mesh = None
+
+
 def send_via_mesh(sock: socket.socket, target: tuple[str, int], reading: Telemetry) -> None:
-    """Single hop, no loss. W2 owns the real mesh model."""
-    reading.hops = 1
-    reading.path = [reading.node]
-    reading.rssi_dbm = -95.0
-    sock.sendto(reading.model_dump_json(exclude_none=True).encode(), target)
+    """Route the reading over the simulated LoRa mesh (mesh.py) and send whatever reaches the gateway:
+    nothing if it was lost, one frame, or two if a lost ACK caused a retransmission."""
+    global _mesh
+    if _mesh is None:
+        from mesh import mesh_from_env
+
+        _mesh = mesh_from_env(load_site(reading.site))
+        log.info("mesh mode=%s nodes down=%d at t=%.0fs", _mesh.mode, len(_mesh.failing), _mesh.fail_at_s)
+    for frame in _mesh.transmit(reading):
+        sock.sendto(frame.model_dump_json(exclude_none=True).encode(), target)
+    stats = _mesh.stats
+    if stats.generated and stats.generated % (len(_mesh.nodes) * 60) == 0:
+        log.info("mesh %s", stats.summary())
 
 
 def main() -> None:
