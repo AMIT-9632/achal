@@ -1,0 +1,34 @@
+# Alert recipients for the synthetic Jharia demo site.
+# FICTIONAL people and DUMMY numbers/addresses (+91 00000 0000x, example.org).
+# Put real contacts in config/recipients/<site>.local.yaml (gitignored) and set
+# RECIPIENTS_FILE to it. Never commit real phone numbers.
+site: jharia-demo
+site_label:
+  en: Jharia demo panel
+  hi: झरिया डेमो क्षेत्र
+  bn: ঝরিয়া ডেমো এলাকা
+
+# Minutes without an operator acknowledgement before the next tier is told.
+# null = never escalate at that level.
+escalation_min: {watch: null, warning: 15, critical: 5}
+
+rate_limit:
+  per_hour: 6                  # per recipient and channel; critical and level changes always go through
+  same_level_cooldown_min: 30  # do not repeat the same level to the same person
+
+recipients:
+  # Tier 0: told at once
+  - {id: mso, name: Mine safety officer (demo), role: mine_safety_officer, lang: en,
+     email: safety-officer@example.org, sms: "+910000000001", min_level: watch, tier: 0}
+  - {id: overman, name: Shift overman (demo), role: shift_overman, lang: bn,
+     sms: "+910000000002", min_level: warning, tier: 0}
+  - {id: sarpanch, name: Gram pradhan (demo), role: village_head, lang: hi,
+     sms: "+910000000003", min_level: warning, tier: 0, public: true}
+  - {id: ward-member, name: Ward member (demo), role: community_volunteer, lang: sat,
+     sms: "+910000000004", min_level: warning, tier: 0, public: true}
+  # Tier 1: no acknowledgement after the timeout
+  - {id: agent, name: Colliery agent (demo), role: colliery_manager, lang: hi,
+     sms: "+910000000005", email: agent@example.org, min_level: warning, tier: 1}
+  # Tier 2: still nothing
+  - {id: ddmo, name: District disaster management officer (demo), role: district_admin, lang: hi,
+     email: ddmo@example.org, min_level: critical, tier: 2}

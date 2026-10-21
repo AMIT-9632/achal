@@ -26,3 +26,13 @@ def gateway_status(site: str) -> str:
 
 def siren_cmd(site: str, siren_id: str = "+") -> str:
     return f"{ROOT}/{site}/siren/{siren_id}/cmd"
+
+
+def alert_ack(site: str) -> str:
+    """Operator acknowledgement {id, by, ts}; published by the backend, stops escalation."""
+    return f"{ROOT}/{site}/alert/ack"
+
+
+def alert_delivery(site: str) -> str:
+    """One record per message the alerts service tried to send."""
+    return f"{ROOT}/{site}/alert/delivery"

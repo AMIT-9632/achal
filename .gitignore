@@ -12,3 +12,5 @@ dist/
 data/runs/
 .DS_Store
 .sandbox/
+config/recipients/*.local.yaml
+*.whl

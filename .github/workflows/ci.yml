@@ -22,6 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: "22", cache: npm, cache-dependency-path: services/dashboard/package-lock.json}
       - run: npm ci
+      - run: npm test
       - run: npm run build
 
   compose:
