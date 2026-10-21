@@ -65,6 +65,11 @@ services:
       GATEWAY_RULES: ${GATEWAY_RULES:-}
     ports: ["9100:9100"]   # /status and /metrics
     volumes: [gateway-data:/data]
+    # On one machine, start the field only once the backend's persistent MQTT session exists,
+    # so even the very first readings are queued for it. (In the field the cloud is up first.)
+    depends_on:
+      mosquitto: {condition: service_started}
+      backend: {condition: service_healthy}
 
   risk-engine:   # W3
     <<: *python
@@ -94,6 +99,11 @@ services:
     depends_on:
       mosquitto: {condition: service_started}
       db: {condition: service_healthy}
+    healthcheck:   # healthy = API up and subscribed to the broker
+      test: ["CMD", "python", "-c", "import json,sys,urllib.request as u; sys.exit(0 if json.load(u.urlopen('http://localhost:8000/health'))['mqtt'] else 1)"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
 
   dashboard:     # W4
     build: services/dashboard

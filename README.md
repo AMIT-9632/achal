@@ -58,7 +58,9 @@ docker compose up --build
   (`normal`, `trough`, `pillar_collapse`, `faults`, `fire`; `SIM_SEED`, `SIM_SPEED`, `SIM_PERIOD_S`).
   Labelled sample runs are in [`data/samples/`](data/samples); the model is in
   [`docs/field-sim-model.md`](docs/field-sim-model.md).
-- With the database: `docker compose --profile db up --build`
+- TimescaleDB + PostGIS starts by default; gateway health at http://localhost:9100/status and `/metrics`
+- Uplink-outage demo (zero readings lost): `scripts/demo_uplink_outage.sh 120`
+- Mesh with 30% of nodes dying: `MESH_FAIL_FRACTION=0.3 docker compose up -d field-sim` ([docs/mesh.md](docs/mesh.md))
 
 ### Develop one service without Docker
 

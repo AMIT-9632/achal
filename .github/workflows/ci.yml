@@ -11,9 +11,40 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -e "libs/achal-common[dev]" fastapi "uvicorn[standard]" httpx scikit-learn numpy
+      - run: pip install -e "libs/achal-common[dev]" fastapi "uvicorn[standard]" httpx asyncpg scikit-learn numpy
       - run: ruff check libs services firmware/tools hardware
       - run: pytest -q
+
+  # Backend API tests again, against a real TimescaleDB + PostGIS with the production schema.
+  db:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: timescale/timescaledb-ha:pg16
+        env: {POSTGRES_USER: achal, POSTGRES_PASSWORD: ci-only, POSTGRES_DB: achal}
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -h localhost -U achal" --health-interval 5s --health-timeout 5s --health-retries 30
+    env:
+      ACHAL_TEST_DATABASE_URL: postgresql://achal:ci-only@localhost:5432/achal
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e "libs/achal-common[dev]" fastapi "uvicorn[standard]" httpx asyncpg
+      - run: sudo apt-get install -y postgresql-client
+      - run: psql "$ACHAL_TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f infra/db/init.sql
+      - run: pytest -q services/backend
+
+  # Whole stack in Docker: cut the broker for 30 s and prove no reading is lost.
+  e2e-outage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --build --wait mosquitto db gateway field-sim backend risk-engine
+      - run: scripts/demo_uplink_outage.sh 30
+      - if: failure()
+        run: docker compose logs --tail 200
 
   dashboard:
     runs-on: ubuntu-latest

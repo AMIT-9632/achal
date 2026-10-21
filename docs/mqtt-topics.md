@@ -11,8 +11,8 @@ Breaking changes need a new version (`telemetry.v2.json`) and an ADR.
 | `achal/{site}/alert` | risk-engine | `alert.v1.json` | Only on level change |
 | `achal/{site}/alert/ack` | backend | `{id, by, ts}` | Operator acknowledged an alert; alerts service stops escalating it |
 | `achal/{site}/alert/delivery` | alerts | `{alert_id, recipient, channel, lang, tier, status, ts}` | One record per message attempt (no phone numbers) |
-| `achal/{site}/gateway/status` | gateway | `{online, buffered, ts}` | Retained |
-| `achal/{site}/siren/{id}/cmd` | gateway, risk-engine | `{on, level, ts}` | Gateway also drives sirens locally when offline |
+| `achal/{site}/gateway/status` | gateway | `{online, buffered, ts}` + counters, `silent_nodes`, `sirens` | Retained, every 5 s; fields in [`gateway.md`](gateway.md) |
+| `achal/{site}/siren/{id}/cmd` | gateway, risk-engine | `{on, level, ts}` (+ `source`, `nodes`, `reasons` from the gateway) | Gateway also drives sirens locally when offline; its commands carry `source: "gateway"` and are queued ahead of telemetry |
 
 The radio link between field nodes and the gateway is simulated as UDP
 (`field-sim` -> `gateway:1700/udp`), carrying the same JSON as telemetry minus `rx_ts`.

@@ -189,3 +189,20 @@ def test_metrics_text_is_prometheus(tmp_path):
     assert 'achal_gateway_readings_unique_total{gateway="gw-01",site="jharia-demo"} 1' in text
     assert 'achal_node_rssi_dbm{gateway="gw-01",site="jharia-demo",node="n04"} -90.0' in text
     assert "achal_gateway_uplink_online" in text
+
+
+def test_puback_before_mid_is_recorded_still_drops_the_row(tmp_path):
+    """paho may deliver PUBACK on its thread before publish() returns to us."""
+    gw, broker = make(tmp_path)
+    real_publish = broker.publish
+
+    def fast_ack(topic, payload, qos=0, retain=False):
+        info = real_publish(topic, payload, qos, retain)
+        gw.on_publish(info.mid)
+        return info
+
+    broker.publish = fast_ack
+    for k in range(3):
+        gw.handle_frame(frame("n09", k))
+    assert gw.flush_once() == 3
+    assert gw.buf.size() == 0 and gw.status()["published"] == 3 and not gw.inflight

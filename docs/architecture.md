@@ -10,10 +10,10 @@
    fire, with realistic sensor noise, temperature drift, battery and faults; every reading carries
    synthetic ground truth. See [`field-sim-model.md`](field-sim-model.md).
 2. The **mesh model** routes each frame over up to `max_hops` relays to the gateway, with packet
-   loss, node failure and route repair. The radio is stood in for by UDP.
+   loss, node failure and route repair ([mesh.md](mesh.md)). The radio is stood in for by UDP.
 3. **gateway** (Raspberry Pi role) validates frames, stamps receive time, writes them to a SQLite
    outbox and drains the outbox to MQTT whenever the broker is reachable. Nothing is lost during an
-   uplink cut. It can trigger sirens locally from a rule check, with no cloud dependency.
+   uplink cut. It can trigger sirens locally from a rule check, with no cloud dependency ([gateway.md](gateway.md)).
 4. **risk-engine** scores each reading and each neighbourhood, publishes a fused 0–1 risk score,
    a level (normal, watch, warning, critical), reason codes and a time-to-failure estimate, and
    raises an alert on level changes.

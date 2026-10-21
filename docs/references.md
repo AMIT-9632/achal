@@ -49,3 +49,18 @@ be verified before the final submission rather than guessed.
   MAD-based outlier rejection (1.4826 x MAD).
 - Shepard, D. (1968). A two-dimensional interpolation function for irregularly-spaced data.
   *Proc. 23rd ACM National Conference*, 517-524. doi:10.1145/800186.810616. IDW risk grid.
+## Mesh, gateway and backend (W2)
+
+Formulas re-implemented from the documents below; where each is used: [`mesh.md`](mesh.md).
+
+- Semtech (2013). *AN1200.13 LoRa Modem Designer's Guide*. Time-on-air formula.
+- Semtech (2020). *SX1276/77/78/79 datasheet*, rev. 7. Receiver sensitivity per spreading factor, CAD.
+- Semtech. *AN1200.22 LoRa Modulation Basics*. Demodulation SNR floor per spreading factor.
+- LoRa Alliance (2022). *RP002-1.0.4 LoRaWAN Regional Parameters*, IN865-867 channel plan.
+- Rappaport, T. S. (2002). *Wireless Communications: Principles and Practice*, 2nd ed., ch. 4.
+  Log-distance path loss and log-normal shadowing.
+- Abramson, N. (1970). The ALOHA system. *AFIPS Fall Joint Computer Conference*, 281-285.
+- De Couto, D. S. J., Aguayo, D., Bicket, J., Morris, R. (2003). A high-throughput path metric for
+  multi-hop wireless routing (ETX). *MobiCom 2003*.
+- Winter, T. et al. (2012). RFC 6550, RPL: IPv6 Routing Protocol for Low-Power and Lossy Networks
+  (rank-based loop avoidance, used conceptually).

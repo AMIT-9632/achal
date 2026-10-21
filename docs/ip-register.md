@@ -12,6 +12,7 @@ Every third-party item used by ACHAL. Allowed: MIT, Apache-2.0, BSD, ISC, PSF, M
 | Leaflet | Map (used directly; react-leaflet removed because Hippocratic-2.1 is not OSI-approved) | BSD-2-Clause | leafletjs.com |
 | Charts | Hand-written SVG in `services/dashboard/src/components/LineChart.tsx`, no chart library | MIT (ours) | — |
 | OpenStreetMap tiles and data | Basemap | ODbL, attribution shown | openstreetmap.org/copyright |
+| asyncpg | Backend database driver | Apache-2.0 | github.com/MagicStack/asyncpg |
 | Eclipse Mosquitto | Broker | EPL-2.0 / EDL-1.0 | mosquitto.org |
 | TimescaleDB (community), PostGIS | Database | Timescale License (TSL) for some features, GPL-2.0 (PostGIS, run as a separate service) | timescale.com, postgis.net |
 | Matplotlib (optional, dev only) | Scenario figures in `docs/img/` (`achal_sim.plot`) | Matplotlib License (PSF-based, BSD-compatible) | matplotlib.org |
