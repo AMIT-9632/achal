@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "generated": "2026-10-21T10:47:05+00:00",
+    "synthetic": true,
+    "source": "W1 field simulator (achal_sim)",
+    "site": "jharia-demo",
+    "scenarios": [
+      "normal",
+      "trough",
+      "pillar_collapse",
+      "faults",
+      "fire"
+    ],
+    "seeds": 20,
+    "first_seed": 1,
+    "train_seeds": [
+      1001,
+      1002,
+      1003,
+      1004
+    ],
+    "hours": {
+      "normal": 336.0,
+      "faults": 168.0,
+      "trough": 72.0,
+      "pillar_collapse": 48.0,
+      "fire": 96.0
+    },
+    "packet_loss": 0.02,
+    "commissioned": true,
+    "engine": {
+      "eval_period_s": 600.0,
+      "window_h": 24.0,
+      "baseline_h": 1.0,
+      "warmup_h": 6.0,
+      "iforest_weight": 0.8,
+      "use_iforest": true,
+      "use_consensus": true,
+      "use_hysteresis": true,
+      "use_trend": true,
+      "use_faults": true,
+      "stub": false,
+      "confirm_up": 2,
+      "confirm_down": 18,
+      "down_margin": 0.05,
+      "silent_after": 5,
+      "neighbour_radius": 1.5,
+      "battery_low_v": 3.3,
+      "ttf_after_h": 6.0
+    },
+    "rule_thresholds": {
+      "tilt_rate6": [
+        0.02,
+        0.08,
+        0.3
+      ],
+      "tilt_rate24": [
+        0.02,
+        0.08,
+        0.3
+      ],
+      "tilt_level": [
+        0.06,
+        0.115,
+        0.19
+      ],
+      "crack_rate6": [
+        0.3,
+        1.5,
+        5.0
+      ],
+      "crack_level": [
+        1.0,
+        3.0,
+        10.0
+      ],
+      "ext_rate6": [
+        1.0,
+        4.0,
+        12.0
+      ],
+      "ext_level": [
+        3.0,
+        10.0,
+        22.0
+      ],
+      "vib_ratio": [
+        3.0,
+        6.0,
+        15.0
+      ],
+      "temp_excess": [
+        8.0,
+        20.0,
+        40.0
+      ]
+    },
+    "iforest_train_rows": 39600,
+    "python": "3.13.16",
+    "git": "5267fe3",
+    "wall_s": 2556.5
+  },
+  "summary": {
+    "full": {
+      "false_warnings": 2,
+      "node_months": 379.83,
+      "false_alarms_per_node_month": 0.0053,
+      "false_alarms_per_node_month_95ub": 0.0166,
+      "false_watches_per_node_month": 0.0711,
+      "false_sirens_per_month": 0.066,
+      "trough": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 24.62,
+        "lead_h_warning_min": 21.95,
+        "lead_h_warning_p10": 22.39,
+        "lead_h_watch_median": 25.03,
+        "lead_h_watch_min": 22.29,
+        "lead_h_watch_p10": 22.56,
+        "warned_nodes_on_hazard_share": 0.909
+      },
+      "pillar_collapse": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 21.95,
+        "lead_h_warning_min": 16.26,
+        "lead_h_warning_p10": 17.36,
+        "lead_h_watch_median": 24.07,
+        "lead_h_watch_min": 16.93,
+        "lead_h_watch_p10": 19.27,
+        "ttf_abs_err_h_median": 0.15,
+        "ttf_coverage_median": 1.0,
+        "warned_nodes_on_hazard_share": 0.445
+      },
+      "fire": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 60.23,
+        "lead_h_warning_min": 53.76,
+        "lead_h_warning_p10": 55.31,
+        "lead_h_watch_median": 60.73,
+        "lead_h_watch_min": 53.76,
+        "lead_h_watch_p10": 56.06,
+        "ttf_abs_err_h_median": 2.29,
+        "ttf_coverage_median": 0.305,
+        "warned_nodes_on_hazard_share": 0.855
+      },
+      "fault_flag_rate": 1.0,
+      "fault_flag_by_kind": {
+        "battery": 1.0,
+        "drift": 1.0,
+        "spike": 1.0,
+        "stuck": 1.0
+      },
+      "eval_ms_median": 33.19
+    },
+    "plus_consensus": {
+      "false_warnings": 5,
+      "node_months": 379.83,
+      "false_alarms_per_node_month": 0.0132,
+      "false_alarms_per_node_month_95ub": 0.0277,
+      "false_watches_per_node_month": 0.1896,
+      "false_sirens_per_month": 0.263,
+      "trough": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 24.77,
+        "lead_h_warning_min": 22.12,
+        "lead_h_warning_p10": 22.46,
+        "lead_h_watch_median": 25.2,
+        "lead_h_watch_min": 22.45,
+        "lead_h_watch_p10": 22.73,
+        "warned_nodes_on_hazard_share": 0.909
+      },
+      "pillar_collapse": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 22.12,
+        "lead_h_warning_min": 14.37,
+        "lead_h_warning_p10": 17.31,
+        "lead_h_watch_median": 24.24,
+        "lead_h_watch_min": 17.09,
+        "lead_h_watch_p10": 19.44,
+        "warned_nodes_on_hazard_share": 0.641
+      },
+      "fire": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 60.41,
+        "lead_h_warning_min": 53.92,
+        "lead_h_warning_p10": 55.48,
+        "lead_h_watch_median": 60.9,
+        "lead_h_watch_min": 53.92,
+        "lead_h_watch_p10": 56.23,
+        "warned_nodes_on_hazard_share": 0.984
+      },
+      "fault_flag_rate": 1.0,
+      "fault_flag_by_kind": {
+        "battery": 1.0,
+        "drift": 1.0,
+        "spike": 1.0,
+        "stuck": 1.0
+      },
+      "eval_ms_median": 25.18
+    },
+    "rules": {
+      "false_warnings": 17,
+      "node_months": 379.83,
+      "false_alarms_per_node_month": 0.0448,
+      "false_alarms_per_node_month_95ub": 0.0652,
+      "false_watches_per_node_month": 0.803,
+      "false_sirens_per_month": 0.921,
+      "trough": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 24.77,
+        "lead_h_warning_min": 22.12,
+        "lead_h_warning_p10": 22.46,
+        "lead_h_watch_median": 25.2,
+        "lead_h_watch_min": 22.45,
+        "lead_h_watch_p10": 22.73,
+        "warned_nodes_on_hazard_share": 0.909
+      },
+      "pillar_collapse": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 22.12,
+        "lead_h_warning_min": 14.37,
+        "lead_h_warning_p10": 17.31,
+        "lead_h_watch_median": 24.66,
+        "lead_h_watch_min": 17.59,
+        "lead_h_watch_p10": 19.76,
+        "warned_nodes_on_hazard_share": 0.643
+      },
+      "fire": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 60.41,
+        "lead_h_warning_min": 53.92,
+        "lead_h_warning_p10": 55.48,
+        "lead_h_watch_median": 60.9,
+        "lead_h_watch_min": 53.92,
+        "lead_h_watch_p10": 56.02,
+        "warned_nodes_on_hazard_share": 0.984
+      },
+      "fault_flag_rate": 0.0,
+      "fault_flag_by_kind": {
+        "battery": 0.0,
+        "drift": 0.0,
+        "spike": 0.0,
+        "stuck": 0.0
+      },
+      "eval_ms_median": 14.56
+    },
+    "rules_iforest": {
+      "false_warnings": 19,
+      "node_months": 379.83,
+      "false_alarms_per_node_month": 0.05,
+      "false_alarms_per_node_month_95ub": 0.0715,
+      "false_watches_per_node_month": 2.9513,
+      "false_sirens_per_month": 0.921,
+      "trough": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 24.77,
+        "lead_h_warning_min": 22.12,
+        "lead_h_warning_p10": 22.46,
+        "lead_h_watch_median": 25.2,
+        "lead_h_watch_min": 22.45,
+        "lead_h_watch_p10": 22.73,
+        "warned_nodes_on_hazard_share": 0.909
+      },
+      "pillar_collapse": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 22.12,
+        "lead_h_warning_min": 14.37,
+        "lead_h_warning_p10": 17.31,
+        "lead_h_watch_median": 24.66,
+        "lead_h_watch_min": 17.59,
+        "lead_h_watch_p10": 19.76,
+        "warned_nodes_on_hazard_share": 0.641
+      },
+      "fire": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 60.41,
+        "lead_h_warning_min": 53.92,
+        "lead_h_warning_p10": 55.48,
+        "lead_h_watch_median": 60.9,
+        "lead_h_watch_min": 53.92,
+        "lead_h_watch_p10": 56.23,
+        "warned_nodes_on_hazard_share": 0.984
+      },
+      "fault_flag_rate": 0.0,
+      "fault_flag_by_kind": {
+        "battery": 0.0,
+        "drift": 0.0,
+        "spike": 0.0,
+        "stuck": 0.0
+      },
+      "eval_ms_median": 25.05
+    },
+    "v0_stub": {
+      "false_warnings": 769,
+      "node_months": 379.83,
+      "false_alarms_per_node_month": 2.0246,
+      "false_alarms_per_node_month_95ub": 2.1473,
+      "false_watches_per_node_month": 2.3905,
+      "false_sirens_per_month": 37.253,
+      "trough": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 21.2,
+        "lead_h_warning_min": 18.79,
+        "lead_h_warning_p10": 19.12,
+        "lead_h_watch_median": 23.11,
+        "lead_h_watch_min": 20.74,
+        "lead_h_watch_p10": 20.95,
+        "warned_nodes_on_hazard_share": 1.0
+      },
+      "pillar_collapse": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 3.5,
+        "lead_h_warning_min": 0.83,
+        "lead_h_warning_p10": 1.04,
+        "lead_h_watch_median": 9.12,
+        "lead_h_watch_min": 4.19,
+        "lead_h_watch_p10": 4.98,
+        "warned_nodes_on_hazard_share": 1.0
+      },
+      "fire": {
+        "runs": 20,
+        "recall_warning": 1.0,
+        "recall_watch": 1.0,
+        "lead_h_warning_median": 51.16,
+        "lead_h_warning_min": 43.39,
+        "lead_h_warning_p10": 46.13,
+        "lead_h_watch_median": 56.69,
+        "lead_h_watch_min": 48.76,
+        "lead_h_watch_p10": 51.63,
+        "warned_nodes_on_hazard_share": 1.0
+      },
+      "fault_flag_rate": 0.0,
+      "fault_flag_by_kind": {
+        "battery": 0.0,
+        "drift": 0.0,
+        "spike": 0.0,
+        "stuck": 0.0
+      },
+      "eval_ms_median": 0.35
+    }
+  }
+}
