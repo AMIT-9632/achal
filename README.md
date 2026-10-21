@@ -55,6 +55,9 @@ docker compose up --build
 - Dashboard: http://localhost:8080 (language switch top right)
 - API: http://localhost:8000/docs
 - Change scenario: `SCENARIO=pillar_collapse docker compose up field-sim`
+  (`normal`, `trough`, `pillar_collapse`, `faults`, `fire`; `SIM_SEED`, `SIM_SPEED`, `SIM_PERIOD_S`).
+  Labelled sample runs are in [`data/samples/`](data/samples); the model is in
+  [`docs/field-sim-model.md`](docs/field-sim-model.md).
 - With the database: `docker compose --profile db up --build`
 
 ### Develop one service without Docker

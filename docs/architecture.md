@@ -5,7 +5,10 @@
 1. **field-sim** models a 100 m × 100 m bord-and-pillar panel at ~60 m depth with a 5 × 5 node grid
    (`config/sites/jharia-demo.yaml`). Each virtual node reports tilt (2 axes), vibration RMS/peak,
    crack-gauge opening, wire-extensometer stretch to its neighbour, temperature, battery and the
-   RSSI it hears from neighbours, once per sample period.
+   RSSI it hears from neighbours, once per sample period. Ground movement comes from a Knothe
+   influence-function trough, accelerating pillar creep and pothole collapse, or an underground
+   fire, with realistic sensor noise, temperature drift, battery and faults; every reading carries
+   synthetic ground truth. See [`field-sim-model.md`](field-sim-model.md).
 2. The **mesh model** routes each frame over up to `max_hops` relays to the gateway, with packet
    loss, node failure and route repair. The radio is stood in for by UDP.
 3. **gateway** (Raspberry Pi role) validates frames, stamps receive time, writes them to a SQLite

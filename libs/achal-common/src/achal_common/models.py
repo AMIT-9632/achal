@@ -22,9 +22,14 @@ class Level(StrEnum):
 
 
 class Truth(BaseModel):
+    """Simulation-only ground truth. event: none|blast|trough|precursor|collapse|fire."""
+
     subsidence_mm: float | None = None
     event: str | None = None
     fault: str | None = None
+    hazard: bool | None = None
+    onset_ts: datetime | None = None
+    failure_ts: datetime | None = None
 
 
 class Telemetry(BaseModel):

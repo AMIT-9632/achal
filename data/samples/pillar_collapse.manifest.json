@@ -1,0 +1,39 @@
+{
+  "synthetic": true,
+  "file": "pillar_collapse.jsonl.gz",
+  "site": "jharia-demo",
+  "scenario": "pillar_collapse",
+  "seed": 42,
+  "start": "2026-10-01T00:00:00Z",
+  "hours": 48.0,
+  "period_s": 60.0,
+  "every": 5,
+  "onset_ts": "2026-10-01T13:47:17Z",
+  "failure_ts": "2026-10-02T08:59:58Z",
+  "hazard_nodes": [
+    "n06",
+    "n10",
+    "n11",
+    "n12",
+    "n15",
+    "n16"
+  ],
+  "faults": null,
+  "params": {
+    "cx_m": 22.82,
+    "cy_m": 54.76,
+    "onset_h": 13.788,
+    "failure_h": 33.0,
+    "creep_mm": 44.9,
+    "creep_r_m": 21.51,
+    "pothole_depth_mm": 1984.0,
+    "pothole_r_m": 6.86
+  },
+  "rows_by_event": {
+    "none": 11978,
+    "blast": 25,
+    "precursor": 1380,
+    "collapse": 1092
+  },
+  "regenerate": "python -m achal_sim.export --scenario pillar_collapse --seed 42 --hours 48.0 --period-s 60 --every 5"
+}

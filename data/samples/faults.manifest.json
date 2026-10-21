@@ -1,0 +1,43 @@
+{
+  "synthetic": true,
+  "file": "faults.jsonl.gz",
+  "site": "jharia-demo",
+  "scenario": "faults",
+  "seed": 42,
+  "start": "2026-10-01T00:00:00Z",
+  "hours": 72.0,
+  "period_s": 300.0,
+  "every": 1,
+  "onset_ts": null,
+  "failure_ts": null,
+  "hazard_nodes": null,
+  "faults": {
+    "n10": {
+      "kind": "stuck",
+      "onset_ts": "2026-10-01T22:59:15Z"
+    },
+    "n07": {
+      "kind": "spike",
+      "onset_ts": "2026-10-01T12:26:42Z"
+    },
+    "n20": {
+      "kind": "drift",
+      "onset_ts": "2026-10-01T20:57:15Z"
+    },
+    "n21": {
+      "kind": "battery",
+      "onset_ts": "2026-10-01T19:21:40Z"
+    }
+  },
+  "params": {
+    "n10": "stuck@22.99h",
+    "n07": "spike@12.45h",
+    "n20": "drift@20.95h",
+    "n21": "battery@19.36h"
+  },
+  "rows_by_event": {
+    "none": 21550,
+    "blast": 50
+  },
+  "regenerate": "python -m achal_sim.export --scenario faults --seed 42 --hours 72.0 --period-s 300 --every 1"
+}

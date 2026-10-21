@@ -1,40 +1,27 @@
 # SPDX-License-Identifier: MIT
 """Field simulator: virtual ESP32 surface nodes over a Jharia-type panel.
 
-SCAFFOLD STUB (W0). Emits flat-ground readings with sensor noise and sends each
-one straight to the gateway over UDP, which stands in for the LoRa radio.
+Ground physics, sensors and the five scenarios live in the `achal_sim` package (W1).
+This entry point steps the scenario in accelerated real time and hands each reading
+to `send_via_mesh`, which stands in for the LoRa radio (W2 owns the mesh model).
 
-W1 replaces `ground_state` with the Knothe influence-function trough, pillar
-collapse, drift and faults (scenarios: normal, trough, pillar_collapse, faults, fire).
-W2 replaces `send_via_mesh` with multi-hop routing, packet loss and self-healing.
+Environment: SCENARIO (normal | trough | pillar_collapse | faults | fire), SIM_SEED,
+SIM_SPEED (simulated seconds per real second), SIM_PERIOD_S (sample period, default
+from the site config), SIM_START (ISO time of t=0, default now).
 """
 
 from __future__ import annotations
 
 import logging
 import os
-import random
 import socket
 import time
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime
 
 from achal_common import Telemetry, load_site
+from achal_sim import FieldSimulator
 
 log = logging.getLogger("field-sim")
-
-
-def ground_state(node: str, t_s: float, rng: random.Random) -> dict:
-    """Return sensor readings for one node at simulated time t_s. Flat ground only."""
-    return {
-        "tilt_x_deg": rng.gauss(0, 0.002),
-        "tilt_y_deg": rng.gauss(0, 0.002),
-        "vib_rms_g": abs(rng.gauss(0.0005, 0.0002)),
-        "crack_mm": rng.gauss(0, 0.02),
-        "ext_mm": rng.gauss(0, 0.05),
-        "temp_c": 28 + 6 * rng.random(),
-        "batt_v": 3.95,
-        "truth": {"subsidence_mm": 0.0, "event": "none"},
-    }
 
 
 def send_via_mesh(sock: socket.socket, target: tuple[str, int], reading: Telemetry) -> None:
@@ -48,24 +35,24 @@ def send_via_mesh(sock: socket.socket, target: tuple[str, int], reading: Telemet
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(message)s")
     site = load_site()
+    scenario = os.environ.get("SCENARIO", "normal")
     speed = float(os.environ.get("SIM_SPEED", "60"))
-    rng = random.Random(int(os.environ.get("SIM_SEED", "42")))
+    seed = int(os.environ.get("SIM_SEED", "42"))
+    period = float(os.environ.get("SIM_PERIOD_S") or site.mesh.sample_period_s)
+    start_env = os.environ.get("SIM_START")
+    start = datetime.fromisoformat(start_env) if start_env else datetime.now(UTC).replace(microsecond=0)
     target = (os.environ.get("GATEWAY_HOST", "localhost"), int(os.environ.get("GATEWAY_UDP_PORT", "1700")))
-    period = site.mesh.sample_period_s
+    sim = FieldSimulator(site, scenario, seed, start, period)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    start = datetime.now(UTC)
-    log.info("site=%s nodes=%d scenario=%s speed=x%.0f -> %s:%d", site.site_id, len(site.node_ids()),
-             os.environ.get("SCENARIO", "normal"), speed, *target)
+    log.info("site=%s nodes=%d scenario=%s seed=%d speed=x%.0f period=%.0fs -> %s:%d", site.site_id,
+             len(sim.nodes), scenario, seed, speed, period, *target)
+    log.info("plan: onset_h=%s failure_h=%s %s", sim.plan.onset_h, sim.plan.failure_h, sim.plan.params)
 
-    seq = 0
     while True:
-        t_s = seq * period
-        ts = start + timedelta(seconds=t_s)
-        for node in site.node_ids():
-            reading = Telemetry(site=site.site_id, node=node, seq=seq, ts=ts, **ground_state(node, t_s, rng))
-            send_via_mesh(sock, target, reading)
-        seq += 1
-        time.sleep(period / speed)
+        tick = time.monotonic()
+        for msg in sim.step():
+            send_via_mesh(sock, target, Telemetry.model_validate(msg))
+        time.sleep(max(0.0, period / speed - (time.monotonic() - tick)))
 
 
 if __name__ == "__main__":

@@ -28,8 +28,11 @@
     "buffered": {"type": "boolean", "description": "True if this reading was held in the gateway buffer while offline"},
     "truth": {"type": "object", "description": "Simulation only: ground-truth labels, stripped before the risk engine in eval mode", "properties": {
       "subsidence_mm": {"type": "number"},
-      "event": {"type": "string"},
-      "fault": {"type": "string"}
+      "event": {"type": "string", "description": "none | blast | trough | precursor | collapse | fire"},
+      "fault": {"type": "string", "description": "Injected sensor fault: stuck | spike | drift | battery"},
+      "hazard": {"type": "boolean", "description": "True only while a real ground hazard affects this node"},
+      "onset_ts": {"type": "string", "format": "date-time", "description": "When the scenario's hazard process began"},
+      "failure_ts": {"type": "string", "format": "date-time", "description": "Collapse time, or when trough damage thresholds are first passed"}
     }}
   },
   "additionalProperties": false
