@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 # ACHAL full stack on one machine: `docker compose up --build`, then open http://localhost:8080
 name: achal
 
