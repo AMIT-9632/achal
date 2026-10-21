@@ -12,3 +12,4 @@ dist/
 data/runs/
 .DS_Store
 .sandbox/
+.pio/

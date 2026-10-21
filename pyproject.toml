@@ -1,8 +1,8 @@
 # Workspace-level tool config. Each service keeps its own requirements.txt.
 [tool.pytest.ini_options]
-testpaths = ["libs", "services"]
+testpaths = ["libs", "services", "firmware/tools", "hardware"]
 pythonpath = ["services/field-sim/src", "services/gateway/src", "services/risk-engine/src",
-              "services/alerts/src", "services/backend/src"]
+              "services/alerts/src", "services/backend/src", "firmware/tools", "hardware"]
 
 [tool.ruff]
 line-length = 120

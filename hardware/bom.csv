@@ -1,9 +1,36 @@
-item,qty,unit_inr,source,notes
-ESP32-WROOM-32 dev board,1,,,price to verify (W5)
-SX1276 LoRa module 865 MHz,1,,,
-MPU6050 or ADXL355 tilt/accel,1,,,
-Wire extensometer / linear potentiometer,1,,,
-Crack gauge (potentiometric),1,,,
-18650 Li-ion cell + holder,1,,,
-Solar panel 1 W + TP4056 charger,1,,,
-IP65 enclosure + ground stake,1,,,
+kit,item,qty,unit_inr,gst,basis,source,checked,notes
+node,ESP32-WROOM-32 38-pin dev board,1,329,ex,quote,https://www.electronicscomp.com/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core,2026-10-21,Prototype; remove power LED and feed 3V3 from the HT7333. Production PCB uses the bare module
+node,Ai-Thinker Ra-01H SX1276 LoRa module 803-930 MHz,1,549,ex,quote,https://www.electronicscomp.com/ai-thinker-lora-series-ra-01h-spread-spectrum-wireless-module,2026-10-21,Run at IN865 (865-867 MHz)
+node,868 MHz LoRa antenna RP-SMA,1,55,ex,quote,https://www.electronicscomp.com/lora-antenna-868mhz,2026-10-21,
+node,IPEX to RP-SMA pigtail,1,60,ex,estimate,,2026-10-21,Bulkhead through the enclosure wall
+node,MPU6050 accelerometer/gyro module (GY-521),1,122,ex,quote,https://www.electronicscomp.com/mpu6050-triple-axis-gyro-accelerometer-module,2026-10-21,Tilt + vibration + motion wake; ADXL355 is the precision upgrade
+node,ADS1115 16-bit ADC module,1,155,ex,quote,https://www.electronicscomp.com/ads1115-16-bit-i2c-adc-4-channel-programmable-gain-amplifier-module,2026-10-21,Crack gauge + extensometer + NTC + rail reference
+node,10k linear slide potentiometer module,2,129,ex,quote,https://www.electronicscomp.com/10k-sliding-adjustable-potentiometer-module,2026-10-21,One crack gauge and one wire extensometer per node
+node,NTC 10k B3950 waterproof probe 2 m,1,126.27,ex,quote,https://probots.co.in/2m-ntc-thermistor-temperature-sensor-waterproof-probe-wire-10-k-1-3950-bl.html,2026-10-21,Ground temperature at 0.5 m for fire-affected areas
+node,Samsung INR18650-30Q 3000 mAh Li-ion cell,1,699,ex,quote,https://www.electronicscomp.com/samsung-inr18650-30q-3000mah-5c-li-ion-battery,2026-10-21,Retail single unit; IndiaMART lists Rs 325 in bulk
+node,18650 cell holder,1,30,ex,estimate,,2026-10-21,
+node,TP4056 charger with protection (Type-C),1,41.53,ex,quote,https://probots.co.in/tp4056-1a-li-ion-lithium-battery-charging-module-with-current-protection-type-c.html,2026-10-21,
+node,Solar panel 5 V 2 W,1,190,ex,quote,https://www.electronicscomp.com/solar-panel-5v-2w,2026-10-21,
+node,HT7333 LDO + AO3401 rail switch + passives + headers,1,60,ex,estimate,,2026-10-21,4 uA quiescent LDO; P-MOSFET cuts the sensor rail in sleep
+node,Perfboard / 2-layer PCB,1,80,ex,estimate,,2026-10-21,
+node,IP65 ABS box 150 x 110 x 70 mm,1,78,ex,quote,https://rujutaent.com/shop/abs-box-150-x-110-x-70-waterproof-ip65/,2026-10-21,
+node,Cable glands PG7,3,15,ex,estimate,,2026-10-21,
+node,GI pipe ground stake 1 m + clamp,1,200,ex,estimate,,2026-10-21,Driven 0.6 m into the ground; node box on top
+node,Extensometer wire (stainless 1 mm) + PVC conduit + crack-gauge brackets,1,120,ex,estimate,,2026-10-21,Wire runs to the next node (22.5 m)
+gateway,Raspberry Pi 4 Model B 2 GB,1,7091,incl,quote,https://robocraze.com/products/raspberry-pi-4-model-b-2gb-ram,2026-10-21,Runs services/gateway + uart_bridge
+gateway,microSD 32 GB A1,1,350,incl,estimate,,2026-10-21,
+gateway,Pi power supply 5 V 3 A,1,500,incl,estimate,,2026-10-21,
+gateway,ESP32-WROOM-32 38-pin dev board (gateway radio),1,329,ex,quote,https://www.electronicscomp.com/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core,2026-10-21,firmware/src/gateway-lora on USB serial
+gateway,Ai-Thinker Ra-01H SX1276 LoRa module,1,549,ex,quote,https://www.electronicscomp.com/ai-thinker-lora-series-ra-01h-spread-spectrum-wireless-module,2026-10-21,
+gateway,868 MHz LoRa antenna RP-SMA,1,55,ex,quote,https://www.electronicscomp.com/lora-antenna-868mhz,2026-10-21,Mast-mounted higher-gain antenna is a later upgrade
+gateway,4G USB modem (uplink),1,1500,incl,estimate,,2026-10-21,Optional where there is no wired internet
+gateway,IP65 enclosure + mounting,1,300,incl,estimate,,2026-10-21,
+siren,ESP32-WROOM-32 38-pin dev board,1,329,ex,quote,https://www.electronicscomp.com/esp32-38pin-development-board-wifibluetooth-ultra-low-power-consumption-dual-core,2026-10-21,Same firmware built with ROLE_SIREN
+siren,Ai-Thinker Ra-01H SX1276 LoRa module,1,549,ex,quote,https://www.electronicscomp.com/ai-thinker-lora-series-ra-01h-spread-spectrum-wireless-module,2026-10-21,
+siren,868 MHz LoRa antenna RP-SMA,1,55,ex,quote,https://www.electronicscomp.com/lora-antenna-868mhz,2026-10-21,
+siren,12 V horn siren 120 dB,1,189,incl,quote,https://robu.in/product/dc-12v-wired-mini-horn-siren-home-security-sound-alarm-system-120db-anti-theft-speaker-buzzer/,2026-10-21,A pole-mount 230 V hooter can replace it where mains exists
+siren,5 V relay module,1,59,incl,quote,https://probots.co.in/1-channel-relay-5v.html,2026-10-21,
+siren,12 V 7 Ah SMF battery,1,1238,incl,quote,https://magicdrop.in/drops/12v-7ah-battery,2026-10-21,Exide/Chloride listing on Amazon India as tracked on 2026-06-11
+siren,12 V 10 W solar panel + PWM charge controller,1,1150,incl,estimate,,2026-10-21,
+siren,Buck converter 12 V to 5 V,1,60,incl,estimate,,2026-10-21,
+siren,IP65 enclosure + pole clamp,1,250,incl,estimate,,2026-10-21,
