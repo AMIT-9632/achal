@@ -13,6 +13,12 @@ interface Props {
   t: T;
 }
 
+function deliveryLabel(status: string, t: T): string {
+  const key = `delivery.${status}`;
+  const label = t(key);
+  return label === key ? status : label;
+}
+
 function readName(): string {
   try {
     return localStorage.getItem("achal.operator") ?? "";
@@ -82,7 +88,7 @@ export default function AlertList({ alerts, deliveries, onAck, onSelectNode, t }
                 <summary className="muted">{t("deliveries")}: {sent.length}</summary>
                 <ul className="deliveries">
                   {sent.map((d, k) => (
-                    <li key={k}>{d.recipient} · {d.channel} · {d.lang} · <span className="muted">{d.status}</span></li>
+                    <li key={k}>{d.recipient} · {d.channel} · {d.lang} · <span className="muted">{deliveryLabel(d.status, t)}</span></li>
                   ))}
                 </ul>
               </details>

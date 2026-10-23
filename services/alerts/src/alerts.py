@@ -7,8 +7,9 @@ by SMS and/or email, under a per-recipient rate limit. If no operator
 acknowledges in time, the next tier is told. Every attempt goes to a SQLite
 delivery log and to achal/{site}/alert/delivery for the dashboard.
 
-Send one real test message (for the demo video):
-    python alerts.py --test-send --to +9198XXXXXXXX --lang hi
+Send one test message (for the demo video). With no SMS credentials it goes to the
+mock gateway and lands in sms-outbox.jsonl; `python sms_preview.py` renders it:
+    python alerts.py --test-send --to +9198XXXXXXXX --lang all
 """
 
 from __future__ import annotations
@@ -106,7 +107,9 @@ class Notifier:
             self.limiter.record(r.id, ch, alert.level, now)
             if inc:
                 inc.notified.add(r.id)
-            self._record(base, status="sent", provider_ref=ref, segments=segments, text=text)
+            # "sent_mock" keeps demo deliveries honest in the log and on the dashboard.
+            status = "sent_mock" if getattr(channel, "mock", False) else "sent"
+            self._record(base, status=status, provider_ref=ref, segments=segments, text=text)
 
     def _record(self, base: dict, status: str, **extra) -> None:
         row = self.log.add(**base, status=status, **extra)
@@ -119,14 +122,16 @@ def channels_from_env() -> dict[str, Channel]:
 
 
 def test_send(to: str, lang: str, level: str) -> None:
-    """Send one sample alert to one number or address, outside MQTT."""
+    """Send one sample alert to one number or address, outside MQTT. lang "all" sends one per language."""
+    os.environ["MOCK_SMS_OUTBOX"] = os.environ.get("MOCK_SMS_OUTBOX") or "sms-outbox.jsonl"  # local file by hand
     alert = Alert(id=f"test-{uuid.uuid4().hex[:8]}", site="jharia-demo", ts=datetime.now(UTC), level=Level(level),
                   nodes=["n12", "n13"], reasons=["crack_opening", "neighbour_consensus"], ttf_hours=5.5,
                   siren=Level(level).rank >= Level.WARNING.rank)
     cfg = RecipientsConfig(site="jharia-demo", site_label={"en": "Jharia test site", "hi": "झरिया टेस्ट साइट",
                                                            "bn": "ঝরিয়া টেস্ট সাইট"},
-                           recipients=[Recipient(id="test", name="Test", role="test", lang=lang, min_level=Level.WATCH,
-                                                 **({"email": to} if "@" in to else {"sms": to}))])
+                           recipients=[Recipient(id=f"test-{lg}", name="Test", role="test", lang=lg,
+                                                 min_level=Level.WATCH, **({"email": to} if "@" in to else {"sms": to}))
+                                       for lg in (list(TEMPLATES) if lang == "all" else [lang])])
     n = Notifier(cfg, channels_from_env(), DeliveryLog(os.environ.get("DELIVERY_LOG", "deliveries.sqlite")),
                  publish=lambda d: print(json.dumps(d, ensure_ascii=False)))
     n.on_alert(alert)
@@ -136,7 +141,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--test-send", action="store_true", help="send one sample alert and exit")
     ap.add_argument("--to", help="phone (E.164) or email for --test-send")
-    ap.add_argument("--lang", default="hi")
+    ap.add_argument("--lang", default="hi", help="en, hi, bn, sat, or all")
     ap.add_argument("--level", default="critical", choices=[lv.value for lv in Level])
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(message)s")

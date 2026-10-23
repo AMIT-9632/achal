@@ -90,7 +90,9 @@ export default function App() {
             {t("site_level")}: {t(`level.${siteLevel}`)}
           </span>
           <select value={lang} onChange={(e) => setLang(e.target.value as Lang)} aria-label="Language / भाषा">
-            {(Object.keys(languageNames) as Lang[]).map((l) => <option key={l} value={l}>{languageNames[l]}</option>)}
+            {(Object.keys(languageNames) as Lang[]).map((l) => (
+              <option key={l} value={l}>{languageNames[l]}{isDraft(l) ? " (draft)" : ""}</option>
+            ))}
           </select>
         </div>
       </header>

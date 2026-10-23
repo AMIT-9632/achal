@@ -76,5 +76,11 @@
   "reason.node_silent": "নোড থেকে রিডিং বন্ধ",
   "reason.sensor_fault_suspected": "সেন্সরে ত্রুটি সম্ভব",
   "reason.ground_heating": "মাটি গরম হচ্ছে (আগুন)",
-  "reason.level_change": "স্তর বদলেছে"
+  "reason.level_change": "স্তর বদলেছে",
+  "delivery.sent": "পাঠানো হয়েছে",
+  "delivery.sent_mock": "পাঠানো হয়েছে (সিমুলেটেড)",
+  "delivery.failed": "ব্যর্থ",
+  "delivery.suppressed_duplicate": "পুনরাবৃত্তি, পাঠানো হয়নি",
+  "delivery.suppressed_rate_limit": "সীমার কারণে পাঠানো হয়নি",
+  "delivery.no_channel": "কোনো মাধ্যম নেই"
 }

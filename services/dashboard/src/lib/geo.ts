@@ -47,12 +47,12 @@ export function idwGrid(points: { x: number; y: number; v: number }[], pad = 30,
   return { ts: new Date().toISOString(), x0_m: x0, y0_m: y0, dx_m: step, dy_m: step, rows, cols, values, method: "idw-client" };
 }
 
-/** Score 0..1 -> RGBA. Low risk is fully transparent so the basemap stays readable. */
+/** Score 0..1 -> RGBA. Below "watch" (0.35) the layer fades out so the basemap stays readable. */
 export function riskRgba(v: number): [number, number, number, number] {
   const s = Math.max(0, Math.min(1, v));
-  if (s < 0.1) return [0, 0, 0, 0];
+  if (s < 0.2) return [0, 0, 0, 0];
   // yellow (watch) -> orange (warning) -> red (critical)
-  const stops: [number, [number, number, number]][] = [[0.1, [249, 168, 37]], [0.6, [239, 108, 0]], [0.9, [198, 40, 40]]];
+  const stops: [number, [number, number, number]][] = [[0.2, [249, 168, 37]], [0.6, [239, 108, 0]], [0.9, [198, 40, 40]]];
   let rgb = stops[stops.length - 1][1];
   for (let i = 0; i < stops.length - 1; i++) {
     const [a, ca] = stops[i], [b, cb] = stops[i + 1];
@@ -62,6 +62,6 @@ export function riskRgba(v: number): [number, number, number, number] {
       break;
     }
   }
-  const ramp = Math.min(1, (s - 0.1) / 0.3); // soft edge instead of a hard cut-off
+  const ramp = Math.min(1, (s - 0.2) / 0.15); // soft edge instead of a hard cut-off
   return [rgb[0], rgb[1], rgb[2], Math.round(ramp * (60 + 140 * s))];
 }

@@ -17,13 +17,24 @@ language, and keeps escalating until an operator acknowledges.
 - **Delivery log**: SQLite at `DELIVERY_LOG` (default `/data/deliveries.sqlite`), one row per attempt with status
   `sent`, `failed`, `suppressed_duplicate`, `suppressed_rate_limit`. A copy without contact details is published on
   `achal/{site}/alert/delivery` for the dashboard.
-- **Channels**: `SMS_PROVIDER=twilio|fast2sms|console`, SMTP for email. With no credentials everything is logged to
-  the console, so the demo runs offline.
+- **Channels**: `SMS_PROVIDER=twilio|fast2sms|mock|console`, SMTP for email. With no SMS credentials the **mock
+  gateway** is used: it behaves like a provider (message id, GSM-7/UCS-2 part count), appends every SMS to
+  `MOCK_SMS_OUTBOX` (default `/data/sms-outbox.jsonl`) and logs it as `sent_mock`, so the demo runs offline and is
+  honest about it. Email without `SMTP_HOST` is logged to the console.
 
-## Send one real test alert (demo video)
+## Test alerts for the demo video
+
+Without any account (mock gateway), one message per language plus phone-screen mock-ups:
 
 ```bash
 cd services/alerts/src
+python alerts.py --test-send --to +919800000000 --lang all   # writes sms-outbox.jsonl
+python sms_preview.py                                         # writes sms-preview.html (labelled "simulated")
+```
+
+With a real SMS account, the same command sends to a real phone:
+
+```bash
 export SMS_PROVIDER=fast2sms FAST2SMS_API_KEY=...       # or twilio: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM
 python alerts.py --test-send --to +9198XXXXXXXX --lang hi --level critical
 ```
