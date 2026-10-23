@@ -51,6 +51,7 @@ export type Action =
   | { type: "snapshot"; snap: Snapshot; alerts: Alert[] }
   | { type: "connected"; connected: boolean }
   | { type: "history"; node: string; points: HistoryPoint[] }
+  | { type: "deliveries"; deliveries: Delivery[] }
   | { type: "event"; event: StreamEvent };
 
 function pushHistory(list: HistoryPoint[] | undefined, p: HistoryPoint): HistoryPoint[] {
@@ -82,6 +83,8 @@ export function reducer(s: State, a: Action): State {
         sirens: a.snap.sirens ?? s.sirens,
         alerts: a.alerts,
       };
+    case "deliveries":
+      return { ...s, deliveries: a.deliveries.slice(0, 200) };
     case "history": {
       // Merge server history with anything already streamed in.
       const seen = new Set(a.points.map((p) => p.ts));

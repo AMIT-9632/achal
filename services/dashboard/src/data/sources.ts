@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Where the dashboard gets its data: the ACHAL backend (REST + WebSocket), or
 // the in-browser demo simulator for offline presentations and static hosting.
-import type { Alert, HistoryPoint, SiteResponse } from "../types";
+import type { Alert, Delivery, HistoryPoint, SiteResponse } from "../types";
 import { startDemo } from "./demo";
 import type { Action, Snapshot } from "./store";
 
@@ -34,6 +34,9 @@ export function liveSource(onFatal: (err: Error) => void): Source {
       const loadSnapshot = async () => {
         const [snap, alerts] = await Promise.all([getJson<Snapshot>("/api/nodes"), getJson<Alert[]>("/api/alerts")]);
         dispatch({ type: "snapshot", snap, alerts });
+        // Older backends have no /api/deliveries; the list then fills from the stream.
+        const deliveries = await getJson<Delivery[]>("/api/deliveries").catch(() => null);
+        if (deliveries) dispatch({ type: "deliveries", deliveries });
       };
 
       const open = () => {

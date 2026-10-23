@@ -5,7 +5,7 @@
 | English | Latin | complete | complete | reference |
 | Hindi | Devanagari | complete | complete | written by the team, needs a second reader |
 | Bengali | Bengali | complete | complete | written by the team, needs a second reader |
-| Santali | Ol Chiki | 12 labels, draft | not written; recipients get Hindi | **needs a native speaker** |
+| Santali | Ol Chiki | 12 labels, draft (marked "draft" in the language menu and by a banner) | not written; recipients get Hindi | **pending native-speaker review** |
 
 ## Why Santali is a draft
 

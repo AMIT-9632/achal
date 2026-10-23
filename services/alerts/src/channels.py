@@ -4,7 +4,10 @@
 SMS providers use plain HTTPS (stdlib urllib) so no SDK is needed:
 - twilio:   TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM
 - fast2sms: FAST2SMS_API_KEY (Indian gateway, Quick SMS route, Indian numbers only)
-- console:  logs the message; the default, and what demos use without credentials.
+- mock:     the default without credentials. Behaves like a gateway (message id,
+            GSM-7/UCS-2 segment count) and appends each SMS to an outbox file
+            (MOCK_SMS_OUTBOX) that sms_preview.py turns into phone mock-ups.
+- console:  only logs the message.
 Indian commercial SMS needs a DLT-registered sender and templates (TRAI); the
 Quick/international routes above are for testing and the demo video only.
 """
@@ -18,7 +21,10 @@ import os
 import smtplib
 import urllib.parse
 import urllib.request
+import uuid
+from datetime import UTC, datetime
 from email.message import EmailMessage
+from pathlib import Path
 from typing import Protocol
 
 log = logging.getLogger("alerts.channels")
@@ -44,6 +50,30 @@ class ConsoleChannel:
     def send(self, to: str, subject: str, text: str) -> str:
         log.info("[%s -> %s] %s", self.name, to, text)
         return "console"
+
+
+class MockSms:
+    """Stand-in SMS gateway for demos and tests: nothing leaves the machine."""
+
+    name = "sms"
+    mock = True
+
+    def __init__(self, outbox: str | None) -> None:
+        self.outbox = Path(outbox) if outbox else None
+
+    def send(self, to: str, subject: str, text: str) -> str:
+        from messages import sms_segments
+
+        encoding, parts = sms_segments(text)
+        ref = f"mock-{uuid.uuid4().hex[:10]}"
+        log.info("[sms mock -> %s] (%s, %d part%s) %s", to, encoding, parts, "" if parts == 1 else "s", text)
+        if self.outbox:
+            self.outbox.parent.mkdir(parents=True, exist_ok=True)
+            row = {"ref": ref, "ts": datetime.now(UTC).isoformat(), "to": to, "encoding": encoding,
+                   "parts": parts, "text": text}
+            with self.outbox.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(row, ensure_ascii=False) + "\n")
+        return ref
 
 
 class TwilioSms:
@@ -102,7 +132,9 @@ def sms_from_env() -> Channel:
         return TwilioSms(os.environ["TWILIO_ACCOUNT_SID"], os.environ["TWILIO_AUTH_TOKEN"], os.environ["TWILIO_FROM"])
     if provider == "fast2sms" or (not provider and os.environ.get("FAST2SMS_API_KEY")):
         return Fast2Sms(os.environ["FAST2SMS_API_KEY"])
-    return ConsoleChannel("sms")
+    if provider == "console":
+        return ConsoleChannel("sms")
+    return MockSms(os.environ.get("MOCK_SMS_OUTBOX") or "/data/sms-outbox.jsonl")
 
 
 def email_from_env() -> Channel:

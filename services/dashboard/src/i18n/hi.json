@@ -76,5 +76,11 @@
   "reason.node_silent": "नोड से रीडिंग बंद",
   "reason.sensor_fault_suspected": "सेंसर खराबी संभव",
   "reason.ground_heating": "ज़मीन गर्म हो रही है (आग)",
-  "reason.level_change": "स्तर बदला"
+  "reason.level_change": "स्तर बदला",
+  "delivery.sent": "भेजा गया",
+  "delivery.sent_mock": "भेजा गया (सिम्युलेटेड)",
+  "delivery.failed": "विफल",
+  "delivery.suppressed_duplicate": "दोहराव, नहीं भेजा",
+  "delivery.suppressed_rate_limit": "सीमा के कारण नहीं भेजा",
+  "delivery.no_channel": "कोई माध्यम नहीं"
 }

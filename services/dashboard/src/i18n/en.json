@@ -76,5 +76,11 @@
   "reason.node_silent": "Node stopped reporting",
   "reason.sensor_fault_suspected": "Possible sensor fault",
   "reason.ground_heating": "Ground heating (fire)",
-  "reason.level_change": "Level changed"
+  "reason.level_change": "Level changed",
+  "delivery.sent": "sent",
+  "delivery.sent_mock": "sent (simulated)",
+  "delivery.failed": "failed",
+  "delivery.suppressed_duplicate": "skipped, repeat",
+  "delivery.suppressed_rate_limit": "skipped, rate limit",
+  "delivery.no_channel": "no channel"
 }

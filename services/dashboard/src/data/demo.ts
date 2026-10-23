@@ -173,7 +173,7 @@ export function startDemo(dispatch: (a: Action) => void) {
       ];
       for (const [recipient, lang, channel] of recipients) {
         dispatch({ type: "event", event: { kind: "delivery",
-          data: { alert_id: alert.id, recipient, lang, channel, status: "sent (demo)", ts, tier: 0 } } });
+          data: { alert_id: alert.id, recipient, lang, channel, status: "sent_mock", ts, tier: 0 } } });
       }
       siteLevel = newLevel;
     }
