@@ -12,4 +12,4 @@ by Anthropic) during the project:
 
 All final content is the team's responsibility. The AI risk engine inside ACHAL is classical ML
 (scikit-learn) trained only on our own synthetic data; no generative AI runs in the product.
-No AI-generated images or voices are used in the deck or video.
+The deck's diagrams and the cover illustration were drawn as SVG/HTML code with the assistant's help and reviewed by the team; no image-generation model was used, and no AI-generated voices are used in the video. Icons are from Lucide (ISC licence).

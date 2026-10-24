@@ -1,7 +1,7 @@
 # Jury Q&A bank
 
-Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brackets are filled from
-`docs/kpis.md` once W3's harness has run; never quote a number that is not in that file.
+Answers are written to be said in about 30 seconds. Simulation numbers come from
+`docs/kpis.md` (W3's seeded harness, 5 scenarios × 20 seeds, synthetic data); never quote a number that is not in that file.
 "Owner" is the team role who answers first (see `CONTRIBUTORS.md`): **Lead** = team lead / systems,
 **AI** = AI and GIS engineer, **Impact** = product, impact and communication.
 
@@ -64,7 +64,8 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
     time-to-failure estimate. We show it as hours remaining in the alert.
 16. **How do you avoid false alarms?** (AI) Rates, not single readings; at least two neighbours
     must agree; hysteresis on levels; sensor-fault detection for stuck, spiking or drifting sensors.
-    Measured: `[KPI: false alarms per node per month]`.
+    In simulation: 0.0053 false alarms per node per month (2 in 380 node-months), against 2.0 for
+    plain fixed thresholds.
 17. **How do you explain an alert to a villager or an officer?** (AI) Every alert carries reason
     codes, like "tilt rising fast" or "neighbours agree", shown in their language on the dashboard
     and in the SMS, with the time-to-failure estimate.
@@ -96,7 +97,7 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
     reading arrives.
 25. **How fast does a warning reach a phone?** (Lead) Readings arrive every 60 s; the risk engine
     scores each one as it arrives, and SMS goes out through the gateway's provider within seconds.
-    Measured lead time before collapse: `[KPI: warning lead time]`.
+    In simulation the warning came a median 22 h before a pillar collapse (minimum 16.3 h).
 26. **Can it work in Hindi, Bengali, Santali?** (Impact) Dashboard and SMS in Hindi, Bengali and
     English today. Santali in Ol Chiki is drafted but marked for native-speaker review, because a
     wrong word in a danger message is worse than a correct Hindi one; until then Santali speakers
@@ -146,8 +147,8 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
     phone numbers stay in the alerts service config and are never published; the delivery log
     omits contact details.
 40. **What if the system misses a collapse?** (AI) No warning system is perfect; ACHAL adds a
-    layer and does not replace DGMS inspections or evacuation orders. We publish recall and false
-    alarm rates openly and tune for recall on critical events.
+    layer and does not replace DGMS inspections or evacuation orders. In simulation it caught 60 of 60 collapse,
+    trough and fire events; we publish recall and false alarm rates openly and tune for recall on critical events.
 41. **What if it raises a false alarm and people stop trusting it?** (Impact) Four levels: only
     "critical" sounds the siren; "watch" goes to officials only. Neighbour consensus and hysteresis
     keep false alarms low, and every alert says why it fired.

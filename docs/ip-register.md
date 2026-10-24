@@ -6,6 +6,10 @@ Every third-party item used by ACHAL. Allowed: MIT, Apache-2.0, BSD, ISC, PSF, M
 | --- | --- | --- | --- |
 | Python, pydantic, PyYAML, paho-mqtt | Services | PSF, MIT, MIT, EPL-2.0/EDL-1.0 | pypi.org |
 | FastAPI, Uvicorn | Backend | MIT, BSD-3 | fastapi.tiangolo.com |
+| Lucide icons (lucide-static 0.460.0) | Pitch deck icons (inlined SVG, deck PDF only) | ISC | lucide.dev |
+| Microsoft Fluent Emoji 3D (@lobehub/fluent-emoji-3d 1.1.0) | Pitch deck 3D icons (deck PDF only) | MIT | github.com/microsoft/fluentui-emoji |
+| Permanent Marker font (@fontsource) | Pitch deck headings | Apache-2.0 | fonts.google.com |
+| Inter, Noto Sans Devanagari fonts | Pitch deck text | SIL OFL 1.1 | fonts.google.com |
 | scikit-learn, NumPy | Risk engine | BSD-3 | scikit-learn.org |
 | React, Vite, TypeScript | Dashboard | MIT, MIT, Apache-2.0 | npmjs.com |
 | Vitest | Dashboard unit tests (dev only) | MIT | vitest.dev |
