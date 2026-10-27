@@ -9,6 +9,7 @@ struct Reading {
     float crack_mm = 0, ext_mm = 0;        // relative to the install baseline
     float temp_c = 0;
     uint16_t batt_mv = 0;
+    uint16_t tof_mm = 0;                    // VL53L0X gauge distance, median of a burst; 0 = no reading
     uint8_t flags = 0;                      // ACHAL_F_* bits
 };
 

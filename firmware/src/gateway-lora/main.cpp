@@ -30,7 +30,7 @@ uint16_t bseq = 0;
 uint8_t siren_mask = 0, siren_level = 0;
 uint64_t next_beacon_ms = 0;
 uint32_t n_frames = 0, n_dups = 0, n_bad = 0;
-DupCache dup;
+DupCache dup_cache;
 String line;
 
 uint64_t now_ms() {
@@ -150,7 +150,7 @@ void loop() {
     ack.u.ack = {t.origin, t.seq};
     delay(15);
     radio::send(ack);
-    if (dup.seen_or_add(t.origin, t.seq)) {
+    if (dup_cache.seen_or_add(t.origin, t.seq)) {
         n_dups++;
         return;
     }

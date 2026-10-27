@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Host tests for the frame codec and mesh routing: `pio test -e native`.
+#include <stdio.h>
 #include <string.h>
 #include <unity.h>
 

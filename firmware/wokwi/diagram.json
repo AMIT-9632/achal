@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Team ACHAL",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": -120, "left": 160, "attrs": {} },
+    { "type": "wokwi-slide-potentiometer", "id": "tof_pot", "top": 160, "left": 180, "attrs": { "travelLength": "30" } },
+    { "type": "wokwi-pushbutton", "id": "tof_fault", "top": 80, "left": 260, "attrs": { "color": "yellow", "label": "ToF fault" } },
+    { "type": "wokwi-led", "id": "alarm_led", "top": -60, "left": -110, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 0, "left": -130, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "siren", "top": 120, "left": -150, "attrs": { "volume": "0.2" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "imu1:VCC", "esp:3V3", "red", [] ],
+    [ "imu1:GND", "esp:GND.2", "black", [] ],
+    [ "imu1:SDA", "esp:21", "green", [] ],
+    [ "imu1:SCL", "esp:22", "blue", [] ],
+    [ "tof_pot:VCC", "esp:3V3", "red", [] ],
+    [ "tof_pot:GND", "esp:GND.2", "black", [] ],
+    [ "tof_pot:SIG", "esp:34", "orange", [] ],
+    [ "tof_fault:1.l", "esp:4", "yellow", [] ],
+    [ "tof_fault:2.l", "esp:GND.2", "black", [] ],
+    [ "esp:2", "r1:2", "red", [] ],
+    [ "r1:1", "alarm_led:A", "red", [] ],
+    [ "alarm_led:C", "esp:GND.1", "black", [] ],
+    [ "siren:1", "esp:GND.1", "black", [] ],
+    [ "siren:2", "esp:27", "purple", [] ]
+  ],
+  "dependencies": {}
+}

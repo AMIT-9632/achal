@@ -1,13 +1,16 @@
 // SPDX-License-Identifier: MIT
 // Register-level drivers for MPU6050 and ADS1115, so the node has no
-// third-party sensor libraries to license or audit.
+// third-party sensor libraries to license or audit. The VL53L0X needs ST's
+// calibration sequence, so it uses Pololu's VL53L0X library (see docs/ip-register.md).
 #include "sensors.h"
 
 #include <Arduino.h>
 #include <Preferences.h>
+#include <VL53L0X.h>
 #include <Wire.h>
 #include <math.h>
 
+#include "achal_dsp.h"
 #include "achal_frame.h"
 #include "board.h"
 
@@ -25,7 +28,8 @@ struct Baseline {
 
 Baseline base;
 bool base_loaded = false;
-bool mpu_ok = false, ads_ok = false;
+bool mpu_ok = false, ads_ok = false, tof_ok = false;
+VL53L0X tof;
 
 bool write_reg(uint8_t addr, uint8_t reg, uint8_t val) {
     Wire.beginTransmission(addr);
@@ -107,6 +111,11 @@ void begin() {
     delay(5);
     mpu_ok = mpu_begin();
     ads_ok = !isnan(ads_read(3));
+    pinMode(PIN_TOF_XSHUT, OUTPUT);
+    digitalWrite(PIN_TOF_XSHUT, HIGH);
+    delay(2);
+    tof.setTimeout(500);
+    tof_ok = tof.init() && tof.setMeasurementTimingBudget(TOF_BUDGET_US);
     load_baseline();
 }
 
@@ -160,6 +169,24 @@ Reading sample() {
         }
     }
 
+    // VL53L0X burst -> the same median filter the simulator and the Wokwi node use.
+    if (tof_ok) {
+        achal_tof_sample_t s[TOF_SHOTS];
+        for (uint8_t i = 0; i < TOF_SHOTS; i++) {
+            uint16_t mm = tof.readRangeSingleMillimeters();
+            bool to = tof.timeoutOccurred();
+            s[i].range_mm = to ? 8190 : mm;
+            s[i].status = to ? ACHAL_TOF_TIMEOUT : (mm >= 8190 ? ACHAL_TOF_PHASE_FAIL : ACHAL_TOF_VALID);
+            s[i].signal_mcps = 1.0f;  // the library applies ST's signal and sigma limit checks itself
+            s[i].sigma_mm = 0.0f;
+        }
+        const achal_tof_cfg_t cfg = {3, 15.0f, 0.25f, TOF_MAX_RANGE_MM};
+        float mm;
+        uint8_t n_valid;
+        if (achal_tof_filter(&cfg, s, TOF_SHOTS, &mm, &n_valid)) r.tof_mm = (uint16_t)lroundf(mm);
+    }
+    if (r.tof_mm == 0) r.flags |= ACHAL_F_TOF;
+
     uint32_t mv = 0;
     for (int i = 0; i < 16; i++) mv += analogReadMilliVolts(PIN_BATT_ADC);
     r.batt_mv = (uint16_t)(mv / 16 * BATT_DIVIDER);
@@ -200,7 +227,8 @@ void sleep_arm_motion_wake() {
         write_reg(MPU_ADDR, PWR_MGMT_2, 0x47);     // 5 Hz low-power wake-ups, gyros off
         write_reg(MPU_ADDR, PWR_MGMT_1, 0x20);     // cycle mode, ~10 uA
     }
-    // The MPU6050 sits on the always-on 3.3 V rail; ADS1115, pots and NTC are switched off.
+    // The MPU6050 sits on the always-on 3.3 V rail; ADS1115, pots, NTC and VL53L0X are switched off.
+    digitalWrite(PIN_TOF_XSHUT, LOW);
     digitalWrite(PIN_SENSOR_PWR, LOW);
 }
 

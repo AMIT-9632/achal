@@ -15,3 +15,5 @@ data/runs/
 .pio/
 config/recipients/*.local.yaml
 *.whl
+services/hw-sim/src/achal_hwsim/.build/
+services/hw-sim/ns3/build/

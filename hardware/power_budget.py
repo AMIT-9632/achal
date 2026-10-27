@@ -29,12 +29,15 @@ CURRENT_MA = {
     "mpu6050_cycle_5hz": 0.020,   # MPU-6050 datasheet, low-power accelerometer at 5 Hz (motion wake armed)
     "ads1115_on": 0.15,           # ADS1115 datasheet, continuous conversion
     "pots_and_ntc": 0.83,         # 2 x 10k pots + 20k NTC divider across 3.3 V, only while sampling
+    "vl53l0x_ranging": 19.0,      # VL53L0X datasheet, active ranging average
+    "vl53l0x_standby": 0.005,     # VL53L0X datasheet, hardware standby (XSHUT low)
     "ht7333_iq": 0.004,           # HT73xx datasheet quiescent current
     "devkit_usb_uart": 0.10,      # USB-UART bridge on the dev board: assumption, measure; 0 on the production PCB
 }
 
 # Firmware timing (achal_mesh.h, main.cpp, board.h).
 SAMPLE_S = 2.6
+TOF_SHOTS, TOF_BUDGET_S = 7, 0.2  # VL53L0X high-accuracy mode, one 7-shot burst per period
 GUARD_S = 0.3
 BEACON_PHASE_S = 2.0
 SLOT_S = 0.25
@@ -78,6 +81,7 @@ def period_budget(role: str, period_s: int, n_nodes: int = 25, node_id: int = 13
 
     phases = [  # (seconds, mA)
         (SAMPLE_S, awake + sensors),
+        (TOF_SHOTS * TOF_BUDGET_S, awake + c["vl53l0x_ranging"]),
         (GUARD_S + BEACON_PHASE_S, rx),
         (t_beacon, tx),            # relay the beacon once
         (t_tel, tx),               # own reading
@@ -94,6 +98,7 @@ def period_budget(role: str, period_s: int, n_nodes: int = 25, node_id: int = 13
 
     busy = sum(t for t, _ in phases)
     sleep_ma = (c["esp32_deep_sleep"] + c["mpu6050_cycle_5hz"] + c["ht7333_iq"] + c["sx1276_sleep"]
+                + c["vl53l0x_standby"]
                 + (c["devkit_usb_uart"] if prototype else 0))
     phases.append((period_s - busy, sleep_ma))
     return Budget(role, period_s, sum(t * ma for t, ma in phases) / 3600)

@@ -113,7 +113,8 @@ def summary_md(lines: list[Line], site_id: str, sc: SiteCost) -> str:
             f"| Cost per person protected | {rupees(sc.per_person)} |",
             "", "## Per-node comparison", "",
             "| Option | Cost per monitoring point | Note |", "| --- | --- | --- |",
-            f"| ACHAL surface node | {rupees(sc.node)} | Tilt, vibration, crack, extensometer, ground temperature, "
+            f"| ACHAL surface node | {rupees(sc.node)} | Tilt, vibration, crack, extensometer, ToF displacement, "
+            "ground temperature, "
             "mesh relay; every quoted line has a supplier link |",
             f"| RONALD-REX-7/sih26025 node | {rupees(RONALD_REX_NODE)} | Underground rock-bolt strain node; "
             "their own estimate |",

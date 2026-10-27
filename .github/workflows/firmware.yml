@@ -20,4 +20,33 @@ jobs:
           key: pio-${{ hashFiles('firmware/platformio.ini') }}
       - run: pip install platformio==6.1.16
       - run: pio test -e native
-      - run: pio run -e node -e siren -e gateway
+      - run: pio run -e node -e siren -e gateway -e wokwi
+
+  # The node firmware in the Wokwi simulator (simulation guide, stage 2). Runs only when the
+  # repository has a WOKWI_CLI_TOKEN secret (free at https://wokwi.com/dashboard/ci).
+  wokwi:
+    runs-on: ubuntu-latest
+    env:
+      WOKWI_CLI_TOKEN: ${{ secrets.WOKWI_CLI_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        if: env.WOKWI_CLI_TOKEN != ''
+        with: {python-version: "3.12"}
+      - uses: actions/cache@v4
+        if: env.WOKWI_CLI_TOKEN != ''
+        with:
+          path: ~/.platformio
+          key: pio-${{ hashFiles('firmware/platformio.ini') }}
+      - if: env.WOKWI_CLI_TOKEN != ''
+        run: pip install platformio==6.1.16 && cd firmware && pio run -e wokwi
+      - if: env.WOKWI_CLI_TOKEN != ''
+        uses: wokwi/wokwi-ci-action@v1
+        with:
+          token: ${{ secrets.WOKWI_CLI_TOKEN }}
+          path: firmware/wokwi
+          timeout: 90000
+          scenario: tilt-alarm.test.yaml
+          serial_log_file: wokwi-serial.log
+      - if: env.WOKWI_CLI_TOKEN == ''
+        run: echo "No WOKWI_CLI_TOKEN secret; Wokwi run skipped."

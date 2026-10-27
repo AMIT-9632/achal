@@ -1,0 +1,6 @@
+# Wokwi project for the ACHAL node (VS Code extension or wokwi-cli). Build first:
+#   cd firmware && pio run -e wokwi
+[wokwi]
+version = 1
+firmware = '../.pio/build/wokwi/firmware.bin'
+elf = '../.pio/build/wokwi/firmware.elf'

@@ -96,8 +96,7 @@ size_t achal_encode(const achal_frame_t *f, uint8_t *buf, size_t cap) {
         put16(p + 26, t->batt_mv);
         p[28] = t->flags;
         p[29] = t->n_nbr;
-        p[30] = 0;  // reserved
-        p[31] = 0;
+        put16(p + 30, t->tof_mm);  // was reserved (zero) before 2026-10-27
         p += TEL_FIXED_LEN;
         for (uint8_t i = 0; i < t->n_nbr; i++) {
             *p++ = t->nbr[i].id;
@@ -158,6 +157,7 @@ achal_status_t achal_decode(const uint8_t *buf, size_t len, achal_frame_t *out) 
         t->batt_mv = get16(p + 26);
         t->flags = p[28];
         t->n_nbr = p[29];
+        t->tof_mm = get16(p + 30);
         if (t->n_nbr > ACHAL_MAX_NBR || body != TEL_FIXED_LEN + 2u * t->n_nbr) return ACHAL_E_LENGTH;
         p += TEL_FIXED_LEN;
         for (uint8_t i = 0; i < t->n_nbr; i++) {

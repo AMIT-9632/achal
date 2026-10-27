@@ -4,7 +4,7 @@ Retail prices for single units, 18% GST included. Bulk orders will be lower.
 
 | Kit | Cost | Of which still estimated |
 | --- | --- | --- |
-| node | ₹3,773 | ₹702 (19%) |
+| node | ₹4,240 | ₹879 (21%) |
 | gateway | ₹10,842 | ₹2,650 (24%) |
 | siren | ₹4,047 | ₹1,460 (36%) |
 
@@ -12,21 +12,21 @@ Retail prices for single units, 18% GST included. Bulk orders will be lower.
 
 | | |
 | --- | --- |
-| Nodes | 25 × ₹3,773 |
+| Nodes | 25 × ₹4,240 |
 | Gateway | 1 × ₹10,842 |
 | Sirens | 2 × ₹4,047 |
-| **Total** | **₹1,13,271** |
+| **Total** | **₹1,24,923** |
 | Area covered | 1.00 ha |
-| Cost per hectare | ₹1,13,271 |
+| Cost per hectare | ₹1,24,923 |
 | People protected (site config) | 900 |
-| Cost per person protected | ₹126 |
+| Cost per person protected | ₹139 |
 
 ## Per-node comparison
 
 | Option | Cost per monitoring point | Note |
 | --- | --- | --- |
-| ACHAL surface node | ₹3,773 | Tilt, vibration, crack, extensometer, ground temperature, mesh relay; every quoted line has a supplier link |
+| ACHAL surface node | ₹4,240 | Tilt, vibration, crack, extensometer, ToF displacement, ground temperature, mesh relay; every quoted line has a supplier link |
 | RONALD-REX-7/sih26025 node | ₹4,850 | Underground rock-bolt strain node; their own estimate |
 | Imported monitoring station | ₹1,50,000–₹4,50,000 | As cited by RONALD-REX-7/sih26025 |
 
-ACHAL node vs imported station: 40×–119× cheaper per monitoring point.
+ACHAL node vs imported station: 35×–106× cheaper per monitoring point.

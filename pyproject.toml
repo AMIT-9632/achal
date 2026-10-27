@@ -2,7 +2,7 @@
 [tool.pytest.ini_options]
 testpaths = ["libs", "services", "firmware/tools", "hardware"]
 pythonpath = ["services/field-sim/src", "services/gateway/src", "services/risk-engine/src",
-              "services/alerts/src", "services/backend/src", "firmware/tools", "hardware"]
+              "services/alerts/src", "services/backend/src", "services/hw-sim/src", "firmware/tools", "hardware"]
 
 [tool.ruff]
 line-length = 120

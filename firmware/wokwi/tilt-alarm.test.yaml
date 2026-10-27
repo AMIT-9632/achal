@@ -1,0 +1,21 @@
+# wokwi-cli automation scenario: baseline, then ground tilt -> warning -> critical, then
+# a ToF fault. Run: wokwi-cli firmware/wokwi --scenario tilt-alarm.test.yaml --timeout 90000
+name: ACHAL node raises warning then critical on ground tilt
+version: 1
+author: Team ACHAL
+steps:
+  - wait-serial: 'achal-wokwi-node'
+  - delay: 12000ms                      # baseline windows + first ToF readings
+  - wait-serial: '"level":0'
+  # 0.003 g on X ~ 0.17 deg of tilt: above the 0.10 deg warning threshold
+  - set-control:
+      part-id: imu1
+      control: accelX
+      value: 0.003
+  - wait-serial: '"level_name":"warning"'
+  # 0.010 g ~ 0.57 deg: above the 0.30 deg critical threshold
+  - set-control:
+      part-id: imu1
+      control: accelX
+      value: 0.010
+  - wait-serial: '"level_name":"critical"'

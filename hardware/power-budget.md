@@ -6,13 +6,13 @@ LoRa airtime at SF7/125 kHz/CR 4/5: beacon 57 ms, telemetry 103 ms.
 
 | Role | Period | Average current | Per day | Days on battery alone | Solar margin |
 | --- | --- | --- | --- | --- | --- |
-| leaf | 60 s | 3.79 mA | 91 mAh | 26 | 11.9× |
-| relay | 60 s | 12.61 mA | 303 mAh | 8 | 3.6× |
-| leaf | 300 s | 0.87 mA | 21 mAh | 116 | 52.0× |
-| relay | 300 s | 2.63 mA | 63 mAh | 38 | 17.1× |
+| leaf | 60 s | 4.96 mA | 119 mAh | 20 | 9.1× |
+| relay | 60 s | 13.78 mA | 331 mAh | 7 | 3.3× |
+| leaf | 300 s | 1.10 mA | 26 mAh | 91 | 40.8× |
+| relay | 300 s | 2.87 mA | 69 mAh | 35 | 15.7× |
 
 Battery: one 3000 mAh 18650, 80% usable. Solar: 2 W panel × 4 peak-sun hours × 50% derating (charger, angle, dust) = 1081 mAh/day at 3.7 V. Margin = solar in / node use per day.
 
-Production PCB without the USB-UART bridge, relay at 60 s: 12.54 mA.
+Production PCB without the USB-UART bridge, relay at 60 s: 13.71 mA.
 
 The radio window dominates: a relay listens for the whole data window (12.5 s per period at 25 nodes), a leaf only for the beacon and its ack. Next optimisation: per-hop-ring slots so relays only listen while their children transmit.

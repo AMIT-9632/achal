@@ -37,7 +37,8 @@ when the internet is down.
 | AI risk engine | Rules, Isolation Forest, multi-node consensus, inverse-velocity TTF | `services/risk-engine` |
 | GIS + dashboard | React, Leaflet, OpenStreetMap | `services/dashboard` |
 | Alerts | Hindi, Bengali, Santali, English; SMS, email | `services/alerts` |
-| Hardware reference | ESP32 + SX1276 firmware, BOM, power budget | `firmware/`, `hardware/` |
+| Hardware reference | ESP32 + SX1276 + MPU6050 + VL53L0X firmware, BOM, power budget | `firmware/`, `hardware/` |
+| Hardware simulation | Datasheet-anchored node, solar and network models, Wokwi node, ns-3 cross-check, replay dashboard | `services/hw-sim`, `firmware/wokwi`, [`docs/hardware-sim/report.md`](docs/hardware-sim/report.md) |
 
 Message contracts: [`schemas/`](schemas) and [`docs/mqtt-topics.md`](docs/mqtt-topics.md).
 Architecture: [`docs/architecture.md`](docs/architecture.md).
@@ -77,7 +78,7 @@ cd services/dashboard && npm ci && npm run dev
 config/sites/     one YAML per coalfield (add a site = add a file)
 schemas/          JSON Schemas for telemetry, risk and alerts
 libs/achal-common shared models, topics, config, MQTT helper
-services/         field-sim, gateway, backend, risk-engine, alerts, dashboard
+services/         field-sim, gateway, backend, risk-engine, alerts, dashboard, hw-sim
 infra/            broker config, DB schema, shared Dockerfile
 firmware/         reference ESP32 + LoRa code (not yet flashed)
 hardware/         BOM and per-node cost, power budget

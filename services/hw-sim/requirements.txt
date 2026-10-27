@@ -1,0 +1,12 @@
+# Hardware simulator (services/hw-sim). Needs a C compiler (gcc/clang) for firmware/lib/achal_dsp.
+numpy>=2.0
+pandas>=2.2
+scipy>=1.13
+matplotlib>=3.9
+# dashboard (stage 4)
+streamlit>=1.40
+altair>=5.4
+# optional: live MQTT demo (mqtt_link.py) and the ns-3 cross-check (E5, needs g++)
+paho-mqtt>=2.0
+amqtt>=0.11
+ns3==3.44

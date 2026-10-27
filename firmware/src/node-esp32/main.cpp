@@ -196,6 +196,7 @@ achal_frame_t make_telemetry(const Reading &r, uint8_t parent) {
     t.ext_10um = (int16_t)constrain(lroundf(r.ext_mm * 100), -32768, 32767);
     t.temp_cc = (int16_t)constrain(lroundf(r.temp_c * 100), -32768, 32767);
     t.batt_mv = r.batt_mv;
+    t.tof_mm = r.tof_mm;
     t.flags = r.flags | (st.burst_peak_g > 0 ? ACHAL_F_MOTION_WAKE : 0) | (st.missed_beacons ? ACHAL_F_NO_SYNC : 0);
     t.n_nbr = st.nbrs.strongest(t.nbr, ACHAL_MAX_NBR);
     return f;

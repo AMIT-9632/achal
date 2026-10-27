@@ -17,8 +17,9 @@
 //   n  crc16        CRC-16/CCITT-FALSE over bytes 0..n-1
 //
 // Payload fields are packed in the order of the structs below, with no
-// padding. Telemetry has two reserved zero bytes after n_nbr, then n_nbr
-// (id, rssi) pairs. Sizes: beacon 20 B, ack 10 B, telemetry 39 + 2*n_nbr B.
+// padding. Telemetry carries tof_mm (uint16) right after n_nbr, in the two
+// bytes that were reserved (zero) before 2026-10-27, so old frames decode as
+// "no ToF reading"; then n_nbr (id, rssi) pairs. Sizes: beacon 20 B, ack 10 B, telemetry 39 + 2*n_nbr B.
 #ifndef ACHAL_FRAME_H
 #define ACHAL_FRAME_H
 
@@ -51,6 +52,7 @@ enum {
     ACHAL_F_TAMPER = 1 << 3,       // enclosure tilted beyond physical range
     ACHAL_F_NO_SYNC = 1 << 4,      // missed the last beacon, sample time is estimated
     ACHAL_F_MOTION_WAKE = 1 << 5,  // a vibration burst woke the node since its last report
+    ACHAL_F_TOF = 1 << 6,          // VL53L0X gave no valid reading this period (tof_mm = 0)
 };
 
 typedef struct {
@@ -90,6 +92,7 @@ typedef struct {
     uint8_t flags;
     uint8_t n_nbr;
     achal_nbr_t nbr[ACHAL_MAX_NBR];
+    uint16_t tof_mm;                  // VL53L0X gauge distance (median of a burst), mm; 0 = no reading
 } achal_telemetry_t;
 
 typedef struct {

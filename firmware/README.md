@@ -13,7 +13,9 @@ contracts, so moving from simulation to hardware changes nothing downstream of t
 
 | Path | What it is |
 | --- | --- |
-| `src/node-esp32/` | Surface node: ESP32 + SX1276 + MPU6050 + ADS1115. Also builds as a siren controller (`-DROLE_SIREN`) |
+| `src/node-esp32/` | Surface node: ESP32 + SX1276 + MPU6050 + ADS1115 + VL53L0X. Also builds as a siren controller (`-DROLE_SIREN`) |
+| `src/wokwi-node/` | The node's sensing and detection loop for the Wokwi simulator (no radio); see `wokwi/README.md` |
+| `lib/achal_dsp/` | Tilt, PPV, dominant frequency, ToF filtering and the alert detector (C, no Arduino). The Python hardware simulator `services/hw-sim` runs this same file |
 | `src/gateway-lora/` | Gateway radio: ESP32 + SX1276 on USB serial to the Raspberry Pi |
 | `lib/achal_frame/` | Over-the-air frame codec (C, no Arduino), CRC-16 |
 | `lib/achal_mesh/` | Routing, duplicate suppression, TDMA timing, LoRa airtime (C++, no Arduino) |
@@ -21,6 +23,8 @@ contracts, so moving from simulation to hardware changes nothing downstream of t
 | `tools/achal_frame.py` | Python mirror of the codec, cross-checked against the C code with a shared golden frame |
 | `tools/uart_bridge.py` | Pi-side bridge: serial → UDP to `services/gateway`, MQTT siren commands → radio, clock sync |
 | `test/test_native/` | Host tests for codec and mesh (`pio test -e native`) |
+| `test/test_dsp/` | Host tests for `achal_dsp` |
+| `wokwi/` | Wokwi diagram, config and an automated `wokwi-cli` scenario |
 
 Wiring, BOM and power budget: [`../hardware/`](../hardware).
 
