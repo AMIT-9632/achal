@@ -22,7 +22,7 @@ MAX_NBR = 6
 _HDR = struct.Struct("<BBBBB")
 _BEACON = struct.Struct("<IHHBBBH")
 _ACK = struct.Struct("<BH")
-_TEL = struct.Struct("<BHB4sIhhHHhhhHBBxx")
+_TEL = struct.Struct("<BHB4sIhhHHhhhHBBH")  # last H: tof_mm (0 = no reading), reserved before 2026-10-27
 
 FLAGS = {
     0x01: "tilt_sensor",
@@ -31,6 +31,7 @@ FLAGS = {
     0x08: "tamper",
     0x10: "no_sync",
     0x20: "motion_wake",
+    0x40: "tof",
 }
 
 
@@ -73,6 +74,7 @@ class Telemetry:
     hop_count: int = 0
     path: list[int] = field(default_factory=list)
     nbr: list[tuple[int, int]] = field(default_factory=list)
+    tof_mm: int = 0  # VL53L0X gauge distance, mm; 0 = no reading. Not in telemetry.v1 (proposed for v2)
 
 
 @dataclass
@@ -97,7 +99,7 @@ def encode(frame: Frame) -> bytes:
         path = bytes(b.path) + bytes(MAX_PATH - len(b.path))
         out += _TEL.pack(b.origin, b.seq, b.hop_count, path, b.sample_epoch, b.tilt_x_mdeg, b.tilt_y_mdeg,
                          b.vib_rms_100ug, b.vib_peak_mg, b.crack_10um, b.ext_10um, b.temp_cc, b.batt_mv,
-                         b.flags, len(b.nbr))
+                         b.flags, len(b.nbr), b.tof_mm)
         for node_id, rssi in b.nbr:
             out += struct.pack("<Bb", node_id, rssi)
     else:
@@ -121,12 +123,14 @@ def decode(data: bytes) -> Frame:
     elif ftype == ACK and len(payload) == _ACK.size:
         body = _ACK.unpack(payload)
     elif ftype == TELEMETRY and len(payload) >= _TEL.size:
-        (origin, seq, hop_count, path, epoch, tx, ty, vr, vp, cr, ex, tc, bv, flags, n_nbr) = _TEL.unpack_from(payload)
+        (origin, seq, hop_count, path, epoch, tx, ty, vr, vp, cr, ex, tc, bv, flags, n_nbr, tof) = _TEL.unpack_from(
+            payload
+        )
         if n_nbr > MAX_NBR or len(payload) != _TEL.size + 2 * n_nbr:
             raise FrameError("bad length")
         nbr = [struct.unpack_from("<Bb", payload, _TEL.size + 2 * i) for i in range(n_nbr)]
         body = Telemetry(origin, seq, epoch, tx, ty, vr, vp, cr, ex, tc, bv, flags, hop_count,
-                         list(path[:hop_count]), nbr)
+                         list(path[:hop_count]), nbr, tof)
     else:
         raise FrameError(f"bad type or length ({ftype}, {len(payload)} B)")
     return Frame(ftype, site, sender, dest, body)

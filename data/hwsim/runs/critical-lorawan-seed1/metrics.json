@@ -1,0 +1,124 @@
+{
+ "config": {
+  "scenario": "critical",
+  "arch": "lorawan",
+  "n": 20,
+  "spacing_m": 10.0,
+  "interval_s": 1.0,
+  "duration_s": 1800.0,
+  "seed": 1,
+  "failures": {
+   "lost_packets": {
+    "t0": 540.0,
+    "t1": 600.0,
+    "extra_loss_db": 25.0
+   },
+   "offline_node": {
+    "node": "n08",
+    "t0": 810.0,
+    "t1": 1080.0
+   },
+   "gateway_outage": {
+    "t0": 1116.0,
+    "t1": 1206.0
+   },
+   "low_battery": {
+    "node": "n16",
+    "soc0": 0.09,
+    "leak_ma": 600.0
+   }
+  },
+  "node": {
+   "interval_s": 1.0,
+   "vib_fs_hz": 200.0,
+   "vib_window_s": 1.0,
+   "tilt_tau_s": 10.0,
+   "min_window_frac": 0.5,
+   "tof_every_s": 30.0,
+   "tof_samples": 7,
+   "tof_mode": "high_accuracy",
+   "tof_gauge_mm": 500.0,
+   "tof_plate_half_mm": 125.0,
+   "tof_ambient": "shaded_tube",
+   "tof_baseline_bursts": 5,
+   "tof_recal_delta_c": 4.0,
+   "temp_comp": true,
+   "baseline_windows": 10,
+   "arch": "wifi_mesh",
+   "role": "leaf",
+   "crystal_rtc": false,
+   "det_overrides": {}
+  },
+  "epicentre": [
+   20.189145995204107,
+   20.40556435591122
+  ]
+ },
+ "network": {
+  "sent": 34628,
+  "delivered": 18141,
+  "pdr": 0.5238824073004505,
+  "delay_ms_p50": 104.85736010241453,
+  "delay_ms_p95": 111.66788692003138,
+  "delay_ms_p99": 112.27947416005009,
+  "delay_ms_max": 112.41538853751365,
+  "mean_hops": 1.0,
+  "max_hops": 1,
+  "worst_node_pdr": 0.20055555555555554,
+  "node_availability": 1.0,
+  "losses": {
+   "collision": 15524,
+   "gw_down": 963
+  },
+  "aloha_G_per_channel": 0.6161066666666667
+ },
+ "detection": {
+  "per_level": {
+   "1": {
+    "nodes_truly_at_level": 17,
+    "nodes_alerted": 17,
+    "recall": 1.0,
+    "latency_s_median": 6.207488996503116,
+    "latency_s_p95": 120.60800819858805,
+    "latency_s_min": -269.33052965336606
+   },
+   "2": {
+    "nodes_truly_at_level": 17,
+    "nodes_alerted": 17,
+    "recall": 1.0,
+    "latency_s_median": 34.36227334335422,
+    "latency_s_p95": 43.93218075464632,
+    "latency_s_min": -9.423396495758652
+   }
+  },
+  "false_alarms": {
+   "guard_0.5": {
+    "clear_nodes": 1,
+    "false_alarm_nodes": 0,
+    "per_node_hour": 0.0
+   },
+   "guard_0.8": {
+    "clear_nodes": 2,
+    "false_alarm_nodes": 1,
+    "per_node_hour": 1.0
+   }
+  },
+  "vibration": {
+   "nodes_truly_exceeding_dgms": 10,
+   "nodes_flagging_vibration": 15,
+   "nodes_flagging_without_exceedance": 5
+  },
+  "first_alert_after_first_truth_s": -170.28199854250227
+ },
+ "timestamp_error_ms": {
+  "p50": 10.877172479354158,
+  "p95": 34.74912998763102
+ },
+ "energy": {
+  "load_ma_by_role": {
+   "leaf": 13.202760500000002
+  },
+  "soc_end_min": 0.0
+ },
+ "runtime_s": 22.973981618881226
+}

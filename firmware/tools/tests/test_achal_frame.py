@@ -66,3 +66,13 @@ def test_bridge_forwards_only_json_lines():
     assert route_line('{"v":1}\n') == b'{"v":1}'
     assert route_line("# beacon 4 frames=10\n") is None
     assert route_line("{garbled\n") is None
+
+
+def test_tof_mm_uses_the_formerly_reserved_bytes():
+    t = golden_telemetry()
+    assert t.tof_mm == 0  # the golden vector predates the field: its two bytes were zero
+    t.tof_mm = 517
+    frame = af.Frame(af.TELEMETRY, af.site_hash("jharia-demo"), 7, 12, t)
+    raw = af.encode(frame)
+    assert len(raw) == len(bytes.fromhex(GOLDEN))
+    assert af.decode(raw).body.tof_mm == 517

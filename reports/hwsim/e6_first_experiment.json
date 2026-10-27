@@ -1,0 +1,3634 @@
+{
+ "seeds": 5,
+ "table": {
+  "normal | wifi_mesh": {
+   "pdr": [
+    0.9996360064709962,
+    0.999297413495263,
+    0.9999745994467293
+   ],
+   "delay_ms_p50": [
+    2.3518151449366087,
+    2.347258251485267,
+    2.3563720383879505
+   ],
+   "delay_ms_p95": [
+    4.909011192803346,
+    3.249891932476194,
+    6.5681304531304985
+   ],
+   "fa_nodes_guard_0.5": 2,
+   "clear_nodes_guard_0.5": 100,
+   "fa_nodes_guard_0.8": 2,
+   "clear_nodes_guard_0.8": 100,
+   "ts_err_ms_p95": [
+    34.710278517510446,
+    26.97067842910274,
+    42.44987860591815
+   ],
+   "level1": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "level2": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 0,
+    "nodes_flagging_vibration": 1,
+    "nodes_flagging_without_exceedance": 1
+   }
+  },
+  "normal | lorawan": {
+   "pdr": [
+    0.45019637287744024,
+    0.4096818683157937,
+    0.4907108774390868
+   ],
+   "delay_ms_p50": [
+    104.88612585587589,
+    104.83679565088842,
+    104.93545606086336
+   ],
+   "delay_ms_p95": [
+    111.65882005454505,
+    111.63437210910638,
+    111.68326799998371
+   ],
+   "fa_nodes_guard_0.5": 2,
+   "clear_nodes_guard_0.5": 100,
+   "fa_nodes_guard_0.8": 2,
+   "clear_nodes_guard_0.8": 100,
+   "ts_err_ms_p95": [
+    33.54475107635096,
+    25.647262484029586,
+    41.44223966867234
+   ],
+   "level1": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "level2": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 0,
+    "nodes_flagging_vibration": 1,
+    "nodes_flagging_without_exceedance": 1
+   }
+  },
+  "normal | hybrid": {
+   "pdr": [
+    0.9996360064709962,
+    0.999297413495263,
+    0.9999745994467293
+   ],
+   "delay_ms_p50": [
+    2.3518151449366087,
+    2.347258251485267,
+    2.3563720383879505
+   ],
+   "delay_ms_p95": [
+    4.909011192803346,
+    3.249891932476194,
+    6.5681304531304985
+   ],
+   "fa_nodes_guard_0.5": 2,
+   "clear_nodes_guard_0.5": 100,
+   "fa_nodes_guard_0.8": 2,
+   "clear_nodes_guard_0.8": 100,
+   "ts_err_ms_p95": [
+    34.710278517510446,
+    26.97067842910274,
+    42.44987860591815
+   ],
+   "level1": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "level2": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 0,
+    "nodes_flagging_vibration": 1,
+    "nodes_flagging_without_exceedance": 1
+   }
+  },
+  "warning | wifi_mesh": {
+   "pdr": [
+    0.9996360064709962,
+    0.999297413495263,
+    0.9999745994467293
+   ],
+   "delay_ms_p50": [
+    2.3518151449366087,
+    2.347258251485267,
+    2.3563720383879505
+   ],
+   "delay_ms_p95": [
+    4.909011192803346,
+    3.249891932476194,
+    6.5681304531304985
+   ],
+   "fa_nodes_guard_0.5": 3,
+   "clear_nodes_guard_0.5": 26,
+   "fa_nodes_guard_0.8": 6,
+   "clear_nodes_guard_0.8": 35,
+   "ts_err_ms_p95": [
+    34.710278517510446,
+    26.97067842910274,
+    42.44987860591815
+   ],
+   "level1": {
+    "nodes": 58,
+    "alerted": 58,
+    "recall": 1.0,
+    "latency_s_median_of_runs": -100.75117903397239
+   },
+   "level2": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 0,
+    "nodes_flagging_vibration": 1,
+    "nodes_flagging_without_exceedance": 1
+   }
+  },
+  "warning | lorawan": {
+   "pdr": [
+    0.45019637287744024,
+    0.4096818683157937,
+    0.4907108774390868
+   ],
+   "delay_ms_p50": [
+    104.88612585587589,
+    104.83679565088842,
+    104.93545606086336
+   ],
+   "delay_ms_p95": [
+    111.65882005454505,
+    111.63437210910638,
+    111.68326799998371
+   ],
+   "fa_nodes_guard_0.5": 3,
+   "clear_nodes_guard_0.5": 26,
+   "fa_nodes_guard_0.8": 6,
+   "clear_nodes_guard_0.8": 35,
+   "ts_err_ms_p95": [
+    33.54475107635096,
+    25.647262484029586,
+    41.44223966867234
+   ],
+   "level1": {
+    "nodes": 58,
+    "alerted": 58,
+    "recall": 1.0,
+    "latency_s_median_of_runs": -86.34517067830734
+   },
+   "level2": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 0,
+    "nodes_flagging_vibration": 1,
+    "nodes_flagging_without_exceedance": 1
+   }
+  },
+  "warning | hybrid": {
+   "pdr": [
+    0.9996360064709962,
+    0.999297413495263,
+    0.9999745994467293
+   ],
+   "delay_ms_p50": [
+    2.3518151449366087,
+    2.347258251485267,
+    2.3563720383879505
+   ],
+   "delay_ms_p95": [
+    4.909011192803346,
+    3.249891932476194,
+    6.5681304531304985
+   ],
+   "fa_nodes_guard_0.5": 3,
+   "clear_nodes_guard_0.5": 26,
+   "fa_nodes_guard_0.8": 6,
+   "clear_nodes_guard_0.8": 35,
+   "ts_err_ms_p95": [
+    34.710278517510446,
+    26.97067842910274,
+    42.44987860591815
+   ],
+   "level1": {
+    "nodes": 58,
+    "alerted": 58,
+    "recall": 1.0,
+    "latency_s_median_of_runs": -100.75117903397239
+   },
+   "level2": {
+    "nodes": 0,
+    "alerted": 0,
+    "recall": null,
+    "latency_s_median_of_runs": null
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 0,
+    "nodes_flagging_vibration": 1,
+    "nodes_flagging_without_exceedance": 1
+   }
+  },
+  "critical | wifi_mesh": {
+   "pdr": [
+    0.9996360064709962,
+    0.999297413495263,
+    0.9999745994467293
+   ],
+   "delay_ms_p50": [
+    2.3518151449366087,
+    2.347258251485267,
+    2.3563720383879505
+   ],
+   "delay_ms_p95": [
+    4.909011192803346,
+    3.249891932476194,
+    6.5681304531304985
+   ],
+   "fa_nodes_guard_0.5": 1,
+   "clear_nodes_guard_0.5": 8,
+   "fa_nodes_guard_0.8": 4,
+   "clear_nodes_guard_0.8": 12,
+   "ts_err_ms_p95": [
+    34.710278517510446,
+    26.97067842910274,
+    42.44987860591815
+   ],
+   "level1": {
+    "nodes": 87,
+    "alerted": 87,
+    "recall": 1.0,
+    "latency_s_median_of_runs": -48.64549064792436
+   },
+   "level2": {
+    "nodes": 74,
+    "alerted": 74,
+    "recall": 1.0,
+    "latency_s_median_of_runs": 28.328456006901888
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 61,
+    "nodes_flagging_vibration": 75,
+    "nodes_flagging_without_exceedance": 14
+   }
+  },
+  "critical | lorawan": {
+   "pdr": [
+    0.45019637287744024,
+    0.4096818683157937,
+    0.4907108774390868
+   ],
+   "delay_ms_p50": [
+    104.88612585587589,
+    104.83679565088842,
+    104.93545606086336
+   ],
+   "delay_ms_p95": [
+    111.65882005454505,
+    111.63437210910638,
+    111.68326799998371
+   ],
+   "fa_nodes_guard_0.5": 1,
+   "clear_nodes_guard_0.5": 8,
+   "fa_nodes_guard_0.8": 4,
+   "clear_nodes_guard_0.8": 12,
+   "ts_err_ms_p95": [
+    33.54475107635096,
+    25.647262484029586,
+    41.44223966867234
+   ],
+   "level1": {
+    "nodes": 87,
+    "alerted": 87,
+    "recall": 1.0,
+    "latency_s_median_of_runs": -46.04424395655019
+   },
+   "level2": {
+    "nodes": 74,
+    "alerted": 74,
+    "recall": 1.0,
+    "latency_s_median_of_runs": 30.615028376411374
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 61,
+    "nodes_flagging_vibration": 75,
+    "nodes_flagging_without_exceedance": 14
+   }
+  },
+  "critical | hybrid": {
+   "pdr": [
+    0.9996360064709962,
+    0.999297413495263,
+    0.9999745994467293
+   ],
+   "delay_ms_p50": [
+    2.3518151449366087,
+    2.347258251485267,
+    2.3563720383879505
+   ],
+   "delay_ms_p95": [
+    4.909011192803346,
+    3.249891932476194,
+    6.5681304531304985
+   ],
+   "fa_nodes_guard_0.5": 1,
+   "clear_nodes_guard_0.5": 8,
+   "fa_nodes_guard_0.8": 4,
+   "clear_nodes_guard_0.8": 12,
+   "ts_err_ms_p95": [
+    34.710278517510446,
+    26.97067842910274,
+    42.44987860591815
+   ],
+   "level1": {
+    "nodes": 87,
+    "alerted": 87,
+    "recall": 1.0,
+    "latency_s_median_of_runs": -48.64549064792436
+   },
+   "level2": {
+    "nodes": 74,
+    "alerted": 74,
+    "recall": 1.0,
+    "latency_s_median_of_runs": 28.328456006901888
+   },
+   "vibration": {
+    "nodes_truly_exceeding_dgms": 61,
+    "nodes_flagging_vibration": 75,
+    "nodes_flagging_without_exceedance": 14
+   }
+  }
+ },
+ "runs": [
+  {
+   "scenario": "normal",
+   "arch": "wifi_mesh",
+   "seed": 1,
+   "network": {
+    "sent": 34616,
+    "delivered": 34584,
+    "pdr": 0.9990755719898313,
+    "delay_ms_p50": 2.344431971692984,
+    "delay_ms_p95": 7.539408398940622,
+    "delay_ms_p99": 71749.81423131455,
+    "delay_ms_max": 89981.46286187967,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 32
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 10.610543143457107,
+    "p95": 36.64737249409596
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "wifi_mesh",
+   "seed": 2,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3503301654272946,
+    "delay_ms_p95": 3.3538194988409487,
+    "delay_ms_p99": 71637.38837920447,
+    "delay_ms_max": 89929.51591257087,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.857557661419378,
+    "p95": 48.57748811123486
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "wifi_mesh",
+   "seed": 3,
+   "network": {
+    "sent": 34616,
+    "delivered": 34599,
+    "pdr": 0.9995088976195978,
+    "delay_ms_p50": 2.3588613091760635,
+    "delay_ms_p95": 6.257685956415593,
+    "delay_ms_p99": 71826.74271563963,
+    "delay_ms_max": 89997.18773476683,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 16,
+     "node_down": 1
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.177913760211595,
+    "p95": 29.565153529645706
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "wifi_mesh",
+   "seed": 4,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3525226919218767,
+    "delay_ms_p95": 3.353011007021678,
+    "delay_ms_p99": 71615.47564656058,
+    "delay_ms_max": 89923.3475162007,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 5.969316424625504,
+    "p95": 25.34811079760857
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "wifi_mesh",
+   "seed": 5,
+   "network": {
+    "sent": 34616,
+    "delivered": 34602,
+    "pdr": 0.9995955627455512,
+    "delay_ms_p50": 2.3529295864648248,
+    "delay_ms_p95": 4.041131102797888,
+    "delay_ms_p99": 71842.27779157586,
+    "delay_ms_max": 89969.26633921475,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 14
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 1,
+     "nodes_flagging_without_exceedance": 1
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.611804720478176,
+    "p95": 33.41326765496713
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "lorawan",
+   "seed": 1,
+   "network": {
+    "sent": 34628,
+    "delivered": 18141,
+    "pdr": 0.5238824073004505,
+    "delay_ms_p50": 104.85736010241453,
+    "delay_ms_p95": 111.66788692003138,
+    "delay_ms_p99": 112.27947416005009,
+    "delay_ms_max": 112.41538853751365,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.20055555555555554,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 15524,
+     "gw_down": 963
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 10.877172479354158,
+    "p95": 34.74912998763102
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "lorawan",
+   "seed": 2,
+   "network": {
+    "sent": 34628,
+    "delivered": 15246,
+    "pdr": 0.44027954256670904,
+    "delay_ms_p50": 104.92404156030943,
+    "delay_ms_p95": 111.64072107229117,
+    "delay_ms_p99": 112.24792382297721,
+    "delay_ms_max": 112.4111782712589,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.05388888888888889,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18565,
+     "gw_down": 817
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 7.912768521066482,
+    "p95": 47.15051158241579
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "lorawan",
+   "seed": 3,
+   "network": {
+    "sent": 34628,
+    "delivered": 14982,
+    "pdr": 0.4326556543837357,
+    "delay_ms_p50": 104.95257089166898,
+    "delay_ms_p95": 111.63326876337143,
+    "delay_ms_p99": 112.26623102690894,
+    "delay_ms_max": 112.4154473272938,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.035555555555555556,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18867,
+     "node_down": 1,
+     "gw_down": 778
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 5.325432095389715,
+    "p95": 26.18297891944507
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "lorawan",
+   "seed": 4,
+   "network": {
+    "sent": 34628,
+    "delivered": 13797,
+    "pdr": 0.39843479265334414,
+    "delay_ms_p50": 104.88789935300247,
+    "delay_ms_p95": 111.64917591677293,
+    "delay_ms_p99": 112.28752486841586,
+    "delay_ms_max": 112.4158987595365,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.1361111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 20111,
+     "gw_down": 720
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.33368956744107,
+    "p95": 24.519240813151555
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "lorawan",
+   "seed": 5,
+   "network": {
+    "sent": 34628,
+    "delivered": 15781,
+    "pdr": 0.4557294674829618,
+    "delay_ms_p50": 104.80875737198403,
+    "delay_ms_p95": 111.70304760025829,
+    "delay_ms_p99": 112.27719149806035,
+    "delay_ms_max": 112.41494935262608,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.14944444444444444,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18040,
+     "gw_down": 807
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 1,
+     "nodes_flagging_without_exceedance": 1
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 5.396939508273135,
+    "p95": 35.12189407911137
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "hybrid",
+   "seed": 1,
+   "network": {
+    "sent": 34616,
+    "delivered": 34584,
+    "pdr": 0.9990755719898313,
+    "delay_ms_p50": 2.344431971692984,
+    "delay_ms_p95": 7.539408398940622,
+    "delay_ms_p99": 71749.81423131455,
+    "delay_ms_max": 89981.46286187967,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 32
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 10.610543143457107,
+    "p95": 36.64737249409596
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "hybrid",
+   "seed": 2,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3503301654272946,
+    "delay_ms_p95": 3.3538194988409487,
+    "delay_ms_p99": 71637.38837920447,
+    "delay_ms_max": 89929.51591257087,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.857557661419378,
+    "p95": 48.57748811123486
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "hybrid",
+   "seed": 3,
+   "network": {
+    "sent": 34616,
+    "delivered": 34599,
+    "pdr": 0.9995088976195978,
+    "delay_ms_p50": 2.3588613091760635,
+    "delay_ms_p95": 6.257685956415593,
+    "delay_ms_p99": 71826.74271563963,
+    "delay_ms_max": 89997.18773476683,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 16,
+     "node_down": 1
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.177913760211595,
+    "p95": 29.565153529645706
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "hybrid",
+   "seed": 4,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3525226919218767,
+    "delay_ms_p95": 3.353011007021678,
+    "delay_ms_p99": 71615.47564656058,
+    "delay_ms_max": 89923.3475162007,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 5.969316424625504,
+    "p95": 25.34811079760857
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "normal",
+   "arch": "hybrid",
+   "seed": 5,
+   "network": {
+    "sent": 34616,
+    "delivered": 34602,
+    "pdr": 0.9995955627455512,
+    "delay_ms_p50": 2.3529295864648248,
+    "delay_ms_p95": 4.041131102797888,
+    "delay_ms_p99": 71842.27779157586,
+    "delay_ms_max": 89969.26633921475,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 14
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     },
+     "guard_0.8": {
+      "clear_nodes": 20,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.1
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 1,
+     "nodes_flagging_without_exceedance": 1
+    }
+   },
+   "timestamp_error_ms": {
+    "p50": 6.611804720478176,
+    "p95": 33.41326765496713
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "wifi_mesh",
+   "seed": 1,
+   "network": {
+    "sent": 34616,
+    "delivered": 34584,
+    "pdr": 0.9990755719898313,
+    "delay_ms_p50": 2.344431971692984,
+    "delay_ms_p95": 7.539408398940622,
+    "delay_ms_p99": 71749.81423131455,
+    "delay_ms_max": 89981.46286187967,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 32
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 8,
+      "nodes_alerted": 8,
+      "recall": 1.0,
+      "latency_s_median": -76.0053690066216,
+      "latency_s_p95": 231.98445788334863,
+      "latency_s_min": -164.39189533370813
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 9,
+      "false_alarm_nodes": 3,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -88.52364006606035
+   },
+   "timestamp_error_ms": {
+    "p50": 10.610543143457107,
+    "p95": 36.64737249409596
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "wifi_mesh",
+   "seed": 2,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3503301654272946,
+    "delay_ms_p95": 3.3538194988409487,
+    "delay_ms_p99": 71637.38837920447,
+    "delay_ms_max": 89929.51591257087,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": -101.78833311101687,
+      "latency_s_p95": 91.29372189347885,
+      "latency_s_min": -426.52914779450566
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.3333333333333333
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -103.48340059494558
+   },
+   "timestamp_error_ms": {
+    "p50": 6.857557661419378,
+    "p95": 48.57748811123486
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "wifi_mesh",
+   "seed": 3,
+   "network": {
+    "sent": 34616,
+    "delivered": 34599,
+    "pdr": 0.9995088976195978,
+    "delay_ms_p50": 2.3588613091760635,
+    "delay_ms_p95": 6.257685956415593,
+    "delay_ms_p99": 71826.74271563963,
+    "delay_ms_max": 89997.18773476683,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 16,
+     "node_down": 1
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 12,
+      "nodes_alerted": 12,
+      "recall": 1.0,
+      "latency_s_median": -100.75117903397239,
+      "latency_s_p95": 99.22719237362335,
+      "latency_s_min": -505.9915933094197
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 7,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.2857142857142857
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -187.82402264211316
+   },
+   "timestamp_error_ms": {
+    "p50": 6.177913760211595,
+    "p95": 29.565153529645706
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "wifi_mesh",
+   "seed": 4,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3525226919218767,
+    "delay_ms_p95": 3.353011007021678,
+    "delay_ms_p99": 71615.47564656058,
+    "delay_ms_max": 89923.3475162007,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 12,
+      "nodes_alerted": 12,
+      "recall": 1.0,
+      "latency_s_median": -54.686072298762156,
+      "latency_s_p95": 131.89265833082436,
+      "latency_s_min": -302.6139390721464
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 7,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.2857142857142857
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -59.671842407859
+   },
+   "timestamp_error_ms": {
+    "p50": 5.969316424625504,
+    "p95": 25.34811079760857
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "wifi_mesh",
+   "seed": 5,
+   "network": {
+    "sent": 34616,
+    "delivered": 34602,
+    "pdr": 0.9995955627455512,
+    "delay_ms_p50": 2.3529295864648248,
+    "delay_ms_p95": 4.041131102797888,
+    "delay_ms_p99": 71842.27779157586,
+    "delay_ms_max": 89969.26633921475,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 14
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": -239.0715857710577,
+      "latency_s_p95": -23.323430548363504,
+      "latency_s_min": -522.3519069493642
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 1,
+     "nodes_flagging_without_exceedance": 1
+    },
+    "first_alert_after_first_truth_s": -143.73989411354603
+   },
+   "timestamp_error_ms": {
+    "p50": 6.611804720478176,
+    "p95": 33.41326765496713
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "lorawan",
+   "seed": 1,
+   "network": {
+    "sent": 34628,
+    "delivered": 18141,
+    "pdr": 0.5238824073004505,
+    "delay_ms_p50": 104.85736010241453,
+    "delay_ms_p95": 111.66788692003138,
+    "delay_ms_p99": 112.27947416005009,
+    "delay_ms_max": 112.41538853751365,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.20055555555555554,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 15524,
+     "gw_down": 963
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 8,
+      "nodes_alerted": 8,
+      "recall": 1.0,
+      "latency_s_median": -72.40259974391978,
+      "latency_s_p95": 233.13560986768817,
+      "latency_s_min": -162.28683340022621
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 9,
+      "false_alarm_nodes": 3,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -81.41614442643606
+   },
+   "timestamp_error_ms": {
+    "p50": 10.877172479354158,
+    "p95": 34.74912998763102
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "lorawan",
+   "seed": 2,
+   "network": {
+    "sent": 34628,
+    "delivered": 15246,
+    "pdr": 0.44027954256670904,
+    "delay_ms_p50": 104.92404156030943,
+    "delay_ms_p95": 111.64072107229117,
+    "delay_ms_p99": 112.24792382297721,
+    "delay_ms_max": 112.4111782712589,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.05388888888888889,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18565,
+     "gw_down": 817
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": -86.34517067830734,
+      "latency_s_p95": 92.07837678873133,
+      "latency_s_min": -424.4241184560565
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.3333333333333333
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -103.38764079494274
+   },
+   "timestamp_error_ms": {
+    "p50": 7.912768521066482,
+    "p95": 47.15051158241579
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "lorawan",
+   "seed": 3,
+   "network": {
+    "sent": 34628,
+    "delivered": 14982,
+    "pdr": 0.4326556543837357,
+    "delay_ms_p50": 104.95257089166898,
+    "delay_ms_p95": 111.63326876337143,
+    "delay_ms_p99": 112.26623102690894,
+    "delay_ms_max": 112.4154473272938,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.035555555555555556,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18867,
+     "node_down": 1,
+     "gw_down": 778
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 12,
+      "nodes_alerted": 12,
+      "recall": 1.0,
+      "latency_s_median": -100.14677922188014,
+      "latency_s_p95": 99.32963744809098,
+      "latency_s_min": -505.8835215147435
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 7,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.2857142857142857
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -180.7138988258506
+   },
+   "timestamp_error_ms": {
+    "p50": 5.325432095389715,
+    "p95": 26.18297891944507
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "lorawan",
+   "seed": 4,
+   "network": {
+    "sent": 34628,
+    "delivered": 13797,
+    "pdr": 0.39843479265334414,
+    "delay_ms_p50": 104.88789935300247,
+    "delay_ms_p95": 111.64917591677293,
+    "delay_ms_p99": 112.28752486841586,
+    "delay_ms_max": 112.4158987595365,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.1361111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 20111,
+     "gw_down": 720
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 12,
+      "nodes_alerted": 12,
+      "recall": 1.0,
+      "latency_s_median": -51.08881498972511,
+      "latency_s_p95": 136.64558282524263,
+      "latency_s_min": -302.50910362651393
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 7,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.2857142857142857
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -56.575323988504124
+   },
+   "timestamp_error_ms": {
+    "p50": 6.33368956744107,
+    "p95": 24.519240813151555
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "lorawan",
+   "seed": 5,
+   "network": {
+    "sent": 34628,
+    "delivered": 15781,
+    "pdr": 0.4557294674829618,
+    "delay_ms_p50": 104.80875737198403,
+    "delay_ms_p95": 111.70304760025829,
+    "delay_ms_p99": 112.27719149806035,
+    "delay_ms_max": 112.41494935262608,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.14944444444444444,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18040,
+     "gw_down": 807
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": -237.97141143605472,
+      "latency_s_p95": -22.62252823921546,
+      "latency_s_min": -521.2537068091676
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 1,
+     "nodes_flagging_without_exceedance": 1
+    },
+    "first_alert_after_first_truth_s": -142.64156549605707
+   },
+   "timestamp_error_ms": {
+    "p50": 5.396939508273135,
+    "p95": 35.12189407911137
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "hybrid",
+   "seed": 1,
+   "network": {
+    "sent": 34616,
+    "delivered": 34584,
+    "pdr": 0.9990755719898313,
+    "delay_ms_p50": 2.344431971692984,
+    "delay_ms_p95": 7.539408398940622,
+    "delay_ms_p99": 71749.81423131455,
+    "delay_ms_max": 89981.46286187967,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 32
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 8,
+      "nodes_alerted": 8,
+      "recall": 1.0,
+      "latency_s_median": -76.0053690066216,
+      "latency_s_p95": 231.98445788334863,
+      "latency_s_min": -164.39189533370813
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 9,
+      "false_alarm_nodes": 3,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -88.52364006606035
+   },
+   "timestamp_error_ms": {
+    "p50": 10.610543143457107,
+    "p95": 36.64737249409596
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "hybrid",
+   "seed": 2,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3503301654272946,
+    "delay_ms_p95": 3.3538194988409487,
+    "delay_ms_p99": 71637.38837920447,
+    "delay_ms_max": 89929.51591257087,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": -101.78833311101687,
+      "latency_s_p95": 91.29372189347885,
+      "latency_s_min": -426.52914779450566
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.3333333333333333
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -103.48340059494558
+   },
+   "timestamp_error_ms": {
+    "p50": 6.857557661419378,
+    "p95": 48.57748811123486
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "hybrid",
+   "seed": 3,
+   "network": {
+    "sent": 34616,
+    "delivered": 34599,
+    "pdr": 0.9995088976195978,
+    "delay_ms_p50": 2.3588613091760635,
+    "delay_ms_p95": 6.257685956415593,
+    "delay_ms_p99": 71826.74271563963,
+    "delay_ms_max": 89997.18773476683,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 16,
+     "node_down": 1
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 12,
+      "nodes_alerted": 12,
+      "recall": 1.0,
+      "latency_s_median": -100.75117903397239,
+      "latency_s_p95": 99.22719237362335,
+      "latency_s_min": -505.9915933094197
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 7,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.2857142857142857
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -187.82402264211316
+   },
+   "timestamp_error_ms": {
+    "p50": 6.177913760211595,
+    "p95": 29.565153529645706
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "hybrid",
+   "seed": 4,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3525226919218767,
+    "delay_ms_p95": 3.353011007021678,
+    "delay_ms_p99": 71615.47564656058,
+    "delay_ms_max": 89923.3475162007,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 12,
+      "nodes_alerted": 12,
+      "recall": 1.0,
+      "latency_s_median": -54.686072298762156,
+      "latency_s_p95": 131.89265833082436,
+      "latency_s_min": -302.6139390721464
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 5,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.4
+     },
+     "guard_0.8": {
+      "clear_nodes": 7,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.2857142857142857
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 0,
+     "nodes_flagging_without_exceedance": 0
+    },
+    "first_alert_after_first_truth_s": -59.671842407859
+   },
+   "timestamp_error_ms": {
+    "p50": 5.969316424625504,
+    "p95": 25.34811079760857
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "warning",
+   "arch": "hybrid",
+   "seed": 5,
+   "network": {
+    "sent": 34616,
+    "delivered": 34602,
+    "pdr": 0.9995955627455512,
+    "delay_ms_p50": 2.3529295864648248,
+    "delay_ms_p95": 4.041131102797888,
+    "delay_ms_p99": 71842.27779157586,
+    "delay_ms_max": 89969.26633921475,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 14
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": -239.0715857710577,
+      "latency_s_p95": -23.323430548363504,
+      "latency_s_min": -522.3519069493642
+     },
+     "2": {
+      "nodes_truly_at_level": 0,
+      "nodes_alerted": 0,
+      "recall": null,
+      "latency_s_median": null,
+      "latency_s_p95": null,
+      "latency_s_min": null
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 6,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 0,
+     "nodes_flagging_vibration": 1,
+     "nodes_flagging_without_exceedance": 1
+    },
+    "first_alert_after_first_truth_s": -143.73989411354603
+   },
+   "timestamp_error_ms": {
+    "p50": 6.611804720478176,
+    "p95": 33.41326765496713
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "wifi_mesh",
+   "seed": 1,
+   "network": {
+    "sent": 34616,
+    "delivered": 34584,
+    "pdr": 0.9990755719898313,
+    "delay_ms_p50": 2.344431971692984,
+    "delay_ms_p95": 7.539408398940622,
+    "delay_ms_p99": 71749.81423131455,
+    "delay_ms_max": 89981.46286187967,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 32
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": 6.1043085677608815,
+      "latency_s_p95": 119.70608652083888,
+      "latency_s_min": -269.4270723019197
+     },
+     "2": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": 33.26093251326188,
+      "latency_s_p95": 43.82841312077633,
+      "latency_s_min": -12.52233054610906
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 1,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 10,
+     "nodes_flagging_vibration": 15,
+     "nodes_flagging_without_exceedance": 5
+    },
+    "first_alert_after_first_truth_s": -170.62090278942946
+   },
+   "timestamp_error_ms": {
+    "p50": 10.610543143457107,
+    "p95": 36.64737249409596
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "wifi_mesh",
+   "seed": 2,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3503301654272946,
+    "delay_ms_p95": 3.3538194988409487,
+    "delay_ms_p99": 71637.38837920447,
+    "delay_ms_max": 89929.51591257087,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 18,
+      "nodes_alerted": 18,
+      "recall": 1.0,
+      "latency_s_median": -48.64549064792436,
+      "latency_s_p95": 126.80061329436923,
+      "latency_s_min": -372.52881531333685
+     },
+     "2": {
+      "nodes_truly_at_level": 15,
+      "nodes_alerted": 15,
+      "recall": 1.0,
+      "latency_s_median": 28.328456006901888,
+      "latency_s_p95": 46.03744848845366,
+      "latency_s_min": -20.529718873504407
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 1,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 17,
+     "nodes_flagging_without_exceedance": 4
+    },
+    "first_alert_after_first_truth_s": -318.52881531333685
+   },
+   "timestamp_error_ms": {
+    "p50": 6.857557661419378,
+    "p95": 48.57748811123486
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "wifi_mesh",
+   "seed": 3,
+   "network": {
+    "sent": 34616,
+    "delivered": 34599,
+    "pdr": 0.9995088976195978,
+    "delay_ms_p50": 2.3588613091760635,
+    "delay_ms_p95": 6.257685956415593,
+    "delay_ms_p99": 71826.74271563963,
+    "delay_ms_max": 89997.18773476683,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 16,
+     "node_down": 1
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": -77.63133857236494,
+      "latency_s_p95": 98.47922125830208,
+      "latency_s_min": -325.9935056375467
+     },
+     "2": {
+      "nodes_truly_at_level": 14,
+      "nodes_alerted": 14,
+      "recall": 1.0,
+      "latency_s_median": 26.116949389186175,
+      "latency_s_p95": 39.39671029980277,
+      "latency_s_min": 4.169083988615057
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 3,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 12,
+     "nodes_flagging_vibration": 14,
+     "nodes_flagging_without_exceedance": 2
+    },
+    "first_alert_after_first_truth_s": -288.437484283774
+   },
+   "timestamp_error_ms": {
+    "p50": 6.177913760211595,
+    "p95": 29.565153529645706
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "wifi_mesh",
+   "seed": 4,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3525226919218767,
+    "delay_ms_p95": 3.353011007021678,
+    "delay_ms_p99": 71615.47564656058,
+    "delay_ms_max": 89923.3475162007,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": -24.292235183513185,
+      "latency_s_p95": 122.37993795282505,
+      "latency_s_min": -281.6139390721464
+     },
+     "2": {
+      "nodes_truly_at_level": 15,
+      "nodes_alerted": 15,
+      "recall": 1.0,
+      "latency_s_median": 33.79110761156198,
+      "latency_s_p95": 44.06801581177716,
+      "latency_s_min": -2.186029432647274
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 3,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 14,
+     "nodes_flagging_without_exceedance": 1
+    },
+    "first_alert_after_first_truth_s": -226.61393907214642
+   },
+   "timestamp_error_ms": {
+    "p50": 5.969316424625504,
+    "p95": 25.34811079760857
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "wifi_mesh",
+   "seed": 5,
+   "network": {
+    "sent": 34616,
+    "delivered": 34602,
+    "pdr": 0.9995955627455512,
+    "delay_ms_p50": 2.3529295864648248,
+    "delay_ms_p95": 4.041131102797888,
+    "delay_ms_p99": 71842.27779157586,
+    "delay_ms_max": 89969.26633921475,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 14
+    },
+    "channel_busy_fraction": 0.005951538461538461
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 18,
+      "nodes_alerted": 18,
+      "recall": 1.0,
+      "latency_s_median": -119.63551187681526,
+      "latency_s_p95": 97.10127412816072,
+      "latency_s_min": -390.74177480187666
+     },
+     "2": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": 25.25996094803827,
+      "latency_s_p95": 46.90536472143744,
+      "latency_s_min": -11.112822895677027
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 15,
+     "nodes_flagging_without_exceedance": 2
+    },
+    "first_alert_after_first_truth_s": -346.1125581310763
+   },
+   "timestamp_error_ms": {
+    "p50": 6.611804720478176,
+    "p95": 33.41326765496713
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "lorawan",
+   "seed": 1,
+   "network": {
+    "sent": 34628,
+    "delivered": 18141,
+    "pdr": 0.5238824073004505,
+    "delay_ms_p50": 104.85736010241453,
+    "delay_ms_p95": 111.66788692003138,
+    "delay_ms_p99": 112.27947416005009,
+    "delay_ms_max": 112.41538853751365,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.20055555555555554,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 15524,
+     "gw_down": 963
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": 6.207488996503116,
+      "latency_s_p95": 120.60800819858805,
+      "latency_s_min": -269.33052965336606
+     },
+     "2": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": 34.36227334335422,
+      "latency_s_p95": 43.93218075464632,
+      "latency_s_min": -9.423396495758652
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 1,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 10,
+     "nodes_flagging_vibration": 15,
+     "nodes_flagging_without_exceedance": 5
+    },
+    "first_alert_after_first_truth_s": -170.28199854250227
+   },
+   "timestamp_error_ms": {
+    "p50": 10.877172479354158,
+    "p95": 34.74912998763102
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "lorawan",
+   "seed": 2,
+   "network": {
+    "sent": 34628,
+    "delivered": 15246,
+    "pdr": 0.44027954256670904,
+    "delay_ms_p50": 104.92404156030943,
+    "delay_ms_p95": 111.64072107229117,
+    "delay_ms_p99": 112.24792382297721,
+    "delay_ms_max": 112.4111782712589,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.05388888888888889,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18565,
+     "gw_down": 817
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 18,
+      "nodes_alerted": 18,
+      "recall": 1.0,
+      "latency_s_median": -46.04424395655019,
+      "latency_s_p95": 130.14664501219332,
+      "latency_s_min": -356.4276848741789
+     },
+     "2": {
+      "nodes_truly_at_level": 15,
+      "nodes_alerted": 15,
+      "recall": 1.0,
+      "latency_s_median": 30.615028376411374,
+      "latency_s_p95": 52.43959208666638,
+      "latency_s_min": -8.43132498828777
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 1,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 17,
+     "nodes_flagging_without_exceedance": 4
+    },
+    "first_alert_after_first_truth_s": -302.4276848741789
+   },
+   "timestamp_error_ms": {
+    "p50": 7.912768521066482,
+    "p95": 47.15051158241579
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "lorawan",
+   "seed": 3,
+   "network": {
+    "sent": 34628,
+    "delivered": 14982,
+    "pdr": 0.4326556543837357,
+    "delay_ms_p50": 104.95257089166898,
+    "delay_ms_p95": 111.63326876337143,
+    "delay_ms_p99": 112.26623102690894,
+    "delay_ms_max": 112.4154473272938,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.035555555555555556,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18867,
+     "node_down": 1,
+     "gw_down": 778
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": -74.53385151690804,
+      "latency_s_p95": 98.97147277121974,
+      "latency_s_min": -321.89468093436255
+     },
+     "2": {
+      "nodes_truly_at_level": 14,
+      "nodes_alerted": 14,
+      "recall": 1.0,
+      "latency_s_median": 26.28672988320568,
+      "latency_s_p95": 40.85635227224078,
+      "latency_s_min": 8.267647474637897
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 3,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 12,
+     "nodes_flagging_vibration": 14,
+     "nodes_flagging_without_exceedance": 2
+    },
+    "first_alert_after_first_truth_s": -288.3330913386767
+   },
+   "timestamp_error_ms": {
+    "p50": 5.325432095389715,
+    "p95": 26.18297891944507
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "lorawan",
+   "seed": 4,
+   "network": {
+    "sent": 34628,
+    "delivered": 13797,
+    "pdr": 0.39843479265334414,
+    "delay_ms_p50": 104.88789935300247,
+    "delay_ms_p95": 111.64917591677293,
+    "delay_ms_p99": 112.28752486841586,
+    "delay_ms_max": 112.4158987595365,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.1361111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 20111,
+     "gw_down": 720
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": -20.186784267576513,
+      "latency_s_p95": 124.28013366103868,
+      "latency_s_min": -281.50910362651393
+     },
+     "2": {
+      "nodes_truly_at_level": 15,
+      "nodes_alerted": 15,
+      "recall": 1.0,
+      "latency_s_median": 35.379501026406615,
+      "latency_s_p95": 44.834600958023366,
+      "latency_s_min": -0.08215157699760312
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 3,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 14,
+     "nodes_flagging_without_exceedance": 1
+    },
+    "first_alert_after_first_truth_s": -226.50910362651393
+   },
+   "timestamp_error_ms": {
+    "p50": 6.33368956744107,
+    "p95": 24.519240813151555
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "lorawan",
+   "seed": 5,
+   "network": {
+    "sent": 34628,
+    "delivered": 15781,
+    "pdr": 0.4557294674829618,
+    "delay_ms_p50": 104.80875737198403,
+    "delay_ms_p95": 111.70304760025829,
+    "delay_ms_p99": 112.27719149806035,
+    "delay_ms_max": 112.41494935262608,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.14944444444444444,
+    "node_availability": 1.0,
+    "losses": {
+     "collision": 18040,
+     "gw_down": 807
+    },
+    "aloha_G_per_channel": 0.6161066666666667
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 18,
+      "nodes_alerted": 18,
+      "recall": 1.0,
+      "latency_s_median": -119.53135512485915,
+      "latency_s_p95": 97.57995974144376,
+      "latency_s_min": -390.63889680497107
+     },
+     "2": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": 27.36482786817146,
+      "latency_s_p95": 49.610683955867295,
+      "latency_s_min": -9.013739793286504
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 15,
+     "nodes_flagging_without_exceedance": 2
+    },
+    "first_alert_after_first_truth_s": -342.0105573639105
+   },
+   "timestamp_error_ms": {
+    "p50": 5.396939508273135,
+    "p95": 35.12189407911137
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 13.202760500000002
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "hybrid",
+   "seed": 1,
+   "network": {
+    "sent": 34616,
+    "delivered": 34584,
+    "pdr": 0.9990755719898313,
+    "delay_ms_p50": 2.344431971692984,
+    "delay_ms_p95": 7.539408398940622,
+    "delay_ms_p99": 71749.81423131455,
+    "delay_ms_max": 89981.46286187967,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 32
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": 6.1043085677608815,
+      "latency_s_p95": 119.70608652083888,
+      "latency_s_min": -269.4270723019197
+     },
+     "2": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": 33.26093251326188,
+      "latency_s_p95": 43.82841312077633,
+      "latency_s_min": -12.52233054610906
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 1,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 10,
+     "nodes_flagging_vibration": 15,
+     "nodes_flagging_without_exceedance": 5
+    },
+    "first_alert_after_first_truth_s": -170.62090278942946
+   },
+   "timestamp_error_ms": {
+    "p50": 10.610543143457107,
+    "p95": 36.64737249409596
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "hybrid",
+   "seed": 2,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3503301654272946,
+    "delay_ms_p95": 3.3538194988409487,
+    "delay_ms_p99": 71637.38837920447,
+    "delay_ms_max": 89929.51591257087,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 18,
+      "nodes_alerted": 18,
+      "recall": 1.0,
+      "latency_s_median": -48.64549064792436,
+      "latency_s_p95": 126.80061329436923,
+      "latency_s_min": -372.52881531333685
+     },
+     "2": {
+      "nodes_truly_at_level": 15,
+      "nodes_alerted": 15,
+      "recall": 1.0,
+      "latency_s_median": 28.328456006901888,
+      "latency_s_p95": 46.03744848845366,
+      "latency_s_min": -20.529718873504407
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 1,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 17,
+     "nodes_flagging_without_exceedance": 4
+    },
+    "first_alert_after_first_truth_s": -318.52881531333685
+   },
+   "timestamp_error_ms": {
+    "p50": 6.857557661419378,
+    "p95": 48.57748811123486
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "hybrid",
+   "seed": 3,
+   "network": {
+    "sent": 34616,
+    "delivered": 34599,
+    "pdr": 0.9995088976195978,
+    "delay_ms_p50": 2.3588613091760635,
+    "delay_ms_p95": 6.257685956415593,
+    "delay_ms_p99": 71826.74271563963,
+    "delay_ms_max": 89997.18773476683,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 16,
+     "node_down": 1
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": -77.63133857236494,
+      "latency_s_p95": 98.47922125830208,
+      "latency_s_min": -325.9935056375467
+     },
+     "2": {
+      "nodes_truly_at_level": 14,
+      "nodes_alerted": 14,
+      "recall": 1.0,
+      "latency_s_median": 26.116949389186175,
+      "latency_s_p95": 39.39671029980277,
+      "latency_s_min": 4.169083988615057
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 3,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 12,
+     "nodes_flagging_vibration": 14,
+     "nodes_flagging_without_exceedance": 2
+    },
+    "first_alert_after_first_truth_s": -288.437484283774
+   },
+   "timestamp_error_ms": {
+    "p50": 6.177913760211595,
+    "p95": 29.565153529645706
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "hybrid",
+   "seed": 4,
+   "network": {
+    "sent": 34616,
+    "delivered": 34616,
+    "pdr": 1.0,
+    "delay_ms_p50": 2.3525226919218767,
+    "delay_ms_p95": 3.353011007021678,
+    "delay_ms_p99": 71615.47564656058,
+    "delay_ms_max": 89923.3475162007,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {},
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 17,
+      "nodes_alerted": 17,
+      "recall": 1.0,
+      "latency_s_median": -24.292235183513185,
+      "latency_s_p95": 122.37993795282505,
+      "latency_s_min": -281.6139390721464
+     },
+     "2": {
+      "nodes_truly_at_level": 15,
+      "nodes_alerted": 15,
+      "recall": 1.0,
+      "latency_s_median": 33.79110761156198,
+      "latency_s_p95": 44.06801581177716,
+      "latency_s_min": -2.186029432647274
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 1.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 3,
+      "false_alarm_nodes": 1,
+      "per_node_hour": 0.6666666666666666
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 14,
+     "nodes_flagging_without_exceedance": 1
+    },
+    "first_alert_after_first_truth_s": -226.61393907214642
+   },
+   "timestamp_error_ms": {
+    "p50": 5.969316424625504,
+    "p95": 25.34811079760857
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  },
+  {
+   "scenario": "critical",
+   "arch": "hybrid",
+   "seed": 5,
+   "network": {
+    "sent": 34616,
+    "delivered": 34602,
+    "pdr": 0.9995955627455512,
+    "delay_ms_p50": 2.3529295864648248,
+    "delay_ms_p95": 4.041131102797888,
+    "delay_ms_p99": 71842.27779157586,
+    "delay_ms_max": 89969.26633921475,
+    "mean_hops": 1.0,
+    "max_hops": 1,
+    "worst_node_pdr": 0.3811111111111111,
+    "node_availability": 1.0,
+    "losses": {
+     "link": 14
+    },
+    "channel_busy_fraction": 0.005951538461538461,
+    "backhaul": {
+     "distance_km": 3.0,
+     "rx_dbm": -90.99743060301367,
+     "sf": 7,
+     "utilisation_if_raw": 1.64352,
+     "utilisation_summaries": 0.0215296
+    }
+   },
+   "detection": {
+    "per_level": {
+     "1": {
+      "nodes_truly_at_level": 18,
+      "nodes_alerted": 18,
+      "recall": 1.0,
+      "latency_s_median": -119.63551187681526,
+      "latency_s_p95": 97.10127412816072,
+      "latency_s_min": -390.74177480187666
+     },
+     "2": {
+      "nodes_truly_at_level": 13,
+      "nodes_alerted": 13,
+      "recall": 1.0,
+      "latency_s_median": 25.25996094803827,
+      "latency_s_p95": 46.90536472143744,
+      "latency_s_min": -11.112822895677027
+     }
+    },
+    "false_alarms": {
+     "guard_0.5": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     },
+     "guard_0.8": {
+      "clear_nodes": 2,
+      "false_alarm_nodes": 0,
+      "per_node_hour": 0.0
+     }
+    },
+    "vibration": {
+     "nodes_truly_exceeding_dgms": 13,
+     "nodes_flagging_vibration": 15,
+     "nodes_flagging_without_exceedance": 2
+    },
+    "first_alert_after_first_truth_s": -346.1125581310763
+   },
+   "timestamp_error_ms": {
+    "p50": 6.611804720478176,
+    "p95": 33.41326765496713
+   },
+   "energy": {
+    "load_ma_by_role": {
+     "leaf": 21.232324807692304
+    },
+    "soc_end_min": 0.0
+   }
+  }
+ ]
+}

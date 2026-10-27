@@ -106,11 +106,11 @@ Answers are written to be said in about 30 seconds. Numbers in `[KPI: ...]` brac
 
 ## Cost, scale and sustainability
 
-28. **What does one node cost?** (Lead) ₹3,773 including GST at retail single-unit prices, each
+28. **What does one node cost?** (Lead) ₹4,240 including GST at retail single-unit prices, each
     line linked to an Indian supplier in `hardware/bom.csv`. Our target is ₹3,000; bulk cells and
     modules get us there.
-29. **And a whole site?** (Lead) 25 nodes, a gateway and two sirens for one hectare: ₹1.13 lakh,
-    about ₹126 per person protected in our demo site.
+29. **And a whole site?** (Lead) 25 nodes, a gateway and two sirens for one hectare: ₹1.25 lakh,
+    about ₹139 per person protected in our demo site.
 30. **Compared with what?** (Lead) Imported monitoring stations are quoted at ₹1.5–4.5 lakh per
     point, so 40–120 times one ACHAL node. Another SIH design estimates ₹4,850 for an underground
     node.

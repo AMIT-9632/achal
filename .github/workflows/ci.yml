@@ -11,7 +11,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -e "libs/achal-common[dev]" fastapi "uvicorn[standard]" httpx asyncpg scikit-learn numpy
+      # pandas, scipy and matplotlib are for services/hw-sim; its tests also compile firmware/lib/achal_dsp with gcc
+      - run: pip install -e "libs/achal-common[dev]" fastapi "uvicorn[standard]" httpx asyncpg scikit-learn numpy pandas scipy matplotlib
       - run: ruff check libs services firmware/tools hardware
       - run: pytest -q
 

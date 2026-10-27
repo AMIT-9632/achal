@@ -23,6 +23,14 @@ Every third-party item used by ACHAL. Allowed: MIT, Apache-2.0, BSD, ISC, PSF, M
 | Arduino-ESP32 core (via PlatformIO `espressif32@6.9.0`) | Firmware framework, linked unmodified | LGPL-2.1 (core), Apache-2.0 (ESP-IDF) | github.com/espressif/arduino-esp32 |
 | PlatformIO Core | Firmware build and test tool (dev only) | Apache-2.0 | platformio.org |
 | Unity test framework | Firmware host tests (dev only, fetched by PlatformIO) | MIT | throwtheswitch.org |
+| Pololu VL53L0X Arduino library 1.3.1 | VL53L0X driver in `firmware/src/node-esp32/sensors.cpp` (fetched by PlatformIO, unmodified; contains ST API-derived code under ST's BSD-style licence) | MIT + ST BSD-3-Clause notice | github.com/pololu/vl53l0x-arduino |
+| VL53L0X datasheet (DocID029104), UM2039 | Range, sigma and current figures behind `services/hw-sim` sensor model | — (facts, not code) | st.com |
+| NASA POWER climatology | Monthly irradiance and temperature for Jharia in `data/hwsim/nasa_power_jharia.json` | Public domain (NASA), acknowledgement requested | power.larc.nasa.gov |
+| NumPy, pandas, SciPy, Matplotlib | Hardware simulator `services/hw-sim` | BSD-3, BSD-3, BSD-3, Matplotlib License | pypi.org |
+| Streamlit, Altair | Hardware-simulation dashboard (dev/demo only) | Apache-2.0, BSD-3 | streamlit.io, altair-viz.github.io |
+| amqtt (optional) | Local MQTT broker for the hw-sim live demo | MIT | pypi.org/project/amqtt |
+| ns-3.44 (via the `ns3` Python wheel) | Cross-check of the Wi-Fi model (`services/hw-sim/ns3/*.cc`), run as a separate tool, not linked into ACHAL | GPL-2.0 (tool only; our two scenario files are GPL-2.0 because they link ns-3) | nsnam.org |
+| Wokwi simulator, wokwi-cli | Runs the node firmware in simulation (dev only, free tier) | Wokwi ToS; wokwi-cli MIT | wokwi.com |
 | pyserial | `firmware/tools/uart_bridge.py` on the Raspberry Pi | BSD-3-Clause | pypi.org/project/pyserial |
 | MPU-6050 and ADS1115 register maps | Sensor drivers written from the public datasheets, no vendor code | — (facts, not code) | invensense.tdk.com, ti.com |
 | Supplier prices in `hardware/bom.csv` | Facts with links, checked 2026-10-21 | — | links in the file |

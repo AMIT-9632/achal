@@ -16,9 +16,9 @@ Risk-engine rows quote `reports/kpi/kpi-report.json` (W1 simulator, 20 seeds per
 | Packet delivery, 30% nodes down | ≥ 95% | 100.000% mesh vs 98.85% single-hop (100-node colliery block, 10 seeds × 12 h); 100.000% vs 76.4% in the harsh-radio profile | `mesh_study.py` → [`mesh-study.md`](mesh-study.md), model in [`mesh.md`](mesh.md) |
 | Data loss during uplink cut | 0 readings | 0 lost: 4,225 received / 4,225 stored (broker down 120 s at ×60 = 2 h field time); 52,104 / 52,104 from cold start with a ~1.5-day field-time outage at ×1200 | `scripts/demo_uplink_outage.sh`, [`gateway.md`](gateway.md) |
 | Gateway siren with no cloud (fallback rules) | siren before every collapse, 0 false | 20/20 pillar collapses, median 8.4 h lead (min 4.3 h); 0 false sirens in 40 normal + faults runs | `rules_eval.py` → [`gateway-rules-eval.md`](gateway-rules-eval.md) |
-| Cost per node | ≤ ₹3,000 | ₹3,773 at retail single-unit prices incl. GST (19% of it still estimates); not yet met, bulk cell and module prices are the path | `hardware/costing.py` → `hardware/cost-summary.md` |
-| Cost per hectare covered (25 nodes + gateway + 2 sirens) | — | ₹1,13,271 | same |
-| Cost per person protected | — | ₹126 (900 people in site config) | same |
+| Cost per node | ≤ ₹3,000 | ₹4,240 at retail single-unit prices incl. GST (21% of it still estimates; includes the VL53L0X displacement gauge added 2026-10-27); not yet met, bulk cell and module prices are the path | `hardware/costing.py` → `hardware/cost-summary.md` |
+| Cost per hectare covered (25 nodes + gateway + 2 sirens) | — | ₹1,24,923 | same |
+| Cost per person protected | — | ₹139 (900 people in site config) | same |
 | Node battery autonomy with no sun, 60 s period | — | 8 days relay, 26 days leaf (calculated from datasheets, not measured) | `hardware/power_budget.py` → `hardware/power-budget.md` |
 | People covered by one panel kit | 900 (config) | — | `exposure` in site config |
 | Alert languages | 4 | 4 (Santali under review) | `services/alerts/src/templates` |

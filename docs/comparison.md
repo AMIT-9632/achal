@@ -13,7 +13,7 @@ for each method; cost figures for ACHAL come from [`hardware/cost-summary.md`](.
 | Works over active mining, vegetation, monsoon | Coherence loss over active mines and vegetation; monsoon soil swelling adds noise | Yes | Yes, but access is hard | Yes; ground-coupled sensors |
 | Warns people directly | No (analysis product) | No | No | **Siren on site with no internet, SMS in Hindi, Bengali, English** (Santali after native review) |
 | Points per site | Thousands of radar scatterers, uneven | 1–few (cost) | Tens of benchmarks | 25 per hectare in the demo grid |
-| Cost | Data free (Copernicus); expert processing | High per point (survey-grade receiver) | Instrument + surveyor time for every visit | **₹3,773 per node**, ₹1.13 lakh for a 1-ha panel kit with gateway and 2 sirens |
+| Cost | Data free (Copernicus); expert processing | High per point (survey-grade receiver) | Instrument + surveyor time for every visit | **₹4,240 per node**, ₹1.25 lakh for a 1-ha panel kit with gateway and 2 sirens |
 | Role with ACHAL | **Screen** the coalfield and choose where to deploy | **Anchor** a site to absolute coordinates | **Calibrate** nodes at install | **Watch** the chosen sites continuously and warn |
 
 ## How they work together

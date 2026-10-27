@@ -4,6 +4,8 @@ node,Ai-Thinker Ra-01H SX1276 LoRa module 803-930 MHz,1,549,ex,quote,https://www
 node,868 MHz LoRa antenna RP-SMA,1,55,ex,quote,https://www.electronicscomp.com/lora-antenna-868mhz,2026-10-21,
 node,IPEX to RP-SMA pigtail,1,60,ex,estimate,,2026-10-21,Bulkhead through the enclosure wall
 node,MPU6050 accelerometer/gyro module (GY-521),1,122,ex,quote,https://www.electronicscomp.com/mpu6050-triple-axis-gyro-accelerometer-module,2026-10-21,Tilt + vibration + motion wake; ADXL355 is the precision upgrade
+node,VL53L0X time-of-flight distance sensor module (GY-VL53L0XV2),1,245,ex,quote,https://www.electronicscomp.com/vl53l0-tof-based-lidar-laser-distance-sensor,2026-10-27,Short-baseline displacement gauge: ranges 0.5 m to a target plate across a mapped crack (not node to node; see docs/hardware-sim)
+node,ToF target: 250 mm white HDPE plate + reference stake + 40 mm PVC sight tube with sun hood,1,150,ex,estimate,,2026-10-27,The tube keeps sunlight off the receiver; the plate fills the 25 deg cone at 0.5 m
 node,ADS1115 16-bit ADC module,1,155,ex,quote,https://www.electronicscomp.com/ads1115-16-bit-i2c-adc-4-channel-programmable-gain-amplifier-module,2026-10-21,Crack gauge + extensometer + NTC + rail reference
 node,10k linear slide potentiometer module,2,129,ex,quote,https://www.electronicscomp.com/10k-sliding-adjustable-potentiometer-module,2026-10-21,One crack gauge and one wire extensometer per node
 node,NTC 10k B3950 waterproof probe 2 m,1,126.27,ex,quote,https://probots.co.in/2m-ntc-thermistor-temperature-sensor-waterproof-probe-wire-10-k-1-3950-bl.html,2026-10-21,Ground temperature at 0.5 m for fire-affected areas
